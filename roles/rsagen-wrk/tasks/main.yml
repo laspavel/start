@@ -1,0 +1,11 @@
+---
+- name: Creates destination directory
+  file:
+    state: directory
+    mode: 0700
+    dest: /home/{{ wrk_username }}/.ssh/
+
+- name: Generate RSA key for main user
+  command : "ssh-keygen -q -t rsa -b 4096 -f /home/{{ wrk_username }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  args:
+    creates: /home/{{ wrk_username }}/.ssh/id_rsa

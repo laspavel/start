@@ -1,0 +1,86 @@
+---
+- name: dnf configure
+  copy:
+    src: dnf.conf
+    dest: /etc/dnf/dnf.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: disable fedora-updates-modular.repo
+  yum_repository:
+    name: fedora-updates-modular
+    enabled: no
+
+- name: disable fedora-modular.repo
+  yum_repository:
+    name: fedora-modular
+    enabled: no
+
+- name: Upgrade system
+  dnf:
+    name: '*'
+    state: latest
+
+- name: Install epel-release
+  dnf:
+    name:
+        - epel-release
+    state: latest
+
+- name: Enable the RPM Fusion repository
+  dnf:
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+  when: ansible_distribution == 'Fedora'
+
+- name: Enable the RPM Fusion repository
+  dnf:
+    name: "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+  when: ansible_distribution == 'Fedora'
+
+- name: get google chrome repo
+  dnf:
+    name: fedora-workstation-repositories
+    state: latest
+
+- name: enable google chrome repo
+  command: dnf config-manager --set-enabled google-chrome
+
+- name: Enable DoubleCmd repo
+  command: dnf copr enable -y vondruch/doublecmd
+
+- name: Enable absru repo
+  command: curl -s https://packagecloud.io/install/repositories/asbru-cm/asbru-cm/script.rpm.sh | sudo bash
+
+- name: Install programs
+  yum:
+    name: "{{ base_required_packages }}"
+    state: present
+
+- name: Skype x64 install
+  dnf:
+    name: https://go.skype.com/skypeforlinux-64.rpm
+    state: latest
+
+- name: Install the 'Development tools' package group
+  yum:
+    name: "@Development tools"
+    state: present
+
+- name: Set required timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: start the sshd service and enable it
+  systemd:
+    name: sshd
+    state: started
+    enabled: yes
+
+- name: start the firewalld service and enable it
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes

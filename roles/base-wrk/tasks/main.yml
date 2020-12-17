@@ -1,0 +1,15 @@
+---
+
+- name: hostname_setup
+  import_tasks: hostname_configure.yml
+
+#- name: selinux configure
+#  import_tasks: selinux_configure.yml
+
+- name: base setup
+  import_tasks: base_setup.yml
+
+
+
+
+

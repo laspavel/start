@@ -1,0 +1,7 @@
+---
+
+- name: basic docker setup
+  import_tasks: docker_setup.yml
+
+- name: docker-compose setup  
+  import_tasks: docker-compose_setup.yml

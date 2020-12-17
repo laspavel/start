@@ -1,0 +1,91 @@
+---
+# tasks file for virtualbox
+
+- name: Add VirtualBox Repository
+  become: yes
+  command: "/usr/bin/dnf --assumeyes config-manager --add-repo {{virtualbox_rpm_repository}} update"
+  when: ansible_distribution == 'Fedora'
+
+- name: Add VirtualBox Repository Key
+  become: yes
+  apt_key:
+      url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+      state: present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Add VirtualBox Repository
+  become: yes
+  apt_repository:
+      repo: "deb http://download.virtualbox.org/virtualbox/debian {{ansible_distribution_release}} contrib"
+      state: present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Update DNF
+  become: yes
+  command: "/usr/bin/dnf --assumeyes update"
+  when: ansible_distribution == 'Fedora'
+
+- name: Update apt
+  become: yes
+  apt:
+      update_cache: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install VirtualBox Dependencies
+  become: yes
+  package: name={{item}} state=installed
+  with_items:
+  - binutils
+  - gcc
+  - make
+  - patch
+  - dkms
+
+- name: Install VirtualBox
+  become: yes
+  package: name={{item}} state=installed
+  with_items:
+  - libgomp
+  - glibc-headers
+  - glibc-devel
+  - kernel-headers
+  - kernel-devel
+  - "VirtualBox-{{virtualbox_version}}"
+  when: ansible_distribution == 'Fedora'
+
+- name: Install VirtualBox
+  become: yes
+  package: name={{item}} state=installed
+  with_items:
+  - build-essential
+  - "linux-headers-{{ansible_kernel}}"
+  - "virtualbox-{{virtualbox_version}}"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Rebuild Kernel Modules
+  become: yes
+  command: "/usr/lib/virtualbox/vboxdrv.sh setup"
+  when: ansible_distribution != 'CentOS'
+
+- name: Save Non-Root User
+  become: no
+  set_fact:
+      standard_user: "{{ansible_user_id}}"
+
+- name: Add User to VirtualBox group
+  become: yes
+  user: name={{standard_user}} groups=vboxusers append=yes state=present
+  when: ansible_distribution != 'CentOS'
+
+- name: Grab VirtualBox Extensions
+  become: no
+  get_url:
+      url: "http://download.virtualbox.org/virtualbox/{{virtualbox_extension_version}}/Oracle_VM_VirtualBox_Extension_Pack-{{virtualbox_extension_version}}-{{virtualbox_extension_build}}.vbox-extpack"
+      dest: "/tmp/Oracle_VM_VirtualBox_Extension_Pack-{{virtualbox_extension_version}}-{{virtualbox_extension_build}}.vbox-extpack"
+      mode: 0444
+
+- name: Install VirtualBox Extensions
+  become: yes
+  command: "VBoxManage extpack install /tmp/Oracle_VM_VirtualBox_Extension_Pack-{{virtualbox_extension_version}}-{{virtualbox_extension_build}}.vbox-extpack"
+  # I don't know how to detect if this has already been installed or not yet so ignore any failures for now
+  ignore_errors: yes

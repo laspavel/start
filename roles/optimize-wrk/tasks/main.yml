@@ -1,0 +1,87 @@
+---
+- name: q1
+  dconf:
+    key: "/org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state"
+    value: "true"
+
+- name: q2
+  dconf:
+    key: "/org/gnome/gedit.preferences/encodings candidate-encodings"
+    value: "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+     
+- name: q3
+  dconf:
+    key: "/org/gnome/desktop/peripherals.mouse/accel-profile"
+    value: "adaptive"
+ 
+- name: q4
+  dconf:
+    key: "/org/gnome/desktop/sound/allow-volume-above-100-percent"
+    value: "true"
+
+- name: q5
+  dconf:
+    key: "org.gnome.desktop.calendar show-weekdate"
+    value: "true"
+
+- name: q6
+  dconf:
+    key: "org.gnome.desktop.wm.preferences resize-with-right-button"
+    value: "true"
+
+- name: q7
+  dconf:
+    key: "org.gnome.desktop.wm.preferences button-layout"
+    value: "appmenu:minimize,maximize,close"
+ 
+- name: q8
+  dconf:
+    key: "org.gnome.shell.overrides workspaces-only-on-primary"
+    value: "false"
+
+- name: q9
+  dconf:
+    key: "org.gnome.nautilus.icon-view default-zoom-level"
+    value: "standard"
+
+- name: q11
+  dconf:
+    key: "org.gnome.nautilus.preferences executable-text-activation"
+    value: "ask"
+
+- name: q12
+  dconf:
+    key: "org.gtk.Settings.FileChooser sort-directories-first"
+    value: "true"
+
+- name: q13
+  dconf:
+    key: "org.gnome.nautilus.list-view use-tree-view"
+    value: "true"
+
+- name: Sync
+  command : "sync"
+
+- name: disable fedora-updates-modular.repo
+  yum_repository:
+    name: fedora-updates-modular
+    enabled: yes
+
+- name: disable fedora-modular.repo
+  yum_repository:
+    name: fedora-modular
+    enabled: yes
+
+- name: download sources
+  get_url: 
+    url: "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
+    dest: "/usr/bin/gnome-shell-extension-installer"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Dock-to-Panel install 
+  command: gnome-shell-extension-installer 1160 --yes --restart-shell
+
+- name: DNF Clean ALL
+  command: dnf clean all

@@ -1,0 +1,89 @@
+git-email: laspavel@gmail.com
+git-name: laspavel
+wrk-username: laspavel
+hostname_: homebook
+
+virtualbox_version: 5.1
+virtualbox_extension_version: 5.1.28
+virtualbox_extension_build: 117968
+virtualbox_rpm_repository: http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+
+docker-users:
+  - {{ wrk-username }}
+
+base_required_packages:
+- asbru-cm
+- binutils 
+- gcc 
+- make 
+- patch
+- libgomp
+- glibc-headers
+- glibc-devel 
+- kernel-headers
+- kernel-devel
+- dkms 
+- qt5-qtx11extras
+- libxkbcommon
+- doublecmd-gtk 
+- google-chrome-stable.
+- htop
+- mc
+- nano
+- sshfs
+- davfs2
+- unrar
+- fbreader
+- meld
+- whois
+- flatpak
+- traceroute
+- dconf-editor
+- git
+- tig
+- openvpn
+- curl
+- tlp
+- tlp-rdw
+- unace
+- arj
+- cabextract
+- p7zip
+- p7zip-plugins
+- wine 
+- gparted
+- langpacks-ru
+- gnome-commander
+- pavucontrol
+- gnome-tweaks
+- wget
+- ffmpeg
+- file-roller-nautilus
+- fuse-exfat
+- gnome-shell-extension-dash-to-dock
+- gnome-shell-extension-topicons-plus
+- gnome-shell-extension-user-theme 
+- gnome-tweak-tool
+- gvfs-fuse
+- gvfs-mtp
+- gvfs-nfs
+- gvfs-smb
+- ansible
+- lpf-mscore-fonts
+- qbittorrent
+- gnome-calendar
+- uget
+- evince-djvu
+- unar
+- gnome-shell-extension-apps-menu
+- gnome-shell-extension-window-list
+- gnome-shell-extension-common
+- flameshot 
+- redshift
+- grc
+- freetype-freeworld
+- firewalld
+- dnf-plugins-core
+
+timezone: Europe/Kiev
+ 

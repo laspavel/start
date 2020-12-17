@@ -1,0 +1,15 @@
+---
+    - name: StartMyworkSystem
+      hosts: localhost
+      connection: local
+      become: true
+      remote_user: root
+      gather_facts: true
+      vars_files:
+        - ./vars/config.yml
+      roles:
+        - role: base-wrk
+        - role: sysctl-wrk
+        - role: rsagen-wrk
+        - role: docker
+        - role: optimize-wrk

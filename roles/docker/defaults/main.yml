@@ -1,0 +1,21 @@
+---
+# defaults file for docker_buildnode
+docker_required_packages:
+  - git
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+  - pygpgme
+
+docker_pkg_repo: "https://download.docker.com/linux/centos/docker-ce.repo"
+
+#docker_daemon_params: 
+#  - { key: "insecure-registries", value: ["shop-master-d01:5000"] }
+
+docker_package: docker-ce
+
+# Docker Compose options.
+docker_install_compose: true
+docker_compose_version: "1.26.0"
+docker_compose_path: /usr/local/bin/docker-compose
+
