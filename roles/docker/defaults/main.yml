@@ -12,7 +12,10 @@ docker_pkg_repo: "https://download.docker.com/linux/fedora/docker-ce.repo"
 #docker_daemon_params: 
 #  - { key: "insecure-registries", value: ["shop-master-d01:5000"] }
 
-docker_package: docker-ce-stable
+docker_packages: 
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
 
 # Docker Compose options.
 docker_install_compose: true

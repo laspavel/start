@@ -13,7 +13,7 @@
 
 - name: install docker
   yum:
-    name: "{{ docker_package }}"
+    name: "{{ docker_packages }}"
     state: present
 
 - name: Enable IP Forwarding
