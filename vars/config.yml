@@ -84,6 +84,7 @@ base_required_packages:
 - freetype-freeworld
 - firewalld
 - dnf-plugins-core
+- python3-devel
 
 timezone: Europe/Kiev
  
