@@ -16,7 +16,7 @@
      
 - name: q3
   dconf:
-    key: "/org/gnome/desktop/peripherals.mouse/accel-profile"
+    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
     value: "adaptive"
  
 - name: q4
