@@ -57,8 +57,13 @@
 - name: Enable DoubleCmd repo
   command: dnf copr enable -y vondruch/doublecmd
 
+- name: Download absru repo
+  get_url:
+    url: "https://packagecloud.io/install/repositories/asbru-cm/asbru-cm/script.rpm.sh"
+    dest: /tmp/script.rpm.sh
+
 - name: Enable absru repo
-  command: curl -s https://packagecloud.io/install/repositories/asbru-cm/asbru-cm/script.rpm.sh | sudo bash
+  command: /tmp/script.rpm.sh
 
 - name: Install programs
   yum:
