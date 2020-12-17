@@ -26,7 +26,7 @@ base_required_packages:
 - qt5-qtx11extras
 - libxkbcommon
 - doublecmd-gtk 
-- google-chrome-stable.
+- google-chrome-stable
 - htop
 - mc
 - nano
