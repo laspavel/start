@@ -5,7 +5,7 @@ docker_required_packages:
   - yum-utils
   - device-mapper-persistent-data
   - lvm2
-  - pygpme
+#  - pygpme
 
 docker_pkg_repo: "https://download.docker.com/linux/centos/docker-ce.repo"
 
