@@ -10,11 +10,13 @@
 - name: disable fedora-updates-modular.repo
   yum_repository:
     name: fedora-updates-modular
+    file: fedora-updates-modular
     enabled: no
 
 - name: disable fedora-modular.repo
   yum_repository:
     name: fedora-modular
+    file: fedora-modular
     enabled: no
 
 - name: Upgrade system
