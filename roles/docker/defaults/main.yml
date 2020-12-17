@@ -7,12 +7,12 @@ docker_required_packages:
   - lvm2
 #  - pygpme
 
-docker_pkg_repo: "https://download.docker.com/linux/centos/docker-ce.repo"
+docker_pkg_repo: "https://download.docker.com/linux/fedora/docker-ce.repo"
 
 #docker_daemon_params: 
 #  - { key: "insecure-registries", value: ["shop-master-d01:5000"] }
 
-docker_package: Docker CE Stable
+docker_package: docker-ce-stable
 
 # Docker Compose options.
 docker_install_compose: true
