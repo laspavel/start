@@ -61,6 +61,9 @@
   get_url:
     url: "https://packagecloud.io/install/repositories/asbru-cm/asbru-cm/script.rpm.sh"
     dest: /tmp/script.rpm.sh
+    mode: 775
+    owner: root
+    group: root
 
 - name: Enable absru repo
   command: /tmp/script.rpm.sh
