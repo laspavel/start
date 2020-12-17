@@ -11,7 +11,7 @@
 
 - name: q2
   dconf:
-    key: "/org/gnome/gedit.preferences/encodings candidate-encodings"
+    key: "/org/gnome/gedit/preferences/encodings candidate-encodings"
     value: "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
      
 - name: q3
@@ -26,42 +26,42 @@
 
 - name: q5
   dconf:
-    key: "org.gnome.desktop.calendar show-weekdate"
+    key: "/org/gnome/desktop/calendar/show-weekdate"
     value: "true"
 
 - name: q6
   dconf:
-    key: "org.gnome.desktop.wm.preferences resize-with-right-button"
+    key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
     value: "true"
 
 - name: q7
   dconf:
-    key: "org.gnome.desktop.wm.preferences button-layout"
+    key: "/org/gnome/desktop/wm/preferences/button-layout"
     value: "appmenu:minimize,maximize,close"
  
 - name: q8
   dconf:
-    key: "org.gnome.shell.overrides workspaces-only-on-primary"
+    key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
     value: "false"
 
 - name: q9
   dconf:
-    key: "org.gnome.nautilus.icon-view default-zoom-level"
+    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
     value: "standard"
 
 - name: q11
   dconf:
-    key: "org.gnome.nautilus.preferences executable-text-activation"
+    key: "/org/gnome/nautilus/preferences/executable-text-activation"
     value: "ask"
 
 - name: q12
   dconf:
-    key: "org.gtk.Settings.FileChooser sort-directories-first"
+    key: "/org/gtk/Settings/FileChooser/sort-directories-first"
     value: "true"
 
 - name: q13
   dconf:
-    key: "org.gnome.nautilus.list-view use-tree-view"
+    key: "/org/gnome/nautilus/list-view use-tree-view"
     value: "true"
 
 - name: Sync
