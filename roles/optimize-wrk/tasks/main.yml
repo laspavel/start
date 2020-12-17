@@ -1,4 +1,9 @@
 ---
+- name: Install python psutil 
+  pip:
+    name: psutil
+    state: present
+
 - name: q1
   dconf:
     key: "/org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state"
