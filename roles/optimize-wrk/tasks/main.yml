@@ -1,70 +1,65 @@
 ---
-- name: Install python psutil 
-  pip:
-    name: psutil
-    state: present
+- name: GSettings 1
+  command : "gsettings set org.gnome.settings-daemon.peripherals.keyboard remember-numlock-state true"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q1
-  dconf:
-    key: "/org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state"
-    value: "true"
+- name: GSettings 2
+  command : "gsettings set org.gnome.gedit.preferences.encodings candidate-encodings \"['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']'\""
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q2
-  dconf:
-    key: "/org/gnome/gedit/preferences/encodings/candidate-encodings"
-    value: "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-     
-#- name: q3
-#  dconf:
-#    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
-#    value: "adaptive"
- 
-- name: q4
-  dconf:
-    key: "/org/gnome/desktop/sound/allow-volume-above-100-percent"
-    value: "true"
+- name: GSettings 3
+  command : "gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'adaptive'"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q5
-  dconf:
-    key: "/org/gnome/desktop/calendar/show-weekdate"
-    value: "true"
+- name: GSettings 4
+  command : "gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q6
-  dconf:
-    key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
-    value: "true"
+- name: GSettings 5
+  command : "gsettings set org.gnome.desktop.calendar show-weekdate true"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-#- name: q7
-#  dconf:
-#    key: "/org/gnome/desktop/wm/preferences/button-layout"
-#    value: "appmenu:minimize,maximize,close"
- 
-- name: q8
-  dconf:
-    key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
-    value: "false"
+- name: GSettings 6
+  command : "gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-#- name: q9
-#  dconf:
-#    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
-#    value: "standard"
+- name: GSettings 7
+  command : "gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-#- name: q11
-#  dconf:
-#    key: "/org/gnome/nautilus/preferences/executable-text-activation"
-#    value: "ask"
+- name: GSettings 8
+  command : "gsettings set org.gnome.shell.overrides workspaces-only-on-primary falsegsettings set org.gnome.shell.overrides workspaces-only-on-primary false"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q12
-  dconf:
-    key: "/org/gtk/Settings/FileChooser/sort-directories-first"
-    value: "true"
+- name: GSettings 9
+  command : "gsettings set org.gnome.nautilus.icon-view default-zoom-level 'standard'"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: q13
-  dconf:
-    key: "/org/gnome/nautilus/list-view use-tree-view"
-    value: "true"
+- name: GSettings 10
+  command : "gsettings set org.gnome.nautilus.preferences executable-text-activation 'ask'"
+  become: true
+  become_user: "{{ wrk_username }}"
 
-- name: Sync
+- name: GSettings 11
+  command : "gsettings set org.gtk.Settings.FileChooser sort-directories-first true"
+  become: true
+  become_user: "{{ wrk_username }}"
+
+- name: GSettings 12
+  command : "gsettings set org.gnome.nautilus.list-view use-tree-view true"
+  become: true
+  become_user: "{{ wrk_username }}"
+
+- name: GSettings 13
   command : "sync"
 
 - name: enable fedora-updates-modular.repo
@@ -91,6 +86,8 @@
 
 - name: Dock-to-Panel install 
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
+  become: true
+  become_user: "{{ wrk_username }}"
 
 - name: DNF Clean ALL
   command: dnf clean all
