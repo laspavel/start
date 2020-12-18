@@ -9,6 +9,11 @@
 - name: base setup
   import_tasks: base_setup.yml
 
+- name: vscode setup
+  import_tasks: vscode_setup.yml
+
+
+
 
 
 
