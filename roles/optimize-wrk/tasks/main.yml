@@ -44,10 +44,10 @@
     key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
     value: "false"
 
-- name: q9
-  dconf:
-    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
-    value: "standard"
+#- name: q9
+#  dconf:
+#    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
+#    value: "standard"
 
 - name: q11
   dconf:
