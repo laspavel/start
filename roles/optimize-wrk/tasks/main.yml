@@ -2,7 +2,7 @@
 - name: disable auto maximize
   template: 
     src: dconf-settings.j2
-    path: /etc/dconf
+    dest: /etc/dconf
   become: true
   become_user: "{{ wrk_username }}"
 
