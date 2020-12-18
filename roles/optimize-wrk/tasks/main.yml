@@ -49,10 +49,10 @@
 #    key: "/org/gnome/nautilus/icon-view/default-zoom-level"
 #    value: "standard"
 
-- name: q11
-  dconf:
-    key: "/org/gnome/nautilus/preferences/executable-text-activation"
-    value: "ask"
+#- name: q11
+#  dconf:
+#    key: "/org/gnome/nautilus/preferences/executable-text-activation"
+#    value: "ask"
 
 - name: q12
   dconf:
