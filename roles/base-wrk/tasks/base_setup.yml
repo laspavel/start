@@ -25,6 +25,7 @@
   dnf:
     name: '*'
     state: latest
+    exclude: kernel*
 
 #- name: Install epel-release
 #  dnf:
