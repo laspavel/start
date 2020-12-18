@@ -41,6 +41,7 @@
   - patch
   - dkms
   - kernel-devel
+  - "linux-headers-{{ ansible_kernel }}"
   - bzip2 
   - curl
 
