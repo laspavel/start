@@ -3,8 +3,6 @@
   template: 
     src: dconf-settings.j2
     dest: /etc/dconf
-  become: true
-  become_user: "{{ wrk_username }}"
 
 - name: update dconf
   shell: dconf update
