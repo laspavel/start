@@ -87,7 +87,7 @@
     dest: "/usr/bin/gnome-shell-extension-installer"
     owner: root
     group: root
-    mode: 0644
+    mode: 0775
 
 - name: Dock-to-Panel install 
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
