@@ -52,7 +52,7 @@
   - glibc-headers
   - glibc-devel
   - kernel-headers
-  - linux-headers-"{{ kernelversion.stdout }}"
+  - "linux-headers-{{ ansible_kernel }}"
   - kernel-devel
   - "VirtualBox-{{virtualbox_version}}"
   when: ansible_distribution == 'Fedora'
