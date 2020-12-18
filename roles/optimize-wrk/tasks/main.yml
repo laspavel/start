@@ -34,10 +34,10 @@
     key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
     value: "true"
 
-- name: q7
-  dconf:
-    key: "/org/gnome/desktop/wm/preferences/button-layout"
-    value: "appmenu:minimize,maximize,close"
+#- name: q7
+#  dconf:
+#    key: "/org/gnome/desktop/wm/preferences/button-layout"
+#    value: "appmenu:minimize,maximize,close"
  
 - name: q8
   dconf:
