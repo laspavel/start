@@ -40,6 +40,7 @@
   - make
   - patch
   - dkms
+  - kernel-devel
 
 - name: Install VirtualBox
   become: yes
