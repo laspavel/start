@@ -41,6 +41,8 @@
   - patch
   - dkms
   - kernel-devel
+  - bzip2 
+  - curl
 
 - name: Install VirtualBox
   become: yes
