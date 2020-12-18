@@ -6,8 +6,6 @@
 
 - name: update dconf
   shell: dconf update
-  become: true
-  become_user: "{{ wrk_username }}"
 
 - name: GSettings 13
   command : "sync"
