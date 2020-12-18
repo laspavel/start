@@ -14,10 +14,10 @@
     key: "/org/gnome/gedit/preferences/encodings/candidate-encodings"
     value: "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
      
-- name: q3
-  dconf:
-    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
-    value: "adaptive"
+#- name: q3
+#  dconf:
+#    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
+#    value: "adaptive"
  
 - name: q4
   dconf:
