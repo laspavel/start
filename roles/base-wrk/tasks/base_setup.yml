@@ -60,7 +60,7 @@
 
 - name: Download absru repo
   get_url:
-    url: "https://packagecloud.io/install/repositories/asbru-cm/asbru-cm/script.rpm.sh"
+    url: "https://dl.cloudsmith.io/public/asbru-cm/release/cfg/setup/bash.rpm.sh"
     dest: /tmp/script.rpm.sh
     mode: 775
     owner: root
