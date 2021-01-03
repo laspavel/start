@@ -13,3 +13,4 @@
         - role: rsagen-wrk
         - role: docker
         - role: optimize-wrk
+        - role: tmux-wrk

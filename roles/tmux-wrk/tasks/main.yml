@@ -1,0 +1,5 @@
+---
+
+- name: install tmux
+  import_tasks: tmux_setup.yml
+
