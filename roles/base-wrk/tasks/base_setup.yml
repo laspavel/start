@@ -124,7 +124,7 @@
       call plug#begin()
       Plug 'morhetz/gruvbox'
       call plug#end()
-    mode: '0775'
+    mode: '0664'
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
     marker: '" {mark} ANSIBLE MANAGED BLOCK'
@@ -145,7 +145,7 @@
     dest: "/home/{{ wrk_username }}/.vimrc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0755'
+    mode: '0664'
     force: yes
   ignore_errors: true
 
