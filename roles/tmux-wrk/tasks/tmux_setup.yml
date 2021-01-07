@@ -8,6 +8,7 @@
   yum:
     name: "http://galaxy4.net/repo/galaxy4-release-{{ansible_distribution_major_version}}-current.noarch.rpm"
     state: present
+  when: ansible_distribution == 'CentOS'
 
 - name: install tmux packages
   yum:
