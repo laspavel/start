@@ -41,6 +41,7 @@ base_required_packages:
 - dconf-editor
 - git
 - tig
+- vim-enhanced
 - openvpn
 - curl
 - tlp
