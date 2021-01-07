@@ -127,6 +127,7 @@
     mode: '0775'
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
+    marker: '" {mark} ANSIBLE MANAGED BLOCK'
     state: present
     insertafter: EOF
     create: yes
