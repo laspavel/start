@@ -127,7 +127,7 @@
   ignore_errors: true
 
 - name: Install Plugin 
-  shell: "vim +'PlugInstall --sync' +qa"
+  shell: "vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty"
   become: yes
   become_user: "{{ wrk_username }}"
   args:
