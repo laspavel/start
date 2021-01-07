@@ -102,7 +102,12 @@
     enabled: yes
 
 - name: Configure Vim-plug
-  shell: "curl -fLo /home/{{ wrk_username }}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: "/home/{{ wrk_username }}/.vim/autoload/plug.vim"
+    mode: '0775'
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
 
 - name: Add vim config
   template:
