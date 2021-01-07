@@ -117,18 +117,34 @@
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
 
-- name: Add vim config
-  template:
-    src: ".vimrc.j2"
+- name: Add startup config
+  blockinfile:
     dest: "/home/{{ wrk_username }}/.vimrc"
+    content: | 
+      call plug#begin()
+      Plug 'morhetz/gruvbox'
+      call plug#end()
+    mode: '0775'
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0755'
-  ignore_errors: true
+    state: present
+    insertafter: EOF
+    create: yes
 
 - name: Install Plugin 
-  shell: "vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty"
+  shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
   become: yes
   become_user: "{{ wrk_username }}"
   args:
     executable: /bin/bash
+
+- name: Add vim config
+  template:
+    src: "vimrc.j2"
+    dest: "/home/{{ wrk_username }}/.vimrc"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0755'
+    force: yes
+  ignore_errors: true
+
