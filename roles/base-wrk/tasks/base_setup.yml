@@ -125,3 +125,10 @@
     group: "{{ wrk_username }}"
     mode: '0755'
   ignore_errors: true
+
+- name: Install Plugin 
+  shell: vim +'PlugInstall --sync' +qa
+  become: yes
+  become_user: "{{ wrk_username }}"
+  args:
+    executable: /bin/bash

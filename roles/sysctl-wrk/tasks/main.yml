@@ -1,5 +1,5 @@
 ---
-- name: Creating swapiness
+- name: Updating vm.swapiness
   copy:
     dest: "/etc/sysctl.d/95-swapiness-sysctl.conf"
     content: "vm.swappiness=1"
@@ -7,7 +7,7 @@
     group: root
     mode: 0644
 
-- name: Creating swapiness
+- name: Updating vm.vfs_cache_pressure
   copy:
     dest: "/etc/sysctl.d/96-vfs-sysctl.conf"
     content: "vm.vfs_cache_pressure=1000"
@@ -15,7 +15,7 @@
     group: root
     mode: 0644
 
-- name: Creating swapiness
+- name: Updating vm.dirty_background_ratio
   copy:
     dest: "/etc/sysctl.d/97-dirty-backgr-sysctl.conf"
     content: "vm.dirty_background_ratio = 10"
@@ -23,7 +23,7 @@
     group: root
     mode: 0644
 
-- name: Creating swapiness
+- name: Updating vm.dirty_ratio
   copy:
     dest: "/etc/sysctl.d/98-dirty-ratio-sysctl.conf"
     content: "vm.dirty_ratio = 10"
@@ -31,7 +31,7 @@
     group: root
     mode: 0644
 
-- name: Creating swapiness
+- name: Updating journald
   ini_file:
     dest: "/etc/systemd/journald.conf"
     section: Journal
