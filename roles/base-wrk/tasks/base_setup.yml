@@ -149,3 +149,12 @@
     force: yes
   ignore_errors: true
 
+- name: Add bash config
+  template:
+    src: "bashrc.j2"
+    dest: "/home/{{ wrk_username }}/.bashrc"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0664'
+    force: yes
+  ignore_errors: true
