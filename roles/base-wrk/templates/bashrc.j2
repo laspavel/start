@@ -322,3 +322,5 @@ if [ -f /usr/bin/grc ]; then
   alias traceroute="grc --colour=auto traceroute"
   alias wdiff="grc --colour=auto wdiff"
 fi
+source <(kubectl completion bash)
+complete -F __start_kubectl k
