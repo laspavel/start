@@ -25,6 +25,20 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+## load ssh autocompletion
+_ssh() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(grep '^Host' ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | grep -v '[?*]' | cut -d ' ' -f 2-)
+
+    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
+    return 0
+}
+complete -F _ssh ssh
+
 md5(){ echo -n "$1" | md5sum; }
 
 function tarz() {
@@ -60,6 +74,13 @@ function extract() {
      fi 
 }
 
+ssh() {
+tmux rename-window "$*"
+command ssh "$@"
+tmux rename-window "bash"
+}
+
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -78,6 +99,7 @@ alias cls='clear'
 alias r='reset'
 alias df='df -h'
 alias du='du -h'
+# alias mc='mc -x'
 
 # Estimate file space usage to maximum depth
 alias du1="du -d 1"
@@ -111,6 +133,9 @@ alias pogoda="curl wttr.in/Dnepr"
 
 #open vscode
 alias v="code $1"
+
+# list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
+alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config | sed 's/Host //' | sed 's/HostName //'"
 
 #Docker
 alias ubuntu18='docker run -it --rm -v $(pwd):/data -w /data ubuntu:18.04 /bin/bash'
