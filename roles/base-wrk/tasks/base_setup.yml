@@ -158,3 +158,31 @@
     mode: '0664'
     force: yes
   ignore_errors: true
+
+- name: Add Git config
+  template:
+    src: "gitconfig.j2"
+    dest: "/home/{{ wrk_username }}/.gitconfig"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0664'
+    force: yes
+  ignore_errors: true
+  
+- name: mkdir SSH config directory
+  file:
+    state: directory
+    owner: "{{ wrk_username }}"
+    mode: 0700
+    dest: /home/{{ wrk_username }}/.ssh/
+    
+- name: Add SSH config
+  template:
+    src: "sshconfig.j2"
+    dest: "/home/{{ wrk_username }}/.ssh/config"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0664'
+    force: yes
+  ignore_errors: true
+  
