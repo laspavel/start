@@ -28,7 +28,7 @@
 # Create dump: dconf dump / > dump_gnome
 
 - name: Restore gnome parameters
-  shell: "dconf load / < /tmp/dump_gnome"
+  shell: "dconf load -f / < /tmp/dump_gnome"
   become: yes
   become_user: "{{ wrk_username }}"
   args:
