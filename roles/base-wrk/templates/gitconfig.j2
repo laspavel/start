@@ -3,9 +3,11 @@
   name = laspavel
 
 [core]
-  editor = nano
-  autocrlf=true
+  editor = $EDITOR
+#  autocrlf=true
   pager = less -F -X
+  filemode = true
+  excludesfile= ~/.gitignore
 
 [init]
   defaultBranch = master

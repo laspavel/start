@@ -186,3 +186,16 @@
     force: yes
   ignore_errors: true
   
+- name: Install HSTR
+  yum:
+    name: hstr
+    state: present
+  
+- name: Configure HSTR
+  shell: "hstr --show-configuration >> ~/.bashrc"
+  become: yes
+  become_user: "{{ wrk_username }}"
+  args:
+    executable: /bin/bash
+
+
