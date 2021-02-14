@@ -1,0 +1,36 @@
+---
+# tasks file for gnome-restore
+- name: Create Background dir
+  file: 
+    path: "/home/{{ wrk_username }}/.local/share/backgrounds"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: 0755
+    recurse: yes
+    state: directory
+
+- name: Copy Background file
+  copy:
+    src: background1.jpg
+    dest: /home/{{ wrk_username }}/.local/share/backgrounds/background1.jpg
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: 0644
+
+- name: Copy dconf gnome dump file
+  copy:
+    src: dump_gnome
+    dest: /tmp/dump_gnome
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: 0644
+
+# Create dump: dconf dump / > dump_gnome
+
+- name: Restore gnome parameters
+  shell: "dconf load / < /tmp/dump_gnome"
+  become: yes
+  become_user: "{{ wrk_username }}"
+  args:
+    executable: /bin/bash
+  

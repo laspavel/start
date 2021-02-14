@@ -86,6 +86,7 @@ base_required_packages:
 - firewalld
 - dnf-plugins-core
 - python3-devel
+- VirtualBox
 
 timezone: Europe/Kiev
  
