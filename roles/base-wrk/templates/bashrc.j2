@@ -144,6 +144,9 @@ alias debian9='docker run -it --rm -v $(pwd):/data -w /data debian:stretch /bin/
 alias debian10='docker run -it --rm -v $(pwd):/data -w /data debian:buster /bin/bash'
 alias centos7='docker run -it --rm -v $(pwd):/data -w /data centos:7 /bin/bash'
 alias centos8='docker run -it --rm -v $(pwd):/data -w /data centos:8 /bin/bash'
+alias lazydocker='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
+alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
+alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
 # Kubernetes
 alias k="kubectl"

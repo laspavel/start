@@ -12,6 +12,9 @@
 - name: vscode setup
   import_tasks: vscode_setup.yml
 
+- name: ss setup
+  import_tasks: ss_configure.yml
+
 #- name: Virtualbox setup
 #  import_tasks: virtualbox_setup.yml
 

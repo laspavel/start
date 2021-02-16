@@ -186,6 +186,16 @@
     force: yes
   ignore_errors: true
   
+- name: Add TOP config
+  template:
+    src: "toprc.j2"
+    dest: "/home/{{ wrk_username }}/.toprc"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0664'
+    force: yes
+  ignore_errors: true 
+   
 - name: Install HSTR
   yum:
     name: hstr

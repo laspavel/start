@@ -1,0 +1,22 @@
+---
+- name: Create local tmp folder
+  file:
+    src: "/dev/shm"
+    dest: "/home/{{ wrk_username }}/tmp"
+    state: link
+
+- name: Deploy screenshot script ssfull.sh
+  copy:
+    src: "ssfull.sh"
+    dest: "/usr/bin/ssfull.sh"
+    wner: root
+    group: root
+    mode: 0755
+
+- name: Deploy screenshot script ssarea.sh
+  copy:
+    src: "ssarea.sh"
+    dest: "/usr/bin/ssarea.sh"
+    wner: root
+    group: root
+    mode: 0755

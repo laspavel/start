@@ -87,6 +87,7 @@ base_required_packages:
 - dnf-plugins-core
 - python3-devel
 - VirtualBox
+- asciinema
 
 timezone: Europe/Kiev
  
