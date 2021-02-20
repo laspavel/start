@@ -5,6 +5,16 @@ window-height=500
 window-is-maximized=false
 window-width=540
 
+[com/github/maoschanz/drawing]
+last-active-shape='polygon'
+last-active-tool='line'
+last-font-name='Sans'
+last-left-rgba=['0.8', '0.0', '0.0', '1.0']
+last-right-rgba=['1.0', '1.0', '0.0', '0.5']
+last-size=5
+maximized=true
+use-antialiasing=true
+
 [org/gnome/Totem]
 active-plugins=['screenshot', 'apple-trailers', 'autoload-subtitles', 'rotation', 'skipto', 'variable-rate', 'open-directory', 'screensaver', 'movie-properties', 'save-file', 'recent', 'vimeo', 'media-player-keys']
 subtitle-encoding='UTF-8'
@@ -15,7 +25,7 @@ view='list-view'
 window-maximized=true
 
 [org/gnome/control-center]
-last-panel='sound'
+last-panel='background'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -62,7 +72,7 @@ autorun-x-content-open-folder=@as []
 autorun-x-content-start-app=['x-content/ostree-repository']
 
 [org/gnome/desktop/notifications]
-application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar']
+application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar', 'xdg-desktop-portal-gtk']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop]
@@ -70,6 +80,9 @@ application-id='appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.de
 
 [org/gnome/desktop/notifications/application/asbru-cm]
 application-id='asbru-cm.desktop'
+
+[org/gnome/desktop/notifications/application/atom]
+application-id='atom.desktop'
 
 [org/gnome/desktop/notifications/application/doublecmd]
 application-id='doublecmd.desktop'
@@ -140,6 +153,9 @@ application-id='vmware-player.desktop'
 [org/gnome/desktop/notifications/application/wine-programs-winrar-winrar]
 application-id='wine-Programs-WinRAR-WinRAR.desktop'
 
+[org/gnome/desktop/notifications/application/xdg-desktop-portal-gtk]
+application-id='xdg-desktop-portal-gtk.desktop'
+
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
 repeat=true
@@ -184,7 +200,7 @@ background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(2.1944444444444446, 1.0277777777777777)
+window-ratio=(2.1946308724832213, 1.0272835112692764)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -359,10 +375,30 @@ night-light-schedule-from=22.0
 night-light-temperature=uint32 3652
 
 [org/gnome/settings-daemon/plugins/media-keys]
-area-screenshot-clip=['<Alt>Print']
+area-screenshot=@as []
+area-screenshot-clip=@as []
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
 logout=['<Primary><Alt>o']
 screensaver=['<Primary><Alt>Delete']
+screenshot=@as []
+screenshot-clip=@as []
 window-screenshot=@as []
+window-screenshot-clip=@as []
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Shift>Print'
+command='ssarea.sh'
+name='SSArea'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='Print'
+command='ssfull.sh'
+name='SSFull'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Primary>Print'
+command='flameshot gui'
+name='ScreenX'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout=3600
@@ -451,10 +487,10 @@ workspaces-only-on-primary=false
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1613286367
+check-timestamp=int64 1613800946
 first-run=false
-install-timestamp=int64 1613291862
-online-updates-timestamp=int64 1613286460
+install-timestamp=int64 1613421041
+online-updates-timestamp=int64 1613800951
 upgrade-notification-timestamp=int64 1607716302
 
 [org/gnome/system/location]
@@ -479,6 +515,10 @@ use-system-font=false
 use-transparent-background=false
 visible-name='Main'
 
+[org/gtk/settings/color-chooser]
+custom-colors=[(0.80000000000000004, 0.0, 0.0, 1.0), (1.0, 1.0, 0.0, 0.5)]
+selected-color=(true, 0.80000000000000004, 0.0, 0.0, 1.0)
+
 [org/gtk/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
@@ -490,7 +530,7 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(2265, 49)
+window-position=(2264, 52)
 window-size=(1231, 902)
 
 [org/virt-manager/virt-manager]
