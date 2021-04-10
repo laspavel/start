@@ -9,7 +9,7 @@
   copy:
     src: "ssfull.sh"
     dest: "/usr/bin/ssfull.sh"
-    wner: root
+    owner: root
     group: root
     mode: 0755
 
@@ -17,6 +17,6 @@
   copy:
     src: "ssarea.sh"
     dest: "/usr/bin/ssarea.sh"
-    wner: root
+    owner: root
     group: root
     mode: 0755
