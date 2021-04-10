@@ -224,7 +224,7 @@
     line: '{{item.To}}'
     state: present  
   with_items:
-    - { From: 'HISTTIMEFORMAT=.*', To: 'HISTTIMEFORMAT="[%d.%m.%y %T]"'}
+    - { From: 'HISTTIMEFORMAT=.*', To: 'HISTTIMEFORMAT="[%d.%m.%y %T] "'}
     - { From: 'HISTSIZE=.*', To: 'HISTSIZE=30000'}
     - { From: '^HISTCONTROL=.*', To: 'HISTCONTROL=ignorespace'}
 
