@@ -208,4 +208,24 @@
   args:
     executable: /bin/bash
 
+- name: Configure Git Autocomplete
+  get_url:
+    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+    dest: "/etc/bash_completion.d/git-completion.bash"
+    mode: 0664
+  changed_when: false
+
+- name: Configure bashrc - history 2
+  become: yes
+  become_user: "{{ wrk_username }}"
+  lineinfile:
+    path: "~/.bashrc"
+    regexp: '{{item.From}}'
+    line: '{{item.To}}'
+    state: present  
+  with_items:
+    - { From: 'HISTTIMEFORMAT=.*', To: 'HISTTIMEFORMAT="[%d.%m.%y %T]"'}
+    - { From: 'HISTSIZE=.*', To: 'HISTSIZE=30000'}
+    - { From: '^HISTCONTROL=.*', To: 'HISTCONTROL=ignorespace'}
+
 
