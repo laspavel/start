@@ -12,7 +12,7 @@ docker_users:
   - "{{ wrk_username }}"
 
 base_required_packages:
-- asbru-cm
+#- asbru-cm
 - binutils 
 - gcc 
 - make 
@@ -33,7 +33,7 @@ base_required_packages:
 - sshfs
 - davfs2
 - unrar
-- fbreader
+- foliate
 - meld
 - whois
 - flatpak
@@ -54,7 +54,6 @@ base_required_packages:
 - wine 
 - gparted
 - langpacks-ru
-- gnome-commander
 - pavucontrol
 - gnome-tweaks
 - wget
@@ -88,6 +87,9 @@ base_required_packages:
 - python3-devel
 - VirtualBox
 - asciinema
+- kubernetes-client
+- remmina
+- ecryptfs-utils
 
 timezone: Europe/Kiev
  

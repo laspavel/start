@@ -58,16 +58,16 @@
 - name: Enable DoubleCmd repo
   command: dnf copr enable -y vondruch/doublecmd
 
-- name: Download absru repo
-  get_url:
-    url: "https://dl.cloudsmith.io/public/asbru-cm/release/cfg/setup/bash.rpm.sh"
-    dest: /tmp/script.rpm.sh
-    mode: 775
-    owner: root
-    group: root
+#- name: Download absru repo
+#  get_url:
+#    url: "https://dl.cloudsmith.io/public/asbru-cm/release/cfg/setup/bash.rpm.sh"
+#    dest: /tmp/script.rpm.sh
+#    mode: 775
+#    owner: root
+#    group: root
 
-- name: Enable absru repo
-  command: /tmp/script.rpm.sh
+#- name: Enable absru repo
+#  command: /tmp/script.rpm.sh
 
 - name: Install programs
   yum:
