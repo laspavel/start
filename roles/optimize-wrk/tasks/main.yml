@@ -31,11 +31,20 @@
     owner: root
     group: root
     mode: 0775
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
+
 
 - name: Dock-to-Panel install 
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
   become: true
   become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
+
+- name: Dock-to-Panel install
+  command: git clone -b "update-to-gnome40" https://github.com/philippun1/dash-to-panel.git dash-to-panel && cd dash-to-panel && make && make install && gnome-extensions enable dash-to-panel@jderose9.github.com
+  become: true
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
 
 - name: DNF Clean ALL
   command: dnf clean all
