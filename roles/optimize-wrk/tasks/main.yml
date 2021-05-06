@@ -50,8 +50,23 @@
   become_user: "{{ wrk_username }}"
   when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
 
-- name: Dock-to-Panel install
-  command: cd /tmp/dash-to-panel && make && make install && gnome-extensions enable dash-to-panel@jderose9.github.com
+- name: Run 'make' for dash-to-panel
+  community.general.make:
+    chdir: /tmp/dash-to-panel.git
+  become: yes
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: Run 'make install' for dash-to-panel
+  community.general.make:
+    chdir: /tmp/dash-to-panel.git
+    target: install
+  become: yes
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: Dock-to-Panel enable 
+  command: gnome-extensions enable dash-to-panel@jderose9.github.com
   become: true
   become_user: "{{ wrk_username }}"
   when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
