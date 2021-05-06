@@ -44,7 +44,6 @@
   ansible.builtin.git:
     repo: https://github.com/philippun1/dash-to-panel.git
     dest: /tmp/dash-to-panel
-    separate_git_dir: /tmp/dash-to-panel.git
     version: update-to-gnome40
   become: true
   become_user: "{{ wrk_username }}"
@@ -52,14 +51,14 @@
 
 - name: Run 'make' for dash-to-panel
   make:
-    chdir: /tmp/dash-to-panel.git
+    chdir: /tmp/dash-to-panel
   become: yes
   become_user: "{{ wrk_username }}"
   when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
 
 - name: Run 'make install' for dash-to-panel
   make:
-    chdir: /tmp/dash-to-panel.git
+    chdir: /tmp/dash-to-panel
     target: install
   become: yes
   become_user: "{{ wrk_username }}"
