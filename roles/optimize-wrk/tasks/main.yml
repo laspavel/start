@@ -41,7 +41,7 @@
   when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
 
 - name: Dock-to-Panel install
-  command: (git clone -b update-to-gnome40 https://github.com/philippun1/dash-to-panel.git) && (cd dash-to-panel && make && make install) && (gnome-extensions enable dash-to-panel@jderose9.github.com)
+  command: git clone -b update-to-gnome40 https://github.com/philippun1/dash-to-panel.git && cd dash-to-panel && make && make install && gnome-extensions enable dash-to-panel@jderose9.github.com
   become: true
   become_user: "{{ wrk_username }}"
   when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
