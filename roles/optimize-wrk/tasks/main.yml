@@ -31,7 +31,7 @@
     owner: root
     group: root
     mode: 0775
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
+#  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
 
 
 - name: Dock-to-Panel install 
