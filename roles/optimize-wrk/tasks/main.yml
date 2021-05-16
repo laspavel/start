@@ -31,14 +31,12 @@
     owner: root
     group: root
     mode: 0775
-#  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
-
 
 - name: Dock-to-Panel install 
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
   become: true
   become_user: "{{ wrk_username }}"
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
+#  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
 
 - name: Clone a repo dash-to-panel
   ansible.builtin.git:
