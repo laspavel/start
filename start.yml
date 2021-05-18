@@ -13,6 +13,6 @@
         - role: rsagen-wrk
         - role: docker
         - role: tmux-wrk
-        - role: optimize-wrk
         - role: gnome-restore
+        - role: optimize-wrk
 

@@ -1,4 +1,29 @@
 ---
+- name: Install programs for Gnome
+  yum:
+    name: 
+      - dconf-editor
+      - gnome-tweaks
+      - gnome-shell-extension-dash-to-dock
+      - gnome-shell-extension-topicons-plus
+      - gnome-shell-extension-user-theme 
+      - gnome-tweak-tool
+      - gnome-shell-extension-apps-menu
+      - gnome-shell-extension-window-list
+      - gnome-shell-extension-common
+    state: present
+
+- name: disable auto maximize
+  template: 
+    src: dconf-settings.j2
+    dest: /etc/dconf
+
+- name: update dconf
+  shell: dconf update
+
+- name: GSettings 13
+  command : "sync"
+
 # tasks file for gnome-restore
 - name: Create Background dir
   file: 
@@ -17,6 +42,52 @@
     group: "{{ wrk_username }}"
     mode: 0644
 
+- name: download sources
+  get_url: 
+    url: "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
+    dest: "/usr/bin/gnome-shell-extension-installer"
+    owner: root
+    group: root
+    mode: 0775
+
+- name: Dock-to-Panel install 
+  command: gnome-shell-extension-installer 1160 --yes --restart-shell
+  become: true
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
+
+- name: Clone a repo dash-to-panel
+  ansible.builtin.git:
+    repo: https://github.com/philippun1/dash-to-panel.git
+    dest: /tmp/dash-to-panel
+    version: update-to-gnome40
+  become: true
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: Run 'make' for dash-to-panel
+  make:
+    chdir: /tmp/dash-to-panel
+  become: yes
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: Run 'make install' for dash-to-panel
+  make:
+    chdir: /tmp/dash-to-panel
+    target: install
+  become: yes
+  become_user: "{{ wrk_username }}"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: Dock-to-Panel enable 
+#  command: gnome-extensions enable dash-to-panel@jderose9.github.com
+  command: gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
+  become: true
+  become_user: "{{ wrk_username }}"
+  ignore_errors: yes
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
 - name: Copy dconf gnome dump file
   copy:
     src: dump_gnome
@@ -33,4 +104,6 @@
   become_user: "{{ wrk_username }}"
   args:
     executable: /bin/bash
+
+
   
