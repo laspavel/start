@@ -18,12 +18,13 @@ UseCustomCursorColor=false
 DefaultEncoding=UTF-8
 
 [General]
-Command=/bin/bash
+Command=tmux attach
 DimWhenInactive=false
 Environment=TERM=xterm-256color,COLORTERM=truecolor
 Icon=utilities-terminal
 LocalTabTitleFormat=%d : %n
 Name=Profile 1
+Parent=FALLBACK/ 
 RemoteTabTitleFormat=(%u) %H
 ShowTerminalSizeHint=true
 SilenceSeconds=10

@@ -7,10 +7,8 @@
 
 - name: KDE configs restore
   copy:
-    src: kdeconfig/
-    dest: home/{{ wrk_username }}/
-    remote_src: yes
-    directory_mode: yes
+    src: kdeconfigs/
+    dest: /home/{{ wrk_username }}/
     mode: '0644'
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
