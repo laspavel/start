@@ -1,0 +1,28 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[General]
+loginMode=restorePreviousLogout
+shutdownType=2
+
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=10d8c6646f000162127586300000024080005
+clientId2=10d8c6646f000162131166000000024270006
+clientId3=10d8c6646f000162127628500000024080013
+count=3
+discardCommand3[$e]=rm,$HOME/.config/session/konsole_10d8c6646f000162127628500000024080013_1621312138_851660
+program1=/usr/bin/korgac
+program2=/usr/libexec/DiscoverNotifier
+program3=/usr/bin/konsole
+restartCommand1=/usr/bin/korgac,-session,10d8c6646f000162127586300000024080005_1621312138_853978
+restartCommand2=/usr/libexec/DiscoverNotifier,-session,10d8c6646f000162131166000000024270006_1621312138_851838
+restartCommand3=/usr/bin/konsole,-session,10d8c6646f000162127628500000024080013_1621312138_851660
+restartStyleHint1=0
+restartStyleHint2=0
+restartStyleHint3=0
+userId1=laspavel
+userId2=laspavel
+userId3=laspavel

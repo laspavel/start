@@ -1,0 +1,14 @@
+[Devices][/org/freedesktop/UDisks2/block_devices/sda1]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=Жёсткий диск (1,0 ГиБ)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/sda2]
+EverMounted=true
+Icon=drive-harddisk-root
+LastNameSeen=fedora_localhost-live
+LastSeenMounted=true
+
+[General]
+AutomountEnabled=true

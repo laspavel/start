@@ -1,0 +1,3 @@
+[console_scripts]
+konsave = konsave.__main__:main
+

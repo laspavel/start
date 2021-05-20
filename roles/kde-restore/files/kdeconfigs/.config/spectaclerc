@@ -1,0 +1,13 @@
+[$Version]
+update_info=spectacle_newConfig.upd:spectacle-new-config
+
+[General]
+autoSaveImage=true
+
+[GuiConfig]
+quitAfterSaveCopyExport=true
+window-position=242,238
+
+[Save]
+lastSaveLocation=file:///home/laspavel/Pictures/20210520_204922.png
+saveFilenameFormat=%Y%M%D_%H%m%S
