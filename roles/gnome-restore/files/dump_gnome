@@ -5,6 +5,13 @@ window-height=500
 window-is-maximized=false
 window-width=540
 
+[com/github/johnfactotum/Foliate/window-state]
+fullscreen=false
+height=640
+last-file='/home/laspavel/3/На бесплодной планете. Наша родина - космос. Романы. Рассказы..fb2'
+maximized=false
+width=960
+
 [com/github/maoschanz/drawing]
 last-active-shape='polygon'
 last-active-tool='line'
@@ -31,7 +38,7 @@ window-position=(1920, 0)
 window-size=(1920, 1006)
 
 [org/gnome/control-center]
-last-panel='sound'
+last-panel='network'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -59,7 +66,7 @@ show-weekdate=true
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
-mru-sources=[('xkb', 'us'), ('xkb', 'ua'), ('xkb', 'ru')]
+mru-sources=[('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'ua')]
 sources=[('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'ua')]
 xkb-options=['lv3:ralt_switch', 'grp:shift_caps_toggle']
 
@@ -167,7 +174,8 @@ numlock-state=false
 repeat=true
 
 [org/gnome/desktop/peripherals/mouse]
-accel-profile='adaptive'
+accel-profile='default'
+speed=-0.38970588235294112
 
 [org/gnome/desktop/peripherals/touchpad]
 two-finger-scrolling-enabled=true
@@ -192,21 +200,24 @@ sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gn
 idle-delay=uint32 300
 
 [org/gnome/desktop/sound]
-allow-volume-above-100-percent=true
+allow-volume-above-100-percent=false
 event-sounds=true
-theme-name='__custom'
+theme-name='freedesktop'
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
 num-workspaces=1
 resize-with-right-button=true
 
+[org/gnome/eog/ui]
+sidebar=false
+
 [org/gnome/eog/view]
 background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(1.8851010101010102, 0.52020202020202022)
+window-ratio=(1.8823529411764706, 0.52146464646464652)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -221,7 +232,7 @@ list-mode='as-folder'
 name-column-width=881
 show-path=false
 sort-method='name'
-sort-type='ascending'
+sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
@@ -229,12 +240,12 @@ window-height=480
 window-width=600
 
 [org/gnome/gedit/plugins]
-active-plugins=['filebrowser', 'spell', 'modelines', 'time', 'docinfo']
+active-plugins=['spell', 'filebrowser', 'time', 'modelines', 'docinfo']
 
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/laspavel/_%D0%9F%D0%9E%D0%A1%D0%9C%D0%9E%D0%A2%D0%A0%D0%95%D0%A2%D0%AC/%D0%9A%D0%B0%D0%BA%20%D1%83%D1%81%D0%BF%D0%B5%D1%82%D1%8C%20%D0%B2%D1%81%D0%B5'
+virtual-root='file:///home/laspavel/tmp'
 
 [org/gnome/gedit/preferences/encodings]
 candidate-encodings=['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']
@@ -294,7 +305,7 @@ search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
-maximized=false
+maximized=true
 
 [org/gnome/nm-applet/eap/0652d053-01cf-4523-9325-dc275514e692]
 ignore-ca-cert=false
@@ -324,11 +335,35 @@ ignore-phase2-ca-cert=false
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/7dfd872b-d9a2-4600-a709-d8815c3bb2c6]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/8415972c-7b9b-4e52-b162-1d0cf0ab12f0]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/84377563-cebf-444d-a08f-f318665d459c]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/8f0e2e5d-62eb-4b8c-8aff-d633db2f214f]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/adedb796-64ac-4d2a-9468-469c2683faf5]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/aea164e4-c347-4984-99e3-7e94a1a25b8e]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/be2d9617-2c79-4a7e-a6f6-8395e8cdf1bf]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/c8bd233f-2070-3259-b909-5f2deb8efbe6]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -415,13 +450,15 @@ antialiasing='grayscale'
 hinting='slight'
 
 [org/gnome/shell]
+app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Cheese.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'org.gnome.Nautilus.desktop': <{'position': <5>}>, 'firefox.desktop': <{'position': <6>}>, 'libreoffice-calc.desktop': <{'position': <7>}>, 'libreoffice-impress.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'org.gnome.Maps.desktop': <{'position': <10>}>, 'org.gnome.Photos.desktop': <{'position': <11>}>, 'rhythmbox.desktop': <{'position': <12>}>, 'gnome-control-center.desktop': <{'position': <13>}>, 'org.gnome.Software.desktop': <{'position': <14>}>, 'org.gnome.gedit.desktop': <{'position': <15>}>, 'Utilities': <{'position': <16>}>, 'org.gnome.Totem.desktop': <{'position': <17>}>, 'org.gnome.Weather.desktop': <{'position': <18>}>, 'doublecmd.desktop': <{'position': <19>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <20>}>, 'wine-notepad.desktop': <{'position': <21>}>, 'wine-regedit.desktop': <{'position': <22>}>, 'org.remmina.Remmina.desktop': <{'position': <23>}>}, {'wine-wineboot.desktop': <{'position': <0>}>, 'wine-winecfg.desktop': <{'position': <1>}>, 'wine-winefile.desktop': <{'position': <2>}>, 'wine-winemine.desktop': <{'position': <3>}>, 'org.flameshot.Flameshot.desktop': <{'position': <4>}>, 'gparted.desktop': <{'position': <5>}>, 'htop.desktop': <{'position': <6>}>, 'lpf.desktop': <{'position': <7>}>, 'lpf-mscore-fonts.desktop': <{'position': <8>}>, 'lpf-gui.desktop': <{'position': <9>}>, 'lpf-notify.desktop': <{'position': <10>}>, 'virtualbox.desktop': <{'position': <11>}>, 'pavucontrol.desktop': <{'position': <12>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <13>}>, 'uget-gtk.desktop': <{'position': <14>}>, 'google-chrome.desktop': <{'position': <15>}>, 'org.gnome.Meld.desktop': <{'position': <16>}>, 'wine-winhelp.desktop': <{'position': <17>}>, 'wine-oleview.desktop': <{'position': <18>}>, 'wine-uninstaller.desktop': <{'position': <19>}>, 'wine-wordpad.desktop': <{'position': <20>}>, 'code.desktop': <{'position': <21>}>}]
 app-picker-view=uint32 1
 disabled-extensions=@as []
 enabled-extensions=['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com']
-favorite-apps=['org.gnome.Nautilus.desktop', 'code.desktop', 'virtualbox.desktop', 'doublecmd.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'skypeforlinux.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'org.remmina.Remmina.desktop', 'teams.desktop', 'simplescreenrecorder.desktop']
+favorite-apps=['org.gnome.Nautilus.desktop', 'code.desktop', 'virtualbox.desktop', 'doublecmd.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'skypeforlinux.desktop', 'org.gnome.Terminal.desktop', 'google-chrome.desktop', 'org.remmina.Remmina.desktop', 'teams.desktop']
 
 [org/gnome/shell/extensions/dash-to-panel]
 animate-app-switch=false
+animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
 animate-show-apps=false
 animate-window-launch=false
 appicon-margin=5
@@ -455,7 +492,9 @@ isolate-workspaces=true
 location-clock='STATUSLEFT'
 middle-click-action='LAUNCH'
 multi-monitors=false
+panel-anchors='{"0":"MIDDLE","1":"MIDDLE"}'
 panel-element-positions='{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+panel-lengths='{"0":100,"1":100}'
 panel-position='BOTTOM'
 panel-size=27
 primary-monitor=-1
@@ -493,11 +532,13 @@ workspaces-only-on-primary=false
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1615182070
+check-timestamp=int64 1624335228
+download-updates=false
+download-updates-notify=false
 first-run=false
 install-timestamp=int64 1613421041
-online-updates-timestamp=int64 1615182075
-upgrade-notification-timestamp=int64 1607716302
+online-updates-timestamp=int64 1621662286
+upgrade-notification-timestamp=int64 1623922079
 
 [org/gnome/system/location]
 enabled=false
@@ -536,7 +577,7 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(347, 44)
+window-position=(2267, 35)
 window-size=(1227, 901)
 
 [org/virt-manager/virt-manager]

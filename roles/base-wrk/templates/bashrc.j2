@@ -25,6 +25,10 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+
+function assh { grep "$1" ~/.ssh/config ~/.ssh/config.d/* -A 7 -B 7 | sed -n '/#####_BEGIN_SECTION_#####/,/#####_END_SECTION_#####/p';}
+export -f assh
+
 ## load ssh autocompletion
 _ssh() 
 {
@@ -144,27 +148,13 @@ alias debian9='docker run -it --rm -v $(pwd):/data -w /data debian:stretch /bin/
 alias debian10='docker run -it --rm -v $(pwd):/data -w /data debian:buster /bin/bash'
 alias centos7='docker run -it --rm -v $(pwd):/data -w /data centos:7 /bin/bash'
 alias centos8='docker run -it --rm -v $(pwd):/data -w /data centos:8 /bin/bash'
+alias d_python3='docker run -it --rm -v $(pwd):/data -w /data python:3 /bin/bash'
 alias lazydocker='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
 alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
 # Kubernetes
 alias k="kubectl"
-alias ka="kubectl apply -f"
-alias kpa="kubectl patch -f"
-alias ked="kubectl edit"
-alias ksc="kubectl scale"
-alias kex="kubectl exec -i -t"
-alias kg="kubectl get"
-alias kga="kubectl get all"
-alias kgall="kubectl get all --all-namespaces"
-alias kinfo="kubectl cluster-info"
-alias kdesc="kubectl describe"
-alias ktp="kubectl top"
-alias klo="kubectl logs -f"
-alias kn="kubectl get nodes"
-alias kpv="kubectl get pv"
-alias kpvc="kubectl get pvc"
 
 # Git shortcuts
 alias ga='git add '
@@ -327,3 +317,20 @@ if [ -f /usr/bin/grc ]; then
 fi
 source <(kubectl completion bash)
 complete -F __start_kubectl k
+
+# HSTR configuration - add this to ~/.bashrc
+alias hh=hstr                    # hh to be alias for hstr
+export HSTR_CONFIG=hicolor       # get more colors
+shopt -s histappend              # append new history items to .bash_history
+export HISTCONTROL=ignorespace   # leading space hides commands from history
+export HISTFILESIZE=10000        # increase history file size (default is 500)
+HISTSIZE=30000
+# ensure synchronization between bash memory and history file
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+
+HISTTIMEFORMAT="[%d.%m.%y %T] "
+HISTCONTROL=ignorespace
