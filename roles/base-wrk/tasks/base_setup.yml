@@ -195,6 +195,25 @@
     mode: '0664'
     force: yes
   ignore_errors: true 
+
+- name: dnf configure
+  copy:
+    src: nanorc/*
+    dest: /usr/share/nano
+    owner: root
+    group: root
+    mode: 0644
+    force: no
+
+- name: Add NANO config
+  template:
+    src: "nanorc.j2"
+    dest: "/home/{{ wrk_username }}/.nanorc"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: '0664'
+    force: yes
+  ignore_errors: true 
    
 - name: Install HSTR
   yum:
