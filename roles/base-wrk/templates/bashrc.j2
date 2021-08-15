@@ -133,13 +133,13 @@ alias myip="wget -qO - eth0.me"
 alias myip2="curl icanhazip.com"
 alias t='.Telegram/Telegram &'
 alias winbox='wine ~/.wine/drive_c/winbox.exe'
-alias pogoda="curl wttr.in/Dnepr"
+alias weather="curl wttr.in/Dnepr?lang=ru"
 
 #open vscode
 alias v="code $1"
 
 # list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
-alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config | sed 's/Host //' | sed 's/HostName //'"
+alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config ~/.ssh/config.d/* | sed 's/Host //' | sed 's/HostName //'"
 
 #Docker
 alias ubuntu18='docker run -it --rm -v $(pwd):/data -w /data ubuntu:18.04 /bin/bash'
