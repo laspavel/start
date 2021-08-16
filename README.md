@@ -1,11 +1,5 @@
-# centos-playbooks
+![GitHub](https://img.shields.io/github/license/laspavel/start)
 
-Ansible roles for my work tasks
+# fedora-playbooks
 
-### Контакты:
-
-laspavel@gmail.com
-
-https://laspavel.github.io
-
-
+Ansible roles for my start.
