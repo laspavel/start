@@ -19,15 +19,26 @@ export PATH
 
 ipinfo() { curl ipinfo.io/$1; echo "";} 
 
-function ??() { echo $1 | bc -l; } #calc
+# calc
+c() { echo $1 | bc -l;}
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+ssh_search() { grep "$1" ~/.ssh/config ~/.ssh/config.d/* -A 7 -B 7 | sed -n '/#####_BEGIN_SECTION_#####/,/#####_END_SECTION_#####/p';}.
+alias ssh_edit="nano +20000000 ~/.ssh/config.d/connections"
 
-function assh { grep "$1" ~/.ssh/config ~/.ssh/config.d/* -A 7 -B 7 | sed -n '/#####_BEGIN_SECTION_#####/,/#####_END_SECTION_#####/p';}
-export -f assh
+# list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
+alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config ~/.ssh/config.d/* | sed 's/Host //' | sed 's/HostName //'"
+
+function pfx2crt() {
+  fbname=$(basename "$1" .pfx)
+  openssl pkcs12 -in $fbname.pfx -clcerts -nokeys -out $fbname.crt
+  openssl pkcs12 -in $fbname.pfx -nocerts -out $fbname-encrypt.key
+  openssl rsa -in $fbname-encrypt.key -out $fbname.key
+  rm -f $fbname-encrypt.key
+}
 
 ## load ssh autocompletion
 _ssh() 
@@ -148,13 +159,12 @@ alias debian9='docker run -it --rm -v $(pwd):/data -w /data debian:stretch /bin/
 alias debian10='docker run -it --rm -v $(pwd):/data -w /data debian:buster /bin/bash'
 alias centos7='docker run -it --rm -v $(pwd):/data -w /data centos:7 /bin/bash'
 alias centos8='docker run -it --rm -v $(pwd):/data -w /data centos:8 /bin/bash'
-alias d_python3='docker run -it --rm -v $(pwd):/data -w /data python:3 /bin/bash'
-alias lazydocker='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
-alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
-alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
+alias py3='docker run -it --rm -v $(pwd):/data -w /data python:3 /bin/bash'
 
 # Kubernetes
 alias k="kubectl"
+alias kx="kubectx"
+alias kn="kubens"
 
 # Git shortcuts
 alias ga='git add '
@@ -317,20 +327,16 @@ if [ -f /usr/bin/grc ]; then
 fi
 source <(kubectl completion bash)
 complete -F __start_kubectl k
+# export KUBECONFIG=/home/laspavel/.kubeconfig/kube_config.yml
+# alias lens="/opt/lens/lens"
 
-# HSTR configuration - add this to ~/.bashrc
-alias hh=hstr                    # hh to be alias for hstr
-export HSTR_CONFIG=hicolor       # get more colors
-shopt -s histappend              # append new history items to .bash_history
+alias fff="watch -tn 0.2 '$1'"
+
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
-HISTSIZE=30000
-# ensure synchronization between bash memory and history file
+export HISTSIZE=30000
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
-# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
-# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
-if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
-
-HISTTIMEFORMAT="[%d.%m.%y %T] "
-HISTCONTROL=ignorespace
+export HISTTIMEFORMAT="[%d.%m.%y %T] "
+export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
+export MANPAGER="less -X"   # Don't clear the screen after quitting a `man` page
+export PYTHONIOENCODING="UTF-8"  # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
