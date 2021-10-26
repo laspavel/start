@@ -1,24 +1,25 @@
-## Syntax highlighting for Makefiles.
-
-syntax makefile "(/((GNU)?m|M)akefile[^/]*$|\.(make|mk)$)"
+syntax "Makefile" "([Mm]akefile|\.ma?k)$"
+header "^#!.*/(env +)?[bg]?make( |$)"
 magic "makefile script"
 comment "#"
 
-# Assignments.
-color red " (:?:|\+|\?)?= "
+color cyan  "\<(ifeq|ifdef|ifneq|ifndef|else|endif)\>"
+color cyan  "^(export|include|override)\>"
+color brightmagenta  "^[^:=	]+:"
+color brightmagenta  "^[^:+	]+\+"
+color red "[=,%]" "\+=|\?=|:=|&&|\|\|"
+color brightblue "\$\((abspath|addprefix|addsuffix|and|basename|call|dir)[[:space:]]"
+color brightblue "\$\((error|eval|filter|filter-out|findstring|firstword)[[:space:]]"
+color brightblue "\$\((flavor|foreach|if|info|join|lastword|notdir|or)[[:space:]]"
+color brightblue "\$\((origin|patsubst|realpath|shell|sort|strip|suffix)[[:space:]]"
+color brightblue "\$\((value|warning|wildcard|word|wordlist|words)[[:space:]]"
+color black    "[()$]"
+color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
+color brightyellow "\$+(\{[^} ]+\}|\([^) ]+\))"
+color brightyellow "\$[@^<*?%|+]|\$\([@^<*?%+-][DF]\)"
+color magenta   "\$\$|\\.?"
+color brightblack "(^|[[:space:]])#([^{].*)?$"
+color brightblack  "^	@#.*"
 
-# Keywords.
-color magenta "^(if|ifn?def|ifn?eq|else|endif|(-|s)?include)\>"
-color magenta "^((override +)?(un)?define|endef|(un)?export|private|vpath)\>"
-
-# Variable expansions.
-color blue "\$+[{(][a-zA-Z0-9_-]+[})]"
-
-# Targets.
-color brightblue "^[^ 	]+:"
-
-# Comments.
-color green "(^|[[:space:]]+)#.*"
-
-# Trailing whitespace.
+# Show trailing whitespace
 color ,green "[[:space:]]+$"

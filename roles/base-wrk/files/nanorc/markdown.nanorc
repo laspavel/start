@@ -1,40 +1,51 @@
-## Syntax highlighting for Markdown files.
+syntax "Markdown" "\.(md|mkd|mkdn|markdown)$"
 
-## Original authors:  Ryan Westlund and Benno Schulenberg
-## License:  GPL version 3 or newer
+# Tables (Github extension)
+color cyan ".*[ :]\|[ :].*"
 
-syntax markdown "\.md$"
-comment "<!--|-->"
+# quotes
+color brightblack  start="^>" end="^$"
+color brightblack  "^>.*"
 
-# Quoted:
-color magenta "^[ 	]*>.*"
+# Emphasis
+color green "(^|[[:space:]])(_[^ ][^_]*_|\*[^ ][^*]*\*)"
 
-# List-item markers:
-color brightmagenta "^(    |	)* ? ? ?(\*|\+|-|[1-9]+\.)( +|	)"
+# Strong emphasis
+color brightgreen "(^|[[:space:]])(__[^ ][^_]*__|\*\*[^ ][^*]*\*\*)"
 
-# Emphasis and strong:
-color green "\*[^* 	][^*]*\*|_[^_ 	][^_]*_"
-color brightgreen "\*\*[^*]+\*\*|__[^_]+__"
+# strike-through
+color red "(^|[[:space:]])~~[^ ][^~]*~~"
 
-# Strikethrough:
-color red "~~[^~]+~~"
+# horizontal rules
+color brightmagenta "^(---+|===+|___+|\*\*\*+)\s*$"
 
-# Line breaks:
-color ,blue "  $"
+# headlines
+color brightmagenta  "^#{1,6}.*"
 
-# URLs and links:
-color brightblue "\[[^]]+\]\([^)]+\)"
-color brightmagenta "!?\[[^]]+\]"
+# lists
+color blue   "^[[:space:]]*[\*+-] |^[[:space:]]*[0-9]+\. "
 
-# Code snippet, indented code, and fenced code:
-color brightcyan "`[^`]+`"
-color brightcyan "^(    |	)+ *([^*+0-9> 	-]|[*+-]\S|[0-9][^.]).*"
-color brightcyan start="```" end="```$"
+# leading whitespace
+color black    "^[[:space:]]+"
 
-# Headings and the underlining of headings:
-color brightyellow "^#.*"
-color brightyellow "^(=+|-+)$"
+# misc
+color magenta   "\(([CcRr]|[Tt][Mm])\)" "\.{3}" "(^|[[:space:]])\-\-($|[[:space:]])"
 
-# HTML tags and comments:
-color cyan "<[^>]+>"
-color cyan start="<!--" end="-->"
+# links
+color brightblue "\[[^]]+\]"
+color brightblue "\[([^][]|\[[^]]*\])*\]\([^)]+\)"
+
+# images
+color magenta "!\[[^][]*\](\([^)]+\)|\[[^]]+\])"
+
+# urls
+color brightyellow "https?://[^ )>]+"
+
+# code
+color yellow   "`[^`]*`|^ {4}[^-+*].*"
+# code blocks
+color yellow start="^```[^$]" end="^```$"
+color yellow "^```$"
+
+## Trailing spaces
+color ,green "[[:space:]]+$"

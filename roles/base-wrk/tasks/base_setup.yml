@@ -196,12 +196,19 @@
     force: yes
   ignore_errors: true 
 
-- name: dnf configure
+- name: mkdir nano config directory
+  file:
+    state: directory
+    owner: "{{ wrk_username }}"
+    mode: 0755
+    dest: /home/{{ wrk_username }}/.nano/
+
+- name: nano configure
   copy:
     src: nanorc/*
-    dest: /usr/share/nano
-    owner: root
-    group: root
+    dest: "/home/{{ wrk_username }}/.nano/*"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
     mode: 0644
     force: no
 

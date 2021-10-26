@@ -1,38 +1,42 @@
-## Syntax highlighting for Rust.
+# Nano configuration for Rust
+# Copyright 2015 The Rust Project Developers.
+#
+# NOTE: Rules are applied in order: later rules re-colorize matching text.
 
-## Copyright 2015 Luke Francl.
-## Licensed under GPL version 3.
 
-syntax rust "\.(rlib|rs)$"
+syntax "Rust" "\.rs"
 comment "//"
 
-# Function definitions
-color magenta "fn [a-z_0-9]+"
+# function definition
+color magenta "fn [a-z0-9_]+"
 
 # Reserved words
-color yellow "\<(abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|false|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|static|struct|super|trait|true|try|type|typeof|unsafe|unsized|use|virtual|where|while|yield)\>"
+color yellow "\<(abstract|alignof|as|become|box|break|const|continue|crate|do|else|enum|extern|false|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|offsetof|override|priv|pub|pure|ref|return|sizeof|static|self|struct|super|true|trait|type|typeof|unsafe|unsized|use|virtual|where|while|yield)\>"
 
-# Macros
+# macros
 color red "[a-z_]+!"
 
 # Constants
-color magenta "[A-Z][A-Z_0-9]+"
+color magenta "[A-Z][A-Z_]+"
 
-# Traits/Enums/Structs/Types/...
-color magenta "[A-Z][A-Za-z0-9]+"
+# Traits/Enums/Structs/Types/etc.
+color magenta "[A-Z][a-z]+"
 
 # Strings
-color green "".*""
-color green start="".*\\$" end=".*""
-## NOTE: This isn't accurate, but matching "#{0,} for the end of the string is too liberal.
-color green start="r#+"" end=""#+"
+color green "\".*\""
+color green start="\".*\\$" end=".*\""
+# NOTE: This isn't accurate but matching "#{0,} for the end of the string is too liberal
+color green start="r#+\"" end="\"#+"
 
 # Comments
-color blue "//.*"
-color blue start="/\*" end="\*/"
+color blue "^\s*//.*"
+color blue start="^\s*/\*" end="\*/"
 
 # Attributes
 color magenta start="#!\[" end="\]"
 
 # Some common markers
-color brightcyan "XXX|TODO|FIXME|\?\?\?"
+color brightcyan "(XXX|TODO|FIXME|\?\?\?)"
+
+## Trailing spaces
+color ,green "[[:space:]]+$"

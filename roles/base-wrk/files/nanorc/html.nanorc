@@ -1,31 +1,41 @@
-## Syntax highlighting for HTML.
+## HTML syntax highlighting rules for Nano
 
-syntax html "\.html?$"
+syntax "HTML" "\.html?(.j2)?(.twig)?$"
 magic "HTML document"
 comment "<!--|-->"
 
-formatter tidy -m -q
+## Emphasis tags
+color brightwhite start="<([biu]|em|strong)[^>]*>" end="</([biu]|em|strong)>"
 
-# Tags:
-color cyan "<[[:alpha:]/!?][^>]*>"
-# Bold, italic, and underlined:
-color brightmagenta "</?[biu]>"
+## Tags
+color cyan start="<" end=">"
 
-# Named character references:
-color red "&[^;[:space:]]*;"
+## Attributes
+color brightblue "[[:space:]](abbr|accept(-charset)?|accesskey|action|[av]?link|alt|archive|axis|background|(bg)?color|border)="
+color brightblue "[[:space:]](cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
+color brightblue "[[:space:]](content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|enctype)="
+color brightblue "[[:space:]](for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
+color brightblue "[[:space:]](label|lang|longdesc|margin(height|width)|maxlength|media|method|multiple)="
+color brightblue "[[:space:]](name|nohref|noresize|noshade|object|on(click|focus|load|mouseover|keypress)|profile|readonly|rel|rev)="
+color brightblue "[[:space:]](rows(pan)?|rules|scheme|scope|scrolling|shape|size|span|src|standby|start|style|summary|pattern)="
+color brightblue "[[:space:]](tabindex|target|text|title|type|usemap|v?align|value(type)?|vspace|width|xmlns|xml:space)="
+color brightblue "[[:space:]](required|disabled|selected)[[:space:]=>]"
 
-# Attributes:
-color red "\<(abbr|accept(-charset)?|accesskey|action|alink|align|alt|archive|axis|background|bgcolor|border)="
-color red "\<(cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
-color red "\<(content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|disabled|enctype)="
-color red "\<(for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
-color red "\<(label|lang|link|longdesc|margin(height|width)|maxlength|media|method|multiple)="
-color red "\<(name|nohref|noresize|noshade|object|onclick|onfocus|onload|onmouseover|profile|readonly|rel|rev)="
-color red "\<(rows(pan)?|rules|scheme|scope|scrolling|selected|shape|size|span|src|standby|start|style|summary)="
-color red "\<(tabindex|target|text|title|type|usemap|valign|value(type)?|vlink|vspace|width|xmlns|xml:space)="
+## Strings
+color yellow ""(\\.|[^"])*""
 
-# Strings:
-color green ""(\\.|[^"])*""
+## Named character references and entities
+color red "&#?[[:alnum:]]*;"
 
-# Comments:
-color yellow start="<!--" end="-->"
+## Template strings (not in the HTML spec, but very commonly used)
+color magenta "\{[^\}]*\}\}?"
+color brightgreen "[[:space:]]((end)?if|(end)?for|in|not|(end)?block)[[:space:]]"
+
+## Comments
+color green start="<!--" end="-->"
+
+## Trailing spaces
+color ,green "[[:space:]]+$"
+
+## Reminders
+color brightwhite,yellow "(FIXME|TODO|XXX)"
