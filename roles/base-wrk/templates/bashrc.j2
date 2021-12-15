@@ -308,6 +308,8 @@ export HISTTIMEFORMAT="[%d.%m.%y %T] "
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 export MANPAGER="less -X"   # Don't clear the screen after quitting a `man` page
 export PYTHONIOENCODING="UTF-8"  # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # Save and reload history after each command finishes
+
 
 ####################################
 
