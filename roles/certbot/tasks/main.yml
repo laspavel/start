@@ -1,0 +1,30 @@
+---
+- name: Install certbot program
+  yum:
+    name: 
+      - certbot
+    state: present
+
+- name: Create Lets'encrypt config
+  copy:
+    content: |
+            location ^~ /.well-known/acme-challenge/ {
+                default_type "text/plain";
+                root /usr/share/nginx/html;
+            }
+    dest: /etc/nginx/letsencrypt.conf
+
+#- name: Inserting a certbot line in default config
+#  lineinfile:
+#    path: /etc/nginx/nginx.conf
+#    line: include /etc/nginx/letsencrypt.conf;
+#    insertafter: root         /usr/share/nginx/html;
+
+- name: Install Lets'encrypt renew hook
+  copy:
+    content: |
+            00 3 * * * root certbot renew --post-hook "systemctl reload nginx"
+    dest: /etc/cron.d/letsencrypt_renew
+    owner: root
+    group: root
+    mode: '644'

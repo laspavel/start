@@ -1,0 +1,4 @@
+---
+- name: Unconditionally reboot the machine
+  reboot:
+    reboot_timeout: 120

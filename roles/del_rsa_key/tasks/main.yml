@@ -1,0 +1,8 @@
+---
+- name: Delete SSH Key
+    authorized_key:
+      user: root
+      state: absent
+      key: "{{ lookup('file', 'del.pub') }}"
+      path: /root/.ssh/authorized_keys
+      manage_dir: False

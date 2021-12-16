@@ -1,0 +1,5 @@
+---
+
+- name: Install nginx
+  import_tasks: add_nginx.yml
+

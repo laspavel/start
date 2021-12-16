@@ -1,0 +1,28 @@
+---
+
+- name: Load settings based on distribution
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "sys_{{ ansible_distribution }}.yml"
+    - "sys_{{ ansible_os_family }}.yml"
+
+- name: Install Chrony
+  package:
+    name: "{{ chrony_package }}"
+    state: present
+
+- name: Start Chrony service
+  service:
+    name: "{{ chrony_service }}"
+    state: started
+    enabled: yes
+
+- name: Generate configuration
+  template:
+    src: chrony.conf
+    dest: "{{ chrony_conffile }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart Chrony service
+
