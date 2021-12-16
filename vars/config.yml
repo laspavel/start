@@ -14,6 +14,7 @@ docker_users:
 base_required_packages:
 #- asbru-cm
 - binutils 
+- cronie
 - gcc 
 - make 
 - patch
@@ -45,7 +46,6 @@ base_required_packages:
 - curl
 - tlp
 - tlp-rdw
-- unace
 - arj
 - cabextract
 - p7zip
@@ -71,7 +71,6 @@ base_required_packages:
 - unar
 - flameshot 
 - redshift
-- grc
 - freetype-freeworld
 - firewalld
 - dnf-plugins-core

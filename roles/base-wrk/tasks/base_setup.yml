@@ -1,11 +1,11 @@
 ---
 - name: dnf configure
   copy:
-    src: dnf.conf
-    dest: /etc/dnf/dnf.conf
+    src: "dnf.conf"
+    dest: "/etc/dnf/dnf.conf"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
 
 - name: disable fedora-updates-modular.repo
   yum_repository:
@@ -58,17 +58,6 @@
 - name: Enable DoubleCmd repo
   command: dnf copr enable -y vondruch/doublecmd
 
-#- name: Download absru repo
-#  get_url:
-#    url: "https://dl.cloudsmith.io/public/asbru-cm/release/cfg/setup/bash.rpm.sh"
-#    dest: /tmp/script.rpm.sh
-#    mode: 775
-#    owner: root
-#    group: root
-
-#- name: Enable absru repo
-#  command: /tmp/script.rpm.sh
-
 - name: Install programs
   yum:
     name: "{{ base_required_packages }}"
@@ -105,7 +94,7 @@
   file:
     path: "/home/{{ wrk_username }}/.vim/autoload/"
     state: directory
-    mode: '0775'
+    mode: "0775"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
 
@@ -120,11 +109,11 @@
 - name: Add startup config
   blockinfile:
     dest: "/home/{{ wrk_username }}/.vimrc"
-    content: | 
+    content: |
       call plug#begin()
       Plug 'morhetz/gruvbox'
       call plug#end()
-    mode: '0664'
+    mode: "0664"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
     marker: '" {mark} ANSIBLE MANAGED BLOCK'
@@ -132,7 +121,7 @@
     insertafter: EOF
     create: yes
 
-- name: Install Plugin 
+- name: Install Plugin
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
   become: yes
   become_user: "{{ wrk_username }}"
@@ -140,38 +129,38 @@
     executable: /bin/bash
 
 - name: Add vim config
-  template:
-    src: "vimrc.j2"
+  copy:
+    src: "rc/.vimrc"
     dest: "/home/{{ wrk_username }}/.vimrc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
 
 - name: Add bash config
-  template:
-    src: "bashrc.j2"
+  copy:
+    src: "rc/.bashrc"
     dest: "/home/{{ wrk_username }}/.bashrc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
 
-- name: Add Git config
-  template:
-    src: "gitconfig.j2"
+- name: Add git config
+  copy:
+    src: "rc/.gitconfig"
     dest: "/home/{{ wrk_username }}/.gitconfig"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
-  
-- name: Add default Git ignore
-  template:
-    src: "gitignore.j2"
+
+- name: Add default gitignore
+  copy:
+    src: "rc/.gitignore"
     dest: "/home/{{ wrk_username }}/.gitignore"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
@@ -183,16 +172,16 @@
   file:
     state: directory
     owner: "{{ wrk_username }}"
-    mode: 0700
-    dest: /home/{{ wrk_username }}/.config/htop/
+    mode: "0700"
+    dest: "/home/{{ wrk_username }}/.config/htop/"
 
 - name: Add default HTOP config
-  template:
-    src: "htoprc.j2"
+  copy:
+    src: "rc/htoprc"
     dest: "/home/{{ wrk_username }}/.config/htop/htoprc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
 
@@ -200,16 +189,16 @@
   file:
     state: directory
     owner: "{{ wrk_username }}"
-    mode: 0700
-    dest: /home/{{ wrk_username }}/.config/mc/
+    mode: "0700"
+    dest: "/home/{{ wrk_username }}/.config/mc/"
 
 - name: Add default HTOP config
-  template:
-    src: "mcini.j2"
+  copy:
+    src: "rc/mcini"
     dest: "/home/{{ wrk_username }}/.config/mc/ini"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
 
@@ -217,70 +206,76 @@
   file:
     state: directory
     owner: "{{ wrk_username }}"
-    mode: 0700
-    dest: /home/{{ wrk_username }}/.ssh/
-    
+    mode: "0700"
+    dest: "/home/{{ wrk_username }}/.ssh/"
+
+- name: mkdir SSH config.d directory
+  file:
+    state: directory
+    owner: "{{ wrk_username }}"
+    mode: "0700"
+    dest: /home/{{ wrk_username }}/.ssh/.config.d/
+
 - name: Add SSH config
-  template:
-    src: "sshconfig.j2"
+  copy:
+    src: "rc/sshconfig"
     dest: "/home/{{ wrk_username }}/.ssh/config"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
   ignore_errors: true
-  
+
 - name: Add TOP config
-  template:
-    src: "toprc.j2"
+  copy:
+    src: "rc/.toprc"
     dest: "/home/{{ wrk_username }}/.toprc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
-  ignore_errors: true 
+  ignore_errors: true
 
 - name: Add TIG config
-  template:
-    src: "tigrc.j2"
+  copy:
+    src: "rc/.tigrc"
     dest: "/home/{{ wrk_username }}/.tigrc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
-  ignore_errors: true 
+  ignore_errors: true
 
 - name: mkdir nano config directory
   file:
     state: directory
     owner: "{{ wrk_username }}"
-    mode: 0755
+    mode: "0755"
     dest: /home/{{ wrk_username }}/.nano/
 
 - name: nano configure
   copy:
-    src: nanorc/*
-    dest: "/home/{{ wrk_username }}/.nano/*"
+    src: "nanorc/"
+    dest: "/home/{{ wrk_username }}/.nano/"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: 0644
-    force: no
+    mode: "0644"
+    force: yes
+  ignore_errors: true
 
 - name: Add NANO config
-  template:
-    src: "nanorc.j2"
+  copy:
+    src: "rc/.nanorc"
     dest: "/home/{{ wrk_username }}/.nanorc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-    mode: '0664'
+    mode: "0664"
     force: yes
-  ignore_errors: true 
-   
+  ignore_errors: true
+
 - name: Configure Git Autocomplete
   get_url:
     url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
     dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: 0664
+    mode: "0664"
   changed_when: false
-
-
