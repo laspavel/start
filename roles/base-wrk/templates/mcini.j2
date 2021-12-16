@@ -47,7 +47,7 @@ editor_option_save_position=true
 editor_option_auto_para_formatting=false
 editor_option_typewriter_wrap=false
 editor_edit_confirm_save=true
-editor_syntax_highlighting=false
+editor_syntax_highlighting=true
 editor_persistent_selections=true
 editor_drop_selection_on_copy=true
 editor_cursor_beyond_eol=false
@@ -62,6 +62,7 @@ editor_group_undo=false
 editor_state_full_filename=false
 editor_ask_filename_before_edit=false
 nice_rotating_dash=true
+shadows=false
 mcview_remember_file_position=false
 auto_fill_mkdir_name=true
 copymove_persistent_attr=true
@@ -82,25 +83,23 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=mc46
+skin=default
 
 filepos_max_saved_entries=1024
 
-shadows=true
-
 [Layout]
+output_lines=0
+left_panel_size=63
+top_panel_size=0
 message_visible=true
 keybar_visible=true
 xterm_title=true
-output_lines=0
 command_prompt=true
 menubar_visible=true
 free_space=true
 horizontal_split=false
 vertical_equal=true
-left_panel_size=95
 horizontal_equal=true
-top_panel_size=23
 
 [Misc]
 timeformat_recent=%b %e %H:%M
@@ -110,18 +109,13 @@ ftpfs_password=anonymous@
 display_codepage=UTF-8
 source_codepage=Other_8_bit
 autodetect_codeset=
-spell_language=en
 clipboard_store=
 clipboard_paste=
 
 [Colors]
 base_color=
-xterm-256color=
-color_terminals=
-
-screen-256color=
-
 xterm=
+color_terminals=
 
 [Panels]
 show_mini_info=true
@@ -133,16 +127,18 @@ fast_reload=false
 fast_reload_msg_shown=false
 mark_moves_down=true
 reverse_files_only=true
-auto_save_setup_panels=false
-navigate_with_arrows=false
+auto_save_setup_panels=true
+navigate_with_arrows=true
 panel_scroll_pages=true
 panel_scroll_center=false
 mouse_move_pages=true
-filetype_mode=true
-permission_mode=false
+filetype_mode=false
+permission_mode=true
 torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
+
+simple_swap=false
 
 [DiffView]
 show_symbols=false
@@ -170,7 +166,7 @@ ignore_dirs_enable=true
 ignore_dirs=
 
 [Panelize]
-Изменённые файлы под контролем git=git ls-files --modified
-Найти корректуры, отвергнутые командой patch=find . -name \\*.rej -print
-Найти оригиналы (*.orig) после команды patch=find . -name \\*.orig -print
-Найти программы с установленными SUID/SGID битами=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Find *.orig after patching=find . -name \\*.orig -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Find rejects after patching=find . -name \\*.rej -print
+Modified git files=git ls-files --modified
