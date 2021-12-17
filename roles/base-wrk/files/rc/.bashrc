@@ -266,6 +266,8 @@ alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/r
 
 # Kubernetes
 alias k="kubectl"
+alias kx="kubectx"
+alias kn="kubens"
 
 # Git shortcuts
 alias ga='git add '
