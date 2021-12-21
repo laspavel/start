@@ -7,10 +7,10 @@ window-width=540
 
 [com/github/johnfactotum/Foliate/window-state]
 fullscreen=false
-height=640
-last-file='/home/laspavel/3/На бесплодной планете. Наша родина - космос. Романы. Рассказы..fb2'
-maximized=false
-width=960
+height=1033
+last-file='/home/laspavel/888/Download/2_5444884256234932842.fb2'
+maximized=true
+width=1920
 
 [com/github/maoschanz/drawing]
 last-active-shape='polygon'
@@ -37,8 +37,16 @@ window-maximized=true
 window-position=(1920, 0)
 window-size=(1920, 1006)
 
+[org/gnome/cheese]
+burst-delay=1000
+camera='Video Capture 3'
+photo-x-resolution=1280
+photo-y-resolution=720
+video-x-resolution=1280
+video-y-resolution=720
+
 [org/gnome/control-center]
-last-panel='network'
+last-panel='universal-access'
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -74,8 +82,11 @@ xkb-options=['lv3:ralt_switch', 'grp:shift_caps_toggle']
 clock-show-weekday=true
 enable-animations=false
 enable-hot-corners=false
+font-antialiasing='grayscale'
+font-hinting='slight'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Adwaita'
+icon-theme='Adwaita'
 show-battery-percentage=true
 toolkit-accessibility=false
 
@@ -85,7 +96,7 @@ autorun-x-content-open-folder=@as []
 autorun-x-content-start-app=['x-content/ostree-repository']
 
 [org/gnome/desktop/notifications]
-application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar', 'xdg-desktop-portal-gtk']
+application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar', 'xdg-desktop-portal-gtk', 'zoom', 'org-gnome-shell-portalhelper', 'code', 'org-gnome-shell-extensions']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop]
@@ -96,6 +107,9 @@ application-id='asbru-cm.desktop'
 
 [org/gnome/desktop/notifications/application/atom]
 application-id='atom.desktop'
+
+[org/gnome/desktop/notifications/application/code]
+application-id='code.desktop'
 
 [org/gnome/desktop/notifications/application/doublecmd]
 application-id='doublecmd.desktop'
@@ -133,6 +147,12 @@ application-id='org.gnome.Evolution-alarm-notify.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-shell-extensions]
+application-id='org.gnome.Shell.Extensions.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-shell-portalhelper]
+application-id='org.gnome.Shell.PortalHelper.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
 
@@ -153,6 +173,7 @@ application-id='skypeforlinux.desktop'
 
 [org/gnome/desktop/notifications/application/teams]
 application-id='teams.desktop'
+force-expanded=true
 
 [org/gnome/desktop/notifications/application/telegramdesktop]
 application-id='telegramdesktop.desktop'
@@ -169,12 +190,16 @@ application-id='wine-Programs-WinRAR-WinRAR.desktop'
 [org/gnome/desktop/notifications/application/xdg-desktop-portal-gtk]
 application-id='xdg-desktop-portal-gtk.desktop'
 
+[org/gnome/desktop/notifications/application/zoom]
+application-id='Zoom.desktop'
+
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
 repeat=true
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='default'
+double-click=400
 speed=-0.38970588235294112
 
 [org/gnome/desktop/peripherals/touchpad]
@@ -217,7 +242,7 @@ background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(1.8823529411764706, 0.52146464646464652)
+window-ratio=(0.56973293768545996, 0.45302013422818793)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -299,9 +324,10 @@ default-visible-columns=['name', 'size', 'date_modified', 'starred']
 use-tree-view=true
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='icon-view'
+default-folder-viewer='list-view'
 executable-text-activation='ask'
 search-filter-time-type='last_modified'
+search-view='list-view'
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
@@ -406,9 +432,6 @@ show-browser=true
 [org/gnome/rhythmbox/rhythmdb]
 locations=['file:///home/laspavel/Music']
 
-[org/gnome/settings-daemon/peripherals/mouse]
-double-click=400
-
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-schedule-automatic=false
@@ -438,29 +461,116 @@ name='SSFull'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Primary>Print'
-command='flameshot gui'
+command='/opt/flameshot/flameshot.AppImage'
 name='ScreenX'
 
 [org/gnome/settings-daemon/plugins/power]
+power-button-action='nothing'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
-
-[org/gnome/settings-daemon/plugins/xsettings]
-antialiasing='grayscale'
-hinting='slight'
+sleep-inactive-battery-type='nothing'
 
 [org/gnome/shell]
-app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Cheese.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'org.gnome.Nautilus.desktop': <{'position': <5>}>, 'firefox.desktop': <{'position': <6>}>, 'libreoffice-calc.desktop': <{'position': <7>}>, 'libreoffice-impress.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'org.gnome.Maps.desktop': <{'position': <10>}>, 'org.gnome.Photos.desktop': <{'position': <11>}>, 'rhythmbox.desktop': <{'position': <12>}>, 'gnome-control-center.desktop': <{'position': <13>}>, 'org.gnome.Software.desktop': <{'position': <14>}>, 'org.gnome.gedit.desktop': <{'position': <15>}>, 'Utilities': <{'position': <16>}>, 'org.gnome.Totem.desktop': <{'position': <17>}>, 'org.gnome.Weather.desktop': <{'position': <18>}>, 'doublecmd.desktop': <{'position': <19>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <20>}>, 'wine-notepad.desktop': <{'position': <21>}>, 'wine-regedit.desktop': <{'position': <22>}>, 'org.remmina.Remmina.desktop': <{'position': <23>}>}, {'wine-wineboot.desktop': <{'position': <0>}>, 'wine-winecfg.desktop': <{'position': <1>}>, 'wine-winefile.desktop': <{'position': <2>}>, 'wine-winemine.desktop': <{'position': <3>}>, 'org.flameshot.Flameshot.desktop': <{'position': <4>}>, 'gparted.desktop': <{'position': <5>}>, 'htop.desktop': <{'position': <6>}>, 'lpf.desktop': <{'position': <7>}>, 'lpf-mscore-fonts.desktop': <{'position': <8>}>, 'lpf-gui.desktop': <{'position': <9>}>, 'lpf-notify.desktop': <{'position': <10>}>, 'virtualbox.desktop': <{'position': <11>}>, 'pavucontrol.desktop': <{'position': <12>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <13>}>, 'uget-gtk.desktop': <{'position': <14>}>, 'google-chrome.desktop': <{'position': <15>}>, 'org.gnome.Meld.desktop': <{'position': <16>}>, 'wine-winhelp.desktop': <{'position': <17>}>, 'wine-oleview.desktop': <{'position': <18>}>, 'wine-uninstaller.desktop': <{'position': <19>}>, 'wine-wordpad.desktop': <{'position': <20>}>, 'code.desktop': <{'position': <21>}>}]
+app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Cheese.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'firefox.desktop': <{'position': <5>}>, 'libreoffice-calc.desktop': <{'position': <6>}>, 'libreoffice-impress.desktop': <{'position': <7>}>, 'libreoffice-writer.desktop': <{'position': <8>}>, 'org.gnome.Maps.desktop': <{'position': <9>}>, 'org.gnome.Photos.desktop': <{'position': <10>}>, 'rhythmbox.desktop': <{'position': <11>}>, 'gnome-control-center.desktop': <{'position': <12>}>, 'org.gnome.Software.desktop': <{'position': <13>}>, 'org.gnome.gedit.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Totem.desktop': <{'position': <16>}>, 'org.gnome.Weather.desktop': <{'position': <17>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <18>}>}, {'links.desktop': <{'position': <0>}>, 'com.obsproject.Studio.desktop': <{'position': <1>}>, 'java-1.8.0-openjdk-1.8.0.302.b08-2.fc34.x86_64-policytool.desktop': <{'position': <2>}>, 'gparted.desktop': <{'position': <3>}>, 'htop.desktop': <{'position': <4>}>, 'lpf.desktop': <{'position': <5>}>, 'org.gnome.Tour.desktop': <{'position': <6>}>, 'lpf-mscore-fonts.desktop': <{'position': <7>}>, 'lpf-gui.desktop': <{'position': <8>}>, 'lpf-notify.desktop': <{'position': <9>}>, 'pavucontrol.desktop': <{'position': <10>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <11>}>, 'uget-gtk.desktop': <{'position': <12>}>, 'org.gnome.Meld.desktop': <{'position': <13>}>, 'wine-Programs-WinRAR-Новости в последней версии.desktop': <{'position': <14>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <15>}>, 'wine-Programs-WinRAR-Руководство по консольной версии RAR.desktop': <{'position': <16>}>, 'java-1.8.0-openjdk-1.8.0.312.b07-2.fc34.x86_64-policytool.desktop': <{'position': <17>}>}, {'wine-Programs-WinRAR-Справка WinRAR.desktop': <{'position': <0>}>, 'simplescreenrecorder.desktop': <{'position': <1>}>, 'skypeforlinux.desktop': <{'position': <2>}>, 'com.teamviewer.TeamViewer.desktop': <{'position': <3>}>, 'realvnc-vncviewer.desktop': <{'position': <4>}>, 'wine-Programs-WinRAR-WinRAR.desktop': <{'position': <5>}>, 'xterm.desktop': <{'position': <6>}>, 'Zoom.desktop': <{'position': <7>}>, 'dosbox-staging.desktop': <{'position': <8>}>}]
 app-picker-view=uint32 1
-disabled-extensions=@as []
+command-history=['r']
+disabled-extensions=['dash-to-dock@micxgx.gmail.com']
 enabled-extensions=['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com']
-favorite-apps=['org.gnome.Nautilus.desktop', 'code.desktop', 'virtualbox.desktop', 'doublecmd.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'skypeforlinux.desktop', 'org.gnome.Terminal.desktop', 'google-chrome.desktop', 'org.remmina.Remmina.desktop', 'teams.desktop']
+favorite-apps=['org.gnome.Nautilus.desktop', 'doublecmd.desktop', 'virtualbox.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'google-chrome.desktop', 'teams.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.remmina.Remmina.desktop', 'skypeforlinux.desktop', 'simplescreenrecorder.desktop', 'org.gnome.Meld.desktop']
+welcome-dialog-last-shown-version='40.4'
+
+[org/gnome/shell/extensions/dash-to-dock]
+animate-show-apps=false
+apply-custom-theme=true
+autohide=true
+autohide-in-fullscreen=true
+background-opacity=0.80000000000000004
+custom-background-color=false
+custom-theme-shrink=true
+customize-alphas=false
+dash-max-icon-size=32
+dock-fixed=false
+dock-position='BOTTOM'
+extend-height=false
+force-straight-corner=false
+height-fraction=0.90000000000000002
+icon-size-fixed=false
+intellihide=true
+intellihide-mode='MAXIMIZED_WINDOWS'
+max-alpha=0.80000000000000004
+preferred-monitor=0
+preview-size-scale=1.0
+scroll-to-focused-application=true
+show-show-apps-button=true
+show-trash=false
+transparency-mode='DYNAMIC'
 
 [org/gnome/shell/extensions/dash-to-panel]
 animate-app-switch=false
+animate-appicon-hover=false
 animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
 animate-show-apps=false
 animate-window-launch=false
+app-ctrl-hotkey-1=['1']
+app-ctrl-hotkey-10=['0']
+app-ctrl-hotkey-2=['2']
+app-ctrl-hotkey-3=['3']
+app-ctrl-hotkey-4=['4']
+app-ctrl-hotkey-5=['5']
+app-ctrl-hotkey-6=['6']
+app-ctrl-hotkey-7=['7']
+app-ctrl-hotkey-8=['8']
+app-ctrl-hotkey-9=['9']
+app-ctrl-hotkey-kp-1=['KP_1']
+app-ctrl-hotkey-kp-10=['KP_0']
+app-ctrl-hotkey-kp-2=['KP_2']
+app-ctrl-hotkey-kp-3=['KP_3']
+app-ctrl-hotkey-kp-4=['KP_4']
+app-ctrl-hotkey-kp-5=['KP_5']
+app-ctrl-hotkey-kp-6=['KP_6']
+app-ctrl-hotkey-kp-7=['KP_7']
+app-ctrl-hotkey-kp-8=['KP_8']
+app-ctrl-hotkey-kp-9=['KP_9']
+app-hotkey-1=['1']
+app-hotkey-10=['0']
+app-hotkey-2=['2']
+app-hotkey-3=['3']
+app-hotkey-4=['4']
+app-hotkey-5=['5']
+app-hotkey-6=['6']
+app-hotkey-7=['7']
+app-hotkey-8=['8']
+app-hotkey-9=['9']
+app-hotkey-kp-1=['KP_1']
+app-hotkey-kp-10=['KP_0']
+app-hotkey-kp-2=['KP_2']
+app-hotkey-kp-3=['KP_3']
+app-hotkey-kp-4=['KP_4']
+app-hotkey-kp-5=['KP_5']
+app-hotkey-kp-6=['KP_6']
+app-hotkey-kp-7=['KP_7']
+app-hotkey-kp-8=['KP_8']
+app-hotkey-kp-9=['KP_9']
+app-shift-hotkey-1=['1']
+app-shift-hotkey-10=['0']
+app-shift-hotkey-2=['2']
+app-shift-hotkey-3=['3']
+app-shift-hotkey-4=['4']
+app-shift-hotkey-5=['5']
+app-shift-hotkey-6=['6']
+app-shift-hotkey-7=['7']
+app-shift-hotkey-8=['8']
+app-shift-hotkey-9=['9']
+app-shift-hotkey-kp-1=['KP_1']
+app-shift-hotkey-kp-10=['KP_0']
+app-shift-hotkey-kp-2=['KP_2']
+app-shift-hotkey-kp-3=['KP_3']
+app-shift-hotkey-kp-4=['KP_4']
+app-shift-hotkey-kp-5=['KP_5']
+app-shift-hotkey-kp-6=['KP_6']
+app-shift-hotkey-kp-7=['KP_7']
+app-shift-hotkey-kp-8=['KP_8']
+app-shift-hotkey-kp-9=['KP_9']
 appicon-margin=5
 appicon-padding=2
 available-monitors=[1, 0]
@@ -469,34 +579,42 @@ dot-color-1='#5294e2'
 dot-color-2='#5294e2'
 dot-color-3='#5294e2'
 dot-color-4='#5294e2'
-dot-color-dominant=false
+dot-color-dominant=true
 dot-color-override=false
 dot-color-unfocused-1='#5294e2'
 dot-color-unfocused-2='#5294e2'
 dot-color-unfocused-3='#5294e2'
 dot-color-unfocused-4='#5294e2'
 dot-position='BOTTOM'
-dot-style-focused='DASHES'
+dot-style-focused='SEGMENTED'
+dot-style-unfocused='SEGMENTED'
+focus-highlight=true
 focus-highlight-color='#eeeeee'
 focus-highlight-dominant=true
 force-check-update=true
-group-apps=false
+group-apps=true
 group-apps-label-font-color='#dddddd'
 group-apps-label-font-color-minimized='#dddddd'
+group-apps-underline-unfocused=true
+group-apps-use-fixed-width=true
 group-apps-use-launchers=false
-hot-keys=true
+hide-overview-on-startup=true
+hot-keys=false
 hotkeys-overlay-combo='TEMPORARILY'
 intellihide=false
 isolate-monitors=true
 isolate-workspaces=true
+leftbox-padding=-1
 location-clock='STATUSLEFT'
 middle-click-action='LAUNCH'
 multi-monitors=false
+overview-click-to-exit=false
 panel-anchors='{"0":"MIDDLE","1":"MIDDLE"}'
-panel-element-positions='{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+panel-element-positions='{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
 panel-lengths='{"0":100,"1":100}'
 panel-position='BOTTOM'
 panel-size=27
+panel-sizes='{"0":32,"1":32}'
 primary-monitor=-1
 scroll-panel-action='CYCLE_WINDOWS'
 scroll-panel-show-ws-popup=false
@@ -508,22 +626,29 @@ show-activities-button=false
 show-appmenu=false
 show-apps-icon-file=''
 show-favorites=true
+show-running-apps=true
 show-show-apps-button=true
 show-showdesktop-button=true
 show-showdesktop-hover=false
 show-window-previews=false
+status-icon-padding=-1
 stockgs-force-hotcorner=false
 stockgs-keep-dash=false
 stockgs-keep-top-panel=false
 stockgs-panelbtn-click-only=false
 taskbar-position='LEFTPANEL'
-trans-bg-color='#000000'
+trans-bg-color='#3d3846'
+trans-gradient-bottom-opacity=0.10000000000000001
 trans-gradient-top-color='#888a85'
+trans-gradient-top-opacity=0.0
+trans-panel-opacity=0.0
 trans-use-custom-bg=true
 trans-use-custom-gradient=true
-trans-use-custom-opacity=true
-trans-use-dynamic-opacity=true
+trans-use-custom-opacity=false
+trans-use-dynamic-opacity=false
+tray-padding=-1
 window-preview-title-font-color='#dddddd'
+window-preview-title-position='TOP'
 
 [org/gnome/shell/overrides]
 workspaces-only-on-primary=false
@@ -532,13 +657,14 @@ workspaces-only-on-primary=false
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1624335228
+check-timestamp=int64 1640095260
 download-updates=false
 download-updates-notify=false
 first-run=false
 install-timestamp=int64 1613421041
 online-updates-timestamp=int64 1621662286
-upgrade-notification-timestamp=int64 1623922079
+update-notification-timestamp=int64 1639926868
+upgrade-notification-timestamp=int64 1632061574
 
 [org/gnome/system/location]
 enabled=false
@@ -551,7 +677,7 @@ bold-is-bright=true
 cjk-utf8-ambiguous-width='narrow'
 cursor-blink-mode='system'
 cursor-shape='underline'
-custom-command='tmux attach'
+custom-command='tmux attach -t 0'
 default-size-columns=127
 default-size-rows=43
 login-shell=false
@@ -561,6 +687,25 @@ use-custom-command=true
 use-system-font=false
 use-transparent-background=false
 visible-name='Main'
+
+[org/gnome/tweaks]
+show-extensions-notice=false
+
+[org/gtk/gtk4/settings/color-chooser]
+selected-color=(true, 0.23921568691730499, 0.21960784494876862, 0.27450981736183167, 1.0)
+
+[org/gtk/gtk4/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=179
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-size=(1392, 704)
 
 [org/gtk/settings/color-chooser]
 custom-colors=[(0.80000000000000004, 0.0, 0.0, 1.0), (1.0, 1.0, 0.0, 0.5)]
@@ -572,13 +717,13 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=196
+sidebar-width=170
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(2267, 35)
-window-size=(1227, 901)
+window-position=(262, 121)
+window-size=(1396, 669)
 
 [org/virt-manager/virt-manager]
 manager-window-height=550
