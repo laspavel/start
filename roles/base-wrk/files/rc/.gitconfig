@@ -10,6 +10,9 @@
   mergeoptions = --no-edit
   excludesfile= ~/.gitignore
 
+[pull]
+rebase=false
+
 [init]
   defaultBranch = master
   
