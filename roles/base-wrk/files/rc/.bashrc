@@ -59,6 +59,8 @@ function pfx2crt() {
 
 # ######### COLOR #########
 
+TERM=xterm-256color
+
 # Forground
 Default="\[\e[0m\]"
 
@@ -266,6 +268,8 @@ alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/r
 
 # Kubernetes
 alias k="kubectl"
+alias kx="kubectx"
+alias kn="kubens"
 
 # Git shortcuts
 alias ga='git add '
@@ -306,7 +310,7 @@ if [ -f /usr/bin/code ]; then
 fi
 
 export KUBECONFIG=/home/laspavel/.kubeconfig/kube_config.yml
-# export KUBECONFIG=~/_Project/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
+#export KUBECONFIG=~/_Project/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
 alias lens="/opt/lens/lens"
 
 export HISTCONTROL=ignorespace   # leading space hides commands from history
