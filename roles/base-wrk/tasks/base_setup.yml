@@ -106,28 +106,6 @@
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
 
-- name: Add startup config
-  blockinfile:
-    dest: "/home/{{ wrk_username }}/.vimrc"
-    content: |
-      call plug#begin()
-      Plug 'morhetz/gruvbox'
-      call plug#end()
-    mode: "0664"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    marker: '" {mark} ANSIBLE MANAGED BLOCK'
-    state: present
-    insertafter: EOF
-    create: yes
-
-- name: Install Plugin
-  shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
-  become: yes
-  become_user: "{{ wrk_username }}"
-  args:
-    executable: /bin/bash
-
 - name: Add vim config
   copy:
     src: "rc/.vimrc"
@@ -138,15 +116,12 @@
     force: yes
   ignore_errors: true
 
-- name: vi plugin config
-  copy:
-    src: ".vim"
-    dest: "/home/{{ wrk_username }}/"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0644"
-    force: yes
-  ignore_errors: true
+- name: Install Plugin
+  shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
+  become: yes
+  become_user: "{{ wrk_username }}"
+  args:
+    executable: /bin/bash
 
 - name: Add bash config
   copy:
