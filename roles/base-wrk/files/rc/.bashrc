@@ -310,7 +310,7 @@ if [ -f /usr/bin/code ]; then
 fi
 
 export KUBECONFIG=/home/laspavel/.kubeconfig/kube_config.yml
-#export KUBECONFIG=~/_Project/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
+#export KUBECONFIG=~/_/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
 alias lens="/opt/lens/lens"
 
 export HISTCONTROL=ignorespace   # leading space hides commands from history

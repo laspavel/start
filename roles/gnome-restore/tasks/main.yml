@@ -54,39 +54,23 @@
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
   become: true
   become_user: "{{ wrk_username }}"
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version != '34'
 
-- name: Clone a repo dash-to-panel
-  ansible.builtin.git:
-    repo: https://github.com/philippun1/dash-to-panel.git
-    dest: /tmp/dash-to-panel
-    version: update-to-gnome40
+- name: AutoHide Battery install
+  command: gnome-shell-extension-installer 595 --yes --restart-shell
   become: true
   become_user: "{{ wrk_username }}"
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
-
-- name: Run 'make' for dash-to-panel
-  make:
-    chdir: /tmp/dash-to-panel
-  become: yes
-  become_user: "{{ wrk_username }}"
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
-
-- name: Run 'make install' for dash-to-panel
-  make:
-    chdir: /tmp/dash-to-panel
-    target: install
-  become: yes
-  become_user: "{{ wrk_username }}"
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
 
 - name: Dock-to-Panel enable 
-#  command: gnome-extensions enable dash-to-panel@jderose9.github.com
-  command: gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
+  command: gnome-extensions enable dash-to-panel@jderose9.github.com
   become: true
   become_user: "{{ wrk_username }}"
   ignore_errors: yes
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '34'
+
+- name: AutoHide Battery enable
+  command: gnome-extensions enable autohide-battery@sitnik.ru
+  become: true
+  become_user: "{{ wrk_username }}"
+  ignore_errors: yes
 
 - name: Copy dconf gnome dump file
   copy:
