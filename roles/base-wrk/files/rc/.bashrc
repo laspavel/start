@@ -58,7 +58,7 @@ function pfx2crt() {
 }
 
 function ssh_genkey() {
-    if [ -n "$1" ]; then
+    if [ -z "$1" ]; then
        SSHF="$HOME/.ssh/temp"
     else
        SSHF="$HOME/.ssh/$1"
