@@ -39,6 +39,7 @@ set ffs=unix,dos,mac
 
 call plug#begin()
   Plug 'altercation/solarized'
+  Plug 'itchyny/lightline.vim'
 call plug#end()
 set background=dark
 
