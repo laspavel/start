@@ -18,6 +18,7 @@ base_required_packages:
 - gcc 
 - make 
 - patch
+- calc
 - libgomp
 - glibc-headers
 - glibc-devel 
