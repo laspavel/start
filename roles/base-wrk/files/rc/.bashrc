@@ -66,9 +66,9 @@ function ssh_genkey() {
     ssh-keygen -t rsa -q -b 4096 -C "$2" -f "$SSHF"
 }
 
-TERM=xterm-256color
-
 # ######### COLOR #########
+
+TERM=xterm-256color
 
 # Forground
 Default="\[\e[0m\]"
@@ -256,12 +256,18 @@ alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 alias most='du -hsx * | sort -rh | head -10'
 
 # Utils from Internet
-alias winbox='wine64 ~/.wine/drive_c/winbox.exe'
+alias winbox='wine64 "$HOME/.wine/drive_c/winbox.exe"'
 alias winrar='wine64 "$HOME/.wine/drive_c/Program Files/WinRAR/WinRAR.exe"'
 alias pogoda="curl wttr.in/Dnepr"
 
 #open vscode
 alias v="code $1"
+alias ?="calc -d $1"
+
+# Monitor run
+alias use1="xrandr --output HDMI-2 --off"
+alias use2="xrandr --output HDMI-2 --auto --rotate normal --right-of DP-1"
+alias startt="tmux attach -t 0"
 
 # list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
 alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config ~/.ssh/config.d/* | sed 's/Host //' | sed 's/HostName //'"
@@ -322,7 +328,7 @@ if [ -f /usr/bin/code ]; then
 fi
 
 export KUBECONFIG=$HOME/.kubeconfig/kube_config.yml
-# export KUBECONFIG=~/_Project/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_Project/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
+# export KUBECONFIG=~/_/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
 alias lens="/opt/lens/lens"
 
 export HISTCONTROL=ignorespace   # leading space hides commands from history
