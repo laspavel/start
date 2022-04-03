@@ -98,6 +98,14 @@
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
 
+- name: Creates directory local bin
+  file:
+    path: "/home/{{ wrk_username }}/.local/bin/"
+    state: directory
+    mode: "0775"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+
 - name: Configure Vim-plug
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
@@ -225,6 +233,16 @@
   copy:
     src: "rc/.tigrc"
     dest: "/home/{{ wrk_username }}/.tigrc"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: "0664"
+    force: yes
+  ignore_errors: true
+
+- name: Add PGSQL config
+  copy:
+    src: "rc/.psqlrc"
+    dest: "/home/{{ wrk_username }}/.psqlrc"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
     mode: "0664"

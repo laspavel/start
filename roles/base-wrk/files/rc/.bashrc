@@ -15,9 +15,8 @@ then
 fi
 export PATH
 
-ipinfo() { curl ipinfo.io/$1; echo "";} 
 
-c() { echo $1 | bc -l;} 
+ipinfo() { curl ipinfo.io/$1; echo "";} 
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -331,6 +330,8 @@ export KUBECONFIG=$HOME/.kubeconfig/kube_config.yml
 # export KUBECONFIG=~/_/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
 alias lens="/opt/lens/lens"
 
+export LANG=ru_UA.UTF-8
+# export LANG=en_US.UTF-8
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
 export HISTSIZE=30000
@@ -339,7 +340,11 @@ export HISTTIMEFORMAT="[%d.%m.%y %T] "
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 export MANPAGER="less -X"   # Don't clear the screen after quitting a `man` page
 export PYTHONIOENCODING="UTF-8"  # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # Save and reload history after each command finishes
+
+# Save and reload history after each command finishes
+if ! echo "$PROMPT_COMMAND" | grep -q history; then
+  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+fi
 
 
 ####################################
