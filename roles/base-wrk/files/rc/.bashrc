@@ -234,6 +234,7 @@ alias fff="watch -tn 0.2 '$1'"
 
 # Estimate file space usage to maximum depth
 alias du1="du -d 1"
+alias dush="du -sh $1"
 
 alias free='free -h'
 alias mkdir='mkdir -pv'
@@ -266,7 +267,7 @@ alias ?="calc -d $1"
 # Monitor run
 alias use1="xrandr --output HDMI-2 --off"
 alias use2="xrandr --output HDMI-2 --auto --rotate normal --right-of DP-1"
-alias startt="tmux attach -t 0"
+alias tt="tmux attach -t 0"
 
 # list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
 alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config ~/.ssh/config.d/* | sed 's/Host //' | sed 's/HostName //'"
@@ -327,7 +328,7 @@ if [ -f /usr/bin/code ]; then
 fi
 
 export KUBECONFIG=$HOME/.kubeconfig/kube_config.yml
-# export KUBECONFIG=~/_/Ansible/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Ansible/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
+# export KUBECONFIG=~/_/Projects/StorePlus/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
 alias lens="/opt/lens/lens"
 
 export LANG=ru_UA.UTF-8
