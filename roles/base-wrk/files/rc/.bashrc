@@ -215,6 +215,7 @@ alias l='ls -CF'
 alias gl='ls | grep --color'
 alias ..='cd ../'
 alias ...='cd ../..'
+alias ~="cd ~"
 alias m='mount '
 alias u='fusermount -u '
 alias f='file'
@@ -231,6 +232,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mc='mc -x'
 alias fff="watch -tn 0.2 '$1'"
+alias h='history '
 
 # Estimate file space usage to maximum depth
 alias du1="du -d 1"
@@ -243,6 +245,14 @@ alias urldecode='python -c "import sys, os, urllib as ul; name = ul.unquote_plus
 alias port='netstat -tulanp'
 alias listen="lsof -P -i -n" 
 alias now='date +%d.%m.%Y%n%T'
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+alias week='date +%V'
+
+# Pipe my public key to my clipboard.
+alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Public key copied to pasteboard.'"
+
+# Pipe my private key to my clipboard.
+alias prikey="more ~/.ssh/id_rsa | xclip -selection clipboard | echo '=> Private key copied to pasteboard.'"
 
 # Get top process eating memory
 alias psmem="ps auxf | sort -nr -k 4"
@@ -336,7 +346,7 @@ export LANG=ru_UA.UTF-8
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
 export HISTSIZE=30000
-export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+# export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 export HISTTIMEFORMAT="[%d.%m.%y %T] "
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 export MANPAGER="less -X"   # Don't clear the screen after quitting a `man` page
