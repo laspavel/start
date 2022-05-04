@@ -65,6 +65,12 @@ function ssh_genkey() {
     ssh-keygen -t rsa -q -b 4096 -C "$2" -f "$SSHF"
 }
 
+function ansi2text() {
+    sed "s,\x1B\[[0-9;]*[a-zA-Z],,g;s,\x0D\x0A,\x0A,g" $1 > $1.tmp
+#    sed "" $1 > $1.tmp
+    mv $1.tmp $1
+}
+
 # ######### COLOR #########
 
 TERM=xterm-256color
