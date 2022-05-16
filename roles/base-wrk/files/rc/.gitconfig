@@ -42,6 +42,7 @@ rebase=false
   yesterday = log --since yesterday --until=midnight --color --graph --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr' 
   l = log --until=midnight --color --graph --abbrev-commit --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
   s = status -s
+  a = add .
   c = !git add --all && git commit -a -m
   ps = push
   pl = pull

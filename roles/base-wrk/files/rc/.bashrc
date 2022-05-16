@@ -7,6 +7,9 @@ fi
 
 # ########## MY CONFIGURATION ############
 
+alias office_route="$HOME/.local/route_dns_add_eth0.sh"
+alias home_route="$HOME/.local/route_dns_add_ppp0.sh"
+
 # ######### FUNCTION #########
 
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -237,7 +240,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mc='mc -x'
-alias fff="watch -tn 0.2 '$1'"
+alias www="watch -tn 1 '$1'"
 alias h='history '
 
 # Estimate file space usage to maximum depth
@@ -302,31 +305,6 @@ alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/r
 alias k="kubectl"
 alias kx="kubectx"
 alias kn="kubens"
-
-# Git shortcuts
-alias ga='git add '
-alias gb='git branch'
-alias gba='git branch -a'
-alias gbru='git remote prune origin'
-alias gbd='git branch -D'
-alias gc='git commit -m'
-alias gcl='git clone'
-alias gco='git checkout'
-alias gcp='git cherry-pick'
-alias gclean='git fetch --prune'
-alias gd='git diff'
-alias gdi='git di'
-alias gr='git rm'
-alias gs='git status'
-alias gss='git status -s'
-alias gll='git log'
-alias glg='git lg'
-alias gull='git pull origin'
-alias gush='git push origin'
-alias gt='git checkout'
-alias gtd='git checkout develop'
-alias gm='git merge --no-ff'
-alias grv='git remote -v'
 
 source <(kubectl completion bash)
 complete -F __start_kubectl k
