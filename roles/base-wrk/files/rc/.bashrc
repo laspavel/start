@@ -7,7 +7,6 @@ fi
 
 # ########## MY CONFIGURATION ############
 
-alias office_route="$HOME/.local/route_dns_add_eth0.sh"
 alias home_route="$HOME/.local/route_dns_add_ppp0.sh"
 
 # ######### FUNCTION #########
@@ -17,9 +16,6 @@ then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-
-
-ipinfo() { curl ipinfo.io/$1; echo "";} 
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -49,32 +45,7 @@ ssh() {
   tmux rename-window "bash"
 }
 
-md5(){ echo -n "$1" | md5sum; }
-
-function pfx2crt() {
-    fbname=$(basename "$1" .pfx)
-    openssl pkcs12 -in $fbname.pfx -clcerts -nokeys -out $fbname.crt
-    openssl pkcs12 -in $fbname.pfx -nocerts -out $fbname-encrypt.key
-    openssl rsa -in $fbname-encrypt.key -out $fbname.key
-    rm -f $fbname-encrypt.key
-}
-
-function ssh_genkey() {
-    if [ -z "$1" ]; then
-       SSHF="$HOME/.ssh/temp"
-    else
-       SSHF="$HOME/.ssh/$1"
-    fi
-    ssh-keygen -t rsa -q -b 4096 -C "$2" -f "$SSHF"
-}
-
-function ansi2text() {
-    sed "s,\x1B\[[0-9;]*[a-zA-Z],,g;s,\x0D\x0A,\x0A,g" $1 > $1.tmp
-#    sed "" $1 > $1.tmp
-    mv $1.tmp $1
-}
-
-# ######### COLOR #########
+########## COLOR #########
 
 TERM=xterm-256color
 
@@ -198,8 +169,31 @@ if [[ $SSH_CLIENT ]]; then
   PS1="$BBlue\u@\h:$BRed\$(parse_git_branch)$Color_Off$BGreen\w$ $Color_Off"
 fi
 
-#PS1="\[\033[1;33;1;34m\]\u@\h:\[\e[91m\]\$(parse_git_branch)\[\e[00m\]\[\033[1;32m\]\w$ \[\033[0m\]\[\033[0m\]"
-#PS1="\[\033[1;33;1;34m\]\u@\h:\[\033[1;32m\]\w$ \[\033[0m\]\[\033[0m\]"
+############# Multiple functions ################
+
+md5() { echo -n "$1" | md5sum; }
+
+pfx2crt() {
+    fbname=$(basename "$1" .pfx)
+    openssl pkcs12 -in $fbname.pfx -clcerts -nokeys -out $fbname.crt
+    openssl pkcs12 -in $fbname.pfx -nocerts -out $fbname-encrypt.key
+    openssl rsa -in $fbname-encrypt.key -out $fbname.key
+    rm -f $fbname-encrypt.key
+}
+
+ssh_genkey() {
+    if [ -z "$1" ]; then
+       SSHF="$HOME/.ssh/temp"
+    else
+       SSHF="$HOME/.ssh/$1"
+    fi
+    ssh-keygen -t rsa -q -b 4096 -C "$2" -f "$SSHF"
+}
+
+ansi2text() {
+    cat $1 |sed s/'^'.*\\]//g > $1.tmp
+    mv $1.tmp $1
+}
 
 if [ -f /usr/bin/grc ]; then
   alias cvs="grc --colour=auto cvs"
@@ -221,12 +215,11 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias gl='ls | grep --color'
 alias ..='cd ../'
 alias ...='cd ../..'
 alias ~="cd ~"
 alias m='mount '
-alias u='fusermount -u '
+alias u='fusermount -u -z'
 alias f='file'
 alias s='stat'
 alias rm='rm -i'
@@ -243,25 +236,15 @@ alias mc='mc -x'
 alias www="watch -tn 1 '$1'"
 alias h='history '
 
-# Estimate file space usage to maximum depth
-alias du1="du -d 1"
-alias dush="du -sh $1"
-
 alias free='free -h'
 alias mkdir='mkdir -pv'
 alias passgen="echo $(head -c 11 /dev/random | base64 | sed "s:[+=/]::g" | head -c 11)"
 alias urldecode='python -c "import sys, os, urllib as ul; name = ul.unquote_plus(sys.argv[1]); print name; os.rename(sys.argv[1], name)"'
 alias port='netstat -tulanp'
-alias listen="lsof -P -i -n" 
+alias listen="lsof -P -i -n"
 alias now='date +%d.%m.%Y%n%T'
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 alias week='date +%V'
-
-# Pipe my public key to my clipboard.
-alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Public key copied to pasteboard.'"
-
-# Pipe my private key to my clipboard.
-alias prikey="more ~/.ssh/id_rsa | xclip -selection clipboard | echo '=> Private key copied to pasteboard.'"
+alias flushdns='sudo resolvectl flush-caches'
 
 # Get top process eating memory
 alias psmem="ps auxf | sort -nr -k 4"
@@ -272,12 +255,17 @@ alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
 # Gives you what is using the most space. Both directories and files. Varies on current directory
-alias most='du -hsx * | sort -rh | head -10'
+alias most10='du -hsx * | sort -rh | head -10'
+# Estimate file space usage to maximum depth
+alias dud="du -d 1"
 
 # Utils from Internet
 alias winbox='wine64 "$HOME/.wine/drive_c/winbox.exe"'
 alias winrar='wine64 "$HOME/.wine/drive_c/Program Files/WinRAR/WinRAR.exe"'
-alias pogoda="curl wttr.in/Dnepr"
+
+# Utils from Internet
+alias weather="curl wttr.in/Dnepr"
+ipinfo() { curl ipinfo.io/$1; echo "";}
 
 #open vscode
 alias v="code $1"
@@ -288,18 +276,16 @@ alias use1="xrandr --output HDMI-2 --off"
 alias use2="xrandr --output HDMI-2 --auto --rotate normal --right-of DP-1"
 alias tt="tmux attach -t 0"
 
-# list all "Host" and "HostName" lines, then remove the strings: "Host " and "HostName "
-alias sshhosts="grep -w -i -E 'Host|HostName' ~/.ssh/config ~/.ssh/config.d/* | sed 's/Host //' | sed 's/HostName //'"
-
 #Docker
-alias ubuntu18='docker run -it --rm --hostname ubuntu18 -v $(pwd):/data -w /data ubuntu:18.04 /bin/bash'
 alias ubuntu20='docker run -it --rm --hostname ubuntu20 -v $(pwd):/data -w /data ubuntu:20.04 /bin/bash'
+alias ubuntu22='docker run -it --rm --hostname ubuntu20 -v $(pwd):/data -w /data ubuntu:22.04 /bin/bash'
 alias debian9='docker run -it --rm --hostname debian9 -v $(pwd):/data -w /data debian:stretch /bin/bash'
 alias debian10='docker run -it --rm --hostname debian10 -v $(pwd):/data -w /data debian:buster /bin/bash'
 alias centos7='docker run -it --rm --hostname centos7 -v $(pwd):/data -w /data centos:7 /bin/bash'
-alias centos8='docker run -it --rm --hostname centos8 -v $(pwd):/data -w /data centos:8 /bin/bash'
-alias py3='docker run -it --rm --hostname py3 -v $(pwd):/data -w /data python:3 /bin/bash'
-alias ctop='docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
+alias oracle7='docker run -it --rm --hostname oracle7 -v $(pwd):/data -w /data oraclelinux:7.9 /bin/bash'
+alias oracle8='docker run -it --rm --hostname oracle8 -v $(pwd):/data -w /data oraclelinux:8.6 /bin/bash'
+alias oracle9='docker run -it --rm --hostname oracle9 -v $(pwd):/data -w /data oraclelinux:9 /bin/bash'
+alias py3='docker run -it --rm --hostname py3 -v $(pwd):/data -w /data python:3.9 /bin/bash'
 
 # Kubernetes
 alias k="kubectl"
@@ -312,28 +298,23 @@ complete -F __start_kubectl k
 # ######### EXPORT PARAMETERS ################
 export EDITOR="vi"
 
-#if [ -f /usr/bin/nano ]; then
-#    export EDITOR="nano"
-#    export VISUAL="nano"
-#fi
-
 if [ -f /usr/bin/code ]; then
     export VISUAL="code"
 fi
 
 export KUBECONFIG=$HOME/.kubeconfig/kube_config.yml
 # export KUBECONFIG=~/_/Projects/StorePlus/RKE2-Playbooks/aspo1_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/aspo2_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/dev_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/prod_rke2/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/prod_rke2_efk/plays/kube_config_config-cluster_rancher.yml:~/_/Projects/StorePlus/RKE2-Playbooks/res_rke2/plays/kube_config_config-cluster_rancher.yml
-alias lens="/opt/lens/lens"
+# alias lens="/opt/lens/lens"
 
 export LANG=ru_UA.UTF-8
 # export LANG=en_US.UTF-8
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
 export HISTSIZE=30000
-# export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 export HISTTIMEFORMAT="[%d.%m.%y %T] "
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 export MANPAGER="less -X"   # Don't clear the screen after quitting a `man` page
+# export MANPAGER="most"   # Don't clear the screen after quitting a `man` page
 export PYTHONIOENCODING="UTF-8"  # Make Python use UTF-8 encoding for output to stdin/stdout/stderr.
 
 # Save and reload history after each command finishes
@@ -341,7 +322,5 @@ if ! echo "$PROMPT_COMMAND" | grep -q history; then
   export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 fi
 
-
 ####################################
-
 
