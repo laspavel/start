@@ -93,6 +93,28 @@
     state: started
     enabled: yes
 
+- name: Install git
+  yum:
+    name: git
+    state: present
+  
+- name: Clone dotfiles repository
+  git:
+    repo: 'https://github.com/laspavel/dotfiles.git'
+    dest: /tmp/dotfiles
+    clone: yes
+    update: yes
+  
+- name: Copy dotfiles to user home directory
+  copy:
+    src: "/tmp/dotfiles/src"
+    dest: "/home/{{ wrk_username }}"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
+    mode: "0664"
+    force: yes
+  ignore_errors: true
+
 - name: Creates directory Vim-plug
   file:
     path: "/home/{{ wrk_username }}/.vim/autoload/"
@@ -117,86 +139,12 @@
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
 
-- name: Add vim config
-  copy:
-    src: "rc/.vimrc"
-    dest: "/home/{{ wrk_username }}/.vimrc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
 - name: Install Plugin
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
   become: yes
   become_user: "{{ wrk_username }}"
   args:
     executable: /bin/bash
-
-- name: Add bash config
-  copy:
-    src: "rc/.bashrc"
-    dest: "/home/{{ wrk_username }}/.bashrc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: Add git config
-  copy:
-    src: "rc/.gitconfig"
-    dest: "/home/{{ wrk_username }}/.gitconfig"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: Add default gitignore
-  copy:
-    src: "rc/.gitignore"
-    dest: "/home/{{ wrk_username }}/.gitignore"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: '0664'
-    force: yes
-  ignore_errors: true
-
-- name: mkdir HTOP config directory
-  file:
-    state: directory
-    owner: "{{ wrk_username }}"
-    mode: "0700"
-    dest: "/home/{{ wrk_username }}/.config/htop/"
-
-- name: Add default HTOP config
-  copy:
-    src: "rc/htoprc"
-    dest: "/home/{{ wrk_username }}/.config/htop/htoprc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: mkdir MC config directory
-  file:
-    state: directory
-    owner: "{{ wrk_username }}"
-    mode: "0700"
-    dest: "/home/{{ wrk_username }}/.config/mc/"
-
-- name: Add default HTOP config
-  copy:
-    src: "rc/mcini"
-    dest: "/home/{{ wrk_username }}/.config/mc/ini"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
 
 - name: mkdir SSH config directory
   file:
@@ -211,74 +159,6 @@
     owner: "{{ wrk_username }}"
     mode: "0700"
     dest: /home/{{ wrk_username }}/.ssh/.config.d/
-
-- name: Add SSH config
-  copy:
-    src: "rc/sshconfig"
-    dest: "/home/{{ wrk_username }}/.ssh/config"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: Add TOP config
-  copy:
-    src: "rc/.toprc"
-    dest: "/home/{{ wrk_username }}/.toprc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: Add TIG config
-  copy:
-    src: "rc/.tigrc"
-    dest: "/home/{{ wrk_username }}/.tigrc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: Add PGSQL config
-  copy:
-    src: "rc/.psqlrc"
-    dest: "/home/{{ wrk_username }}/.psqlrc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
-
-- name: mkdir nano config directory
-  file:
-    state: directory
-    owner: "{{ wrk_username }}"
-    mode: "0755"
-    dest: /home/{{ wrk_username }}/.nano/
-
-- name: nano configure
-  copy:
-    src: "nanorc/"
-    dest: "/home/{{ wrk_username }}/.nano/"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0644"
-    force: yes
-  ignore_errors: true
-
-
-- name: Add NANO config
-  copy:
-    src: "rc/.nanorc"
-    dest: "/home/{{ wrk_username }}/.nanorc"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: "0664"
-    force: yes
-  ignore_errors: true
 
 - name: Configure Git Autocomplete
   get_url:
