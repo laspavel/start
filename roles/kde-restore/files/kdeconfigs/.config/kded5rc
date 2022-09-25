@@ -1,5 +1,0 @@
-[Module-device_automounter]
-autoload=true
-
-[PlasmaBrowserIntegration]
-shownCount=1

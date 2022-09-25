@@ -1,8 +1,0 @@
-[OSD]
-Enabled=false
-
-[PlasmaToolTips]
-Delay=-1
-
-[Theme]
-name=breeze-dark
