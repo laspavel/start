@@ -1,14 +1,22 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/com/github/maoschanz/drawing/'
-saved-view='/com/github/'
+saved-pathbar-path='/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/'
+saved-view='/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/'
 window-height=500
-window-is-maximized=false
+window-is-maximized=true
 window-width=540
+
+[com/github/johnfactotum/Foliate/view]
+bg-color='#555'
+fg-color='#ccc'
+invert=false
+layout='scrolled'
+link-color='skyblue'
+prefer-dark-theme=true
 
 [com/github/johnfactotum/Foliate/window-state]
 fullscreen=false
 height=1033
-last-file='/home/laspavel/888/Download/2_5444884256234932842.fb2'
+last-file='/home/laspavel/631089.fb2'
 maximized=true
 width=1920
 
@@ -23,7 +31,7 @@ maximized=true
 use-antialiasing=true
 
 [org/gnome/Totem]
-active-plugins=['screenshot', 'apple-trailers', 'autoload-subtitles', 'rotation', 'skipto', 'variable-rate', 'open-directory', 'screensaver', 'movie-properties', 'save-file', 'recent', 'vimeo', 'media-player-keys']
+active-plugins=['autoload-subtitles', 'apple-trailers', 'open-directory', 'variable-rate', 'recent', 'screensaver', 'screenshot', 'vimeo', 'rotation', 'mpris', 'movie-properties', 'skipto', 'save-file']
 subtitle-encoding='UTF-8'
 
 [org/gnome/boxes]
@@ -39,14 +47,15 @@ window-size=(1920, 1006)
 
 [org/gnome/cheese]
 burst-delay=1000
-camera='Video Capture 3'
+camera='HP HD Camera: HP HD Camera'
 photo-x-resolution=1280
 photo-y-resolution=720
 video-x-resolution=1280
 video-y-resolution=720
 
 [org/gnome/control-center]
-last-panel='universal-access'
+last-panel='network'
+window-state=(1468, 1048, true)
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST']
@@ -66,6 +75,7 @@ translate=true
 color-shading-type='solid'
 picture-options='zoom'
 picture-uri='file:///home/laspavel/.local/share/backgrounds/background1.jpg'
+picture-uri-dark='file:///home/laspavel/.local/share/backgrounds/background1.jpg'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
@@ -75,16 +85,17 @@ show-weekdate=true
 [org/gnome/desktop/input-sources]
 current=uint32 0
 mru-sources=[('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'ua')]
+per-window=false
 sources=[('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'ua')]
 xkb-options=['lv3:ralt_switch', 'grp:shift_caps_toggle']
 
 [org/gnome/desktop/interface]
 clock-show-weekday=true
+color-scheme='prefer-dark'
 enable-animations=false
 enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
-gtk-im-module='gtk-im-context-simple'
 gtk-theme='Adwaita'
 icon-theme='Adwaita'
 show-battery-percentage=true
@@ -96,7 +107,7 @@ autorun-x-content-open-folder=@as []
 autorun-x-content-start-app=['x-content/ostree-repository']
 
 [org/gnome/desktop/notifications]
-application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar', 'xdg-desktop-portal-gtk', 'zoom', 'org-gnome-shell-portalhelper', 'code', 'org-gnome-shell-extensions']
+application-children=['org-freedesktop-problems-applet', 'asbru-cm', 'skypeforlinux', 'teams', 'telegramdesktop', 'gnome-power-panel', 'org-gnome-nautilus', 'org-gnome-terminal', 'doublecmd', 'org-gnome-software', 'org-remmina-remmina', 'atom', 'org-qbittorrent-qbittorrent', 'org-gnome-eog', 'google-chrome', 'org-gnome-evolution-alarm-notify', 'gnome-network-panel', 'virtualbox', 'org-gnome-totem', 'appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop', 'gnome-control-center', 'org-gnome-boxes', 'libreoffice-writer', 'vmware-player', 'libreoffice-calc', 'wine-programs-winrar-winrar', 'xdg-desktop-portal-gtk', 'zoom', 'org-gnome-shell-portalhelper', 'code', 'org-gnome-shell-extensions', 'org-gnome-meld', 'org-gnome-tweaks', 'firefox', 'com-cisco-anyconnect-gui', 'xdg-desktop-portal-gnome']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/appimagekit-0fed694016e267cc915cc4fbe55c83c1-telegram-desktop]
@@ -111,8 +122,14 @@ application-id='atom.desktop'
 [org/gnome/desktop/notifications/application/code]
 application-id='code.desktop'
 
+[org/gnome/desktop/notifications/application/com-cisco-anyconnect-gui]
+application-id='com.cisco.anyconnect.gui.desktop'
+
 [org/gnome/desktop/notifications/application/doublecmd]
 application-id='doublecmd.desktop'
+
+[org/gnome/desktop/notifications/application/firefox]
+application-id='firefox.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-control-center]
 application-id='gnome-control-center.desktop'
@@ -144,6 +161,9 @@ application-id='org.gnome.eog.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify]
 application-id='org.gnome.Evolution-alarm-notify.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-meld]
+application-id='org.gnome.Meld.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
 
@@ -161,6 +181,9 @@ application-id='org.gnome.Terminal.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-totem]
 application-id='org.gnome.Totem.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-tweaks]
+application-id='org.gnome.tweaks.desktop'
 
 [org/gnome/desktop/notifications/application/org-qbittorrent-qbittorrent]
 application-id='org.qbittorrent.qBittorrent.desktop'
@@ -187,6 +210,9 @@ application-id='vmware-player.desktop'
 [org/gnome/desktop/notifications/application/wine-programs-winrar-winrar]
 application-id='wine-Programs-WinRAR-WinRAR.desktop'
 
+[org/gnome/desktop/notifications/application/xdg-desktop-portal-gnome]
+application-id='xdg-desktop-portal-gnome.desktop'
+
 [org/gnome/desktop/notifications/application/xdg-desktop-portal-gtk]
 application-id='xdg-desktop-portal-gtk.desktop'
 
@@ -194,7 +220,7 @@ application-id='xdg-desktop-portal-gtk.desktop'
 application-id='Zoom.desktop'
 
 [org/gnome/desktop/peripherals/keyboard]
-numlock-state=false
+numlock-state=true
 repeat=true
 
 [org/gnome/desktop/peripherals/mouse]
@@ -209,6 +235,10 @@ two-finger-scrolling-enabled=true
 disable-camera=false
 disable-microphone=false
 report-technical-problems=true
+
+[org/gnome/desktop/remote-desktop/vnc]
+auth-method='prompt'
+view-only=true
 
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
@@ -227,7 +257,7 @@ idle-delay=uint32 300
 [org/gnome/desktop/sound]
 allow-volume-above-100-percent=false
 event-sounds=true
-theme-name='freedesktop'
+theme-name='__custom'
 
 [org/gnome/desktop/wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
@@ -242,11 +272,14 @@ background-color='rgb(0,0,0)'
 use-background-color=true
 
 [org/gnome/evince/default]
-window-ratio=(0.56973293768545996, 0.45302013422818793)
+window-ratio=(1.4185124418922614, 0.43930297261678136)
 
 [org/gnome/evolution-data-server]
 migrated=true
 network-monitor-gio-name=''
+
+[org/gnome/evolution-data-server/calendar]
+reminders-past=['e6f6aa8a15268fc841d7b04f58d857a7019ee413\na95cd0be5d8b83d3b067827ec1dd50e5a054b451\t20220924T053000\n1663984800\n1663986600\n1663993200\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nDTSTAMP:20220830T050751Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20220830T050751Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63797519271\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:a95cd0be5d8b83d3b067827ec1dd50e5a054b451\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\na95cd0be5d8b83d3b067827ec1dd50e5a054b451\t20220917T053000\n1663380000\n1663381800\n1663388400\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nDTSTAMP:20220830T050751Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20220830T050751Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63797519271\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:a95cd0be5d8b83d3b067827ec1dd50e5a054b451\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\na95cd0be5d8b83d3b067827ec1dd50e5a054b451\t20220910T053000\n1662775200\n1662777000\n1662783600\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nDTSTAMP:20220830T050751Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20220830T050751Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63797519271\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:a95cd0be5d8b83d3b067827ec1dd50e5a054b451\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\na95cd0be5d8b83d3b067827ec1dd50e5a054b451\t20220903T053000\n1662170400\n1662172200\n1662178800\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nDTSTAMP:20220830T050751Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20220830T050751Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63797519271\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:a95cd0be5d8b83d3b067827ec1dd50e5a054b451\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220820T053000\n1660960800\n1660962600\n1660969200\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220813T053000\n1660356000\n1660357800\n1660364400\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220806T053000\n1659751200\n1659753000\n1659759600\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220730T053000\n1659146400\n1659148200\n1659154800\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220723T053000\n1658541600\n1658543400\n1658550000\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220716T053000\n1657936800\n1657938600\n1657945200\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e0c0ebfc9e29c9b5c4ab0ed09e6c4d13b5b4dd4b\n4c723953d9fdae1d8e237244bf73f6376dbbf406\t20220714T183000\n1657810800\n1657812600\n1657819800\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20220714T183000\r\nDTEND;TZID=Europe/Kiev:20220714T203000\r\nDTSTAMP:20220713T195428Z\r\nORGANIZER;CN=h_events:mailto:\r\n itschool-hillel.org_jmeva134aq2s6l4b8loodbkcto@group.calendar.google.com\r\nUID:eb42kquo5ns5bmah3a8bubmqg8@google.com\r\nATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;\r\n CN=laspavel@gmail.com;X-NUM-GUESTS=0:mailto:laspavel@gmail.com\r\nCREATED:20220711T111948Z\r\nDESCRIPTION:https:\r\n //blog.ithillel.ua/events/how-to-build-an-effective-team\r\nLAST-MODIFIED:20220713T195428Z\r\nLOCATION:Online\\,\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Онлайн майстер-клас «Як побудувати \r\n ефективну команду»\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63793425268\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:4c723953d9fdae1d8e237244bf73f6376dbbf406\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220709T053000\n1657332000\n1657333800\n1657340400\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220702T053000\n1656727200\n1656729000\n1656735600\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220625T053000\n1656122400\n1656124200\n1656130800\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e0c0ebfc9e29c9b5c4ab0ed09e6c4d13b5b4dd4b\ne37dbee880011e556fca82167e4b9eda0c06098a\t20220623T190000\n1655998200\n1656000000\n1656001800\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20220623T190000\r\nDTEND;TZID=Europe/Kiev:20220623T193000\r\nDTSTAMP:20220623T061630Z\r\nORGANIZER;CN=mokhovo@gmail.com:mailto:mokhovo@gmail.com\r\nUID:0i822v0992ekfeovhq2eo99jf3@google.com\r\nATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;\r\n CN=golubtsovdn@gmail.com;X-NUM-GUESTS=0:mailto:golubtsovdn@gmail.com\r\nATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;\r\n CN=mokhovo@gmail.com;X-NUM-GUESTS=0:mailto:mokhovo@gmail.com\r\nATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;\r\n CN=laspavel@gmail.com;X-NUM-GUESTS=0:mailto:laspavel@gmail.com\r\nX-GOOGLE-CONFERENCE:https://meet.google.com/bkp-tewr-xpu\r\nCREATED:20220623T060906Z\r\nDESCRIPTION:1. Более конкретный план работ\\;\r\n \\n\\nСтарт сделаем по факту подтверждения \r\n бюджета\\n\\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:\r\n ~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\\nDo not edit this section of the \r\n description.\\n\\nThis event has a video call.\\nJoin: https:\r\n //meet.google.com/bkp-tewr-xpu\\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:\r\n ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\r\nLAST-MODIFIED:20220623T061630Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Melofone\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63791648190\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:e37dbee880011e556fca82167e4b9eda0c06098a\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220618T053000\n1655517600\n1655519400\n1655526000\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220611T053000\n1654912800\n1654914600\n1654921200\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220604T053000\n1654308000\n1654309800\n1654316400\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'e6f6aa8a15268fc841d7b04f58d857a7019ee413\n22c80cb3a6e9e530ce185d94e269e317700c0751\t20220528T053000\n1653703200\n1653705000\n1653711600\nBEGIN:VEVENT\r\nDTSTART;TZID=Europe/Kiev:20210306T053000\r\nDTEND;TZID=Europe/Kiev:20210306T072000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEXDATE;TZID=Europe/Kiev:20210306T053000\r\nDTSTAMP:20210302T063517Z\r\nUID:0h664qjko1k3gjeg9mad7dauh4@google.com\r\nCREATED:20210302T063517Z\r\nDESCRIPTION:\r\nLAST-MODIFIED:20210302T063517Z\r\nLOCATION:\r\nSEQUENCE:0\r\nSTATUS:CONFIRMED\r\nSUMMARY:Ярмарка\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:63753107960\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:This is an event reminder\r\nTRIGGER:-PT30M\r\nX-EVOLUTION-ALARM-UID:22c80cb3a6e9e530ce185d94e269e317700c0751\r\nEND:VALARM\r\nEND:VEVENT\r\n']
 
 [org/gnome/file-roller/dialogs/extract]
 recreate-folders=true
@@ -261,8 +294,8 @@ sort-type='descending'
 
 [org/gnome/file-roller/ui]
 sidebar-width=200
-window-height=480
-window-width=600
+window-height=1001
+window-width=1920
 
 [org/gnome/gedit/plugins]
 active-plugins=['spell', 'filebrowser', 'time', 'modelines', 'docinfo']
@@ -270,7 +303,7 @@ active-plugins=['spell', 'filebrowser', 'time', 'modelines', 'docinfo']
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/laspavel/tmp'
+virtual-root='file:///home/laspavel'
 
 [org/gnome/gedit/preferences/encodings]
 candidate-encodings=['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']
@@ -286,15 +319,16 @@ size=(900, 700)
 state=43908
 
 [org/gnome/gnome-system-monitor]
-current-tab='processes'
+current-tab='disks'
 maximized=true
+network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(1920, 1033, 0, 0)
+window-state=(1920, 1048, 0, 0)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
-col-6-width=290
+col-6-width=0
 
 [org/gnome/login-screen]
 enable-fingerprint-authentication=true
@@ -302,7 +336,7 @@ enable-password-authentication=true
 enable-smartcard-authentication=false
 
 [org/gnome/meld]
-folder-status-filters=['new', 'modified']
+folder-status-filters=['normal', 'normal', 'new', 'modified']
 
 [org/gnome/meld/window-state]
 height=400
@@ -324,7 +358,7 @@ default-visible-columns=['name', 'size', 'date_modified', 'starred']
 use-tree-view=true
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='list-view'
+default-folder-viewer='icon-view'
 executable-text-activation='ask'
 search-filter-time-type='last_modified'
 search-view='list-view'
@@ -345,6 +379,14 @@ ignore-phase2-ca-cert=false
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/159bb70b-32c9-48b6-9adf-01ccad876035]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/21e1fa91-9508-4824-9d38-124c7d0a2aec]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/2d6d498e-e3db-468d-ab22-70afe1522dd1]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
@@ -357,11 +399,35 @@ ignore-phase2-ca-cert=false
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/41e48154-2ac9-467b-8447-43cc3d31e288]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/4aa87f96-5e91-481b-8145-402d085cbfa8]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/543bdc06-c754-4028-84a6-a654174c10c3]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/5fce4723-ec44-49c3-8106-a2932fe44cfe]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/616de362-88e5-4b24-8bc7-d2573c1318ee]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/686c031e-9065-48af-aa15-877baf3c91eb]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/7dfd872b-d9a2-4600-a709-d8815c3bb2c6]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/80b93dad-fc69-40b3-900b-4cea32c2c984]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -374,6 +440,14 @@ ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/8f0e2e5d-62eb-4b8c-8aff-d633db2f214f]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/92bee681-3756-4c3a-bccf-2de57a65d934]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/984ee634-e26b-4797-8198-52793da46f63]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -398,6 +472,14 @@ ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/db84c132-fd35-4b9e-b13d-78595fb81aa0]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/dc84e080-6697-4918-8375-f5e4639c5285]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/e718d6f0-cbbb-40c8-b3b0-fd07629a57af]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -450,12 +532,12 @@ window-screenshot=@as []
 window-screenshot-clip=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
-binding='<Shift>Print'
+binding='<Super>Print'
 command='ssarea.sh'
 name='SSArea'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
-binding='Print'
+binding=''
 command='ssfull.sh'
 name='SSFull'
 
@@ -465,18 +547,24 @@ command='/opt/flameshot/flameshot.AppImage'
 name='ScreenX'
 
 [org/gnome/settings-daemon/plugins/power]
-power-button-action='nothing'
+power-button-action='interactive'
 sleep-inactive-ac-timeout=3600
 sleep-inactive-ac-type='nothing'
 sleep-inactive-battery-type='nothing'
 
+[org/gnome/settings-daemon/plugins/sharing/gnome-remote-desktop]
+enabled-connections=['032f3ed2-b1cd-4fdd-b261-f4f090c6d2af']
+
+[org/gnome/settings-daemon/plugins/sharing/gnome-user-share-webdav]
+enabled-connections=@as []
+
 [org/gnome/shell]
-app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Cheese.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'firefox.desktop': <{'position': <5>}>, 'libreoffice-calc.desktop': <{'position': <6>}>, 'libreoffice-impress.desktop': <{'position': <7>}>, 'libreoffice-writer.desktop': <{'position': <8>}>, 'org.gnome.Maps.desktop': <{'position': <9>}>, 'org.gnome.Photos.desktop': <{'position': <10>}>, 'rhythmbox.desktop': <{'position': <11>}>, 'gnome-control-center.desktop': <{'position': <12>}>, 'org.gnome.Software.desktop': <{'position': <13>}>, 'org.gnome.gedit.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Totem.desktop': <{'position': <16>}>, 'org.gnome.Weather.desktop': <{'position': <17>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <18>}>}, {'links.desktop': <{'position': <0>}>, 'com.obsproject.Studio.desktop': <{'position': <1>}>, 'java-1.8.0-openjdk-1.8.0.302.b08-2.fc34.x86_64-policytool.desktop': <{'position': <2>}>, 'gparted.desktop': <{'position': <3>}>, 'htop.desktop': <{'position': <4>}>, 'lpf.desktop': <{'position': <5>}>, 'org.gnome.Tour.desktop': <{'position': <6>}>, 'lpf-mscore-fonts.desktop': <{'position': <7>}>, 'lpf-gui.desktop': <{'position': <8>}>, 'lpf-notify.desktop': <{'position': <9>}>, 'pavucontrol.desktop': <{'position': <10>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <11>}>, 'uget-gtk.desktop': <{'position': <12>}>, 'org.gnome.Meld.desktop': <{'position': <13>}>, 'wine-Programs-WinRAR-Новости в последней версии.desktop': <{'position': <14>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <15>}>, 'wine-Programs-WinRAR-Руководство по консольной версии RAR.desktop': <{'position': <16>}>, 'java-1.8.0-openjdk-1.8.0.312.b07-2.fc34.x86_64-policytool.desktop': <{'position': <17>}>}, {'wine-Programs-WinRAR-Справка WinRAR.desktop': <{'position': <0>}>, 'simplescreenrecorder.desktop': <{'position': <1>}>, 'skypeforlinux.desktop': <{'position': <2>}>, 'com.teamviewer.TeamViewer.desktop': <{'position': <3>}>, 'realvnc-vncviewer.desktop': <{'position': <4>}>, 'wine-Programs-WinRAR-WinRAR.desktop': <{'position': <5>}>, 'xterm.desktop': <{'position': <6>}>, 'Zoom.desktop': <{'position': <7>}>, 'dosbox-staging.desktop': <{'position': <8>}>}]
+app-picker-layout=[{'org.gnome.Boxes.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Cheese.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'firefox.desktop': <{'position': <5>}>, 'libreoffice-calc.desktop': <{'position': <6>}>, 'libreoffice-impress.desktop': <{'position': <7>}>, 'libreoffice-writer.desktop': <{'position': <8>}>, 'org.gnome.Maps.desktop': <{'position': <9>}>, 'org.gnome.Photos.desktop': <{'position': <10>}>, 'rhythmbox.desktop': <{'position': <11>}>, 'gnome-control-center.desktop': <{'position': <12>}>, 'org.gnome.Software.desktop': <{'position': <13>}>, 'org.gnome.gedit.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Totem.desktop': <{'position': <16>}>, 'org.gnome.Weather.desktop': <{'position': <17>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <18>}>}, {'links.desktop': <{'position': <0>}>, 'com.obsproject.Studio.desktop': <{'position': <1>}>, 'gparted.desktop': <{'position': <2>}>, 'htop.desktop': <{'position': <3>}>, 'lpf.desktop': <{'position': <4>}>, 'org.gnome.Tour.desktop': <{'position': <5>}>, 'lpf-mscore-fonts.desktop': <{'position': <6>}>, 'lpf-gui.desktop': <{'position': <7>}>, 'lpf-notify.desktop': <{'position': <8>}>, 'org.gnome.Connections.desktop': <{'position': <9>}>, 'pavucontrol.desktop': <{'position': <10>}>, 'org.qbittorrent.qBittorrent.desktop': <{'position': <11>}>, 'uget-gtk.desktop': <{'position': <12>}>, 'org.fedoraproject.MediaWriter.desktop': <{'position': <13>}>, 'wine-Programs-WinRAR-Новости в последней версии.desktop': <{'position': <14>}>, 'ca.desrt.dconf-editor.desktop': <{'position': <15>}>, 'wine-Programs-WinRAR-Руководство по консольной версии RAR.desktop': <{'position': <16>}>, 'java-1.8.0-openjdk-1.8.0.312.b07-2.fc35.x86_64-policytool.desktop': <{'position': <17>}>, 'shutter.desktop': <{'position': <18>}>, 'java-1.8.0-openjdk-1.8.0.322.b06-6.fc35.x86_64-policytool.desktop': <{'position': <19>}>}, {'wine-Programs-WinRAR-Справка WinRAR.desktop': <{'position': <0>}>, 'com.teamviewer.TeamViewer.desktop': <{'position': <1>}>, 'realvnc-vncviewer.desktop': <{'position': <2>}>, 'wine-Programs-WinRAR-WinRAR.desktop': <{'position': <3>}>, 'xterm.desktop': <{'position': <4>}>, 'Zoom.desktop': <{'position': <5>}>, 'dosbox-staging.desktop': <{'position': <6>}>}]
 app-picker-view=uint32 1
 command-history=['r']
 disabled-extensions=['dash-to-dock@micxgx.gmail.com']
-enabled-extensions=['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com']
-favorite-apps=['org.gnome.Nautilus.desktop', 'doublecmd.desktop', 'virtualbox.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'google-chrome.desktop', 'teams.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.remmina.Remmina.desktop', 'skypeforlinux.desktop', 'simplescreenrecorder.desktop', 'org.gnome.Meld.desktop']
+enabled-extensions=['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com', 'autohide-battery@sitnik.ru']
+favorite-apps=['org.gnome.Nautilus.desktop', 'doublecmd.desktop', 'virtualbox.desktop', 'appimagekit_0fed694016e267cc915cc4fbe55c83c1-Telegram_Desktop.desktop', 'google-chrome.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'skypeforlinux.desktop', 'org.gnome.Meld.desktop', 'org.remmina.Remmina.desktop', 'simplescreenrecorder.desktop', 'teams.desktop']
 welcome-dialog-last-shown-version='40.4'
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -509,6 +597,7 @@ transparency-mode='DYNAMIC'
 animate-app-switch=false
 animate-appicon-hover=false
 animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
+animate-appicon-hover-animation-zoom={'SIMPLE': 1.49, 'RIPPLE': 1.25, 'PLANK': 2.0}
 animate-show-apps=false
 animate-window-launch=false
 app-ctrl-hotkey-1=['1']
@@ -600,6 +689,7 @@ group-apps-use-fixed-width=true
 group-apps-use-launchers=false
 hide-overview-on-startup=true
 hot-keys=false
+hotkey-prefix-text='Super'
 hotkeys-overlay-combo='TEMPORARILY'
 intellihide=false
 isolate-monitors=true
@@ -615,13 +705,14 @@ panel-lengths='{"0":100,"1":100}'
 panel-position='BOTTOM'
 panel-size=27
 panel-sizes='{"0":32,"1":32}'
-primary-monitor=-1
+primary-monitor=1
 scroll-panel-action='CYCLE_WINDOWS'
 scroll-panel-show-ws-popup=false
-secondarymenu-contains-appmenu=true
+secondarymenu-contains-appmenu=false
 secondarymenu-contains-showdetails=false
 shift-click-action='MINIMIZE'
 shift-middle-click-action='LAUNCH'
+shortcut-previews=false
 show-activities-button=false
 show-appmenu=false
 show-apps-icon-file=''
@@ -635,7 +726,7 @@ status-icon-padding=-1
 stockgs-force-hotcorner=false
 stockgs-keep-dash=false
 stockgs-keep-top-panel=false
-stockgs-panelbtn-click-only=false
+stockgs-panelbtn-click-only=true
 taskbar-position='LEFTPANEL'
 trans-bg-color='#3d3846'
 trans-gradient-bottom-opacity=0.10000000000000001
@@ -646,12 +737,22 @@ trans-use-custom-bg=true
 trans-use-custom-gradient=true
 trans-use-custom-opacity=false
 trans-use-dynamic-opacity=false
-tray-padding=-1
+tray-padding=4
 window-preview-title-font-color='#dddddd'
 window-preview-title-position='TOP'
 
+[org/gnome/shell/keybindings]
+screenshot=@as []
+screenshot-window=@as []
+show-screen-recording-ui=@as []
+show-screenshot-ui=['Print']
+
 [org/gnome/shell/overrides]
 workspaces-only-on-primary=false
+
+[org/gnome/shell/weather]
+automatic-location=true
+locations=@av []
 
 [org/gnome/shell/world-clocks]
 locations=@av []
@@ -663,7 +764,7 @@ download-updates-notify=false
 first-run=false
 install-timestamp=int64 1613421041
 online-updates-timestamp=int64 1621662286
-update-notification-timestamp=int64 1639926868
+update-notification-timestamp=int64 1651045514
 upgrade-notification-timestamp=int64 1632061574
 
 [org/gnome/system/location]
@@ -700,16 +801,16 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=179
+sidebar-width=171
 sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-size=(1392, 704)
+window-size=(1920, 1048)
 
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.80000000000000004, 0.0, 0.0, 1.0), (1.0, 1.0, 0.0, 0.5)]
-selected-color=(true, 0.80000000000000004, 0.0, 0.0, 1.0)
+custom-colors=[(0.75, 0.25, 0.25, 0.0), (0.0, 0.0, 1.0, 0.25), (0.80000000000000004, 0.0, 0.0, 1.0), (1.0, 1.0, 0.0, 0.5)]
+selected-color=(true, 0.75, 0.25, 0.25, 0.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -717,13 +818,13 @@ location-mode='path-bar'
 show-hidden=false
 show-size-column=true
 show-type-column=true
-sidebar-width=170
+sidebar-width=260
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(262, 121)
-window-size=(1396, 669)
+window-position=(2265, 32)
+window-size=(1231, 903)
 
 [org/virt-manager/virt-manager]
 manager-window-height=550
@@ -742,3 +843,23 @@ network-traffic=false
 
 [system/locale]
 region='ru_UA.UTF-8'
+
+[system/proxy]
+ignore-hosts=@as []
+mode='manual'
+
+[system/proxy/ftp]
+host=''
+port=0
+
+[system/proxy/http]
+host=''
+port=0
+
+[system/proxy/https]
+host=''
+port=0
+
+[system/proxy/socks]
+host=''
+port=0

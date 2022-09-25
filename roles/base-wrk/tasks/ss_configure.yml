@@ -5,14 +5,6 @@
     dest: "/home/{{ wrk_username }}/tmp"
     state: link
 
-- name: Deploy screenshot script ssfull.sh
-  copy:
-    src: "ssfull.sh"
-    dest: "/usr/bin/ssfull.sh"
-    owner: root
-    group: root
-    mode: 0755
-
 - name: Deploy screenshot script ssarea.sh
   copy:
     src: "ssarea.sh"

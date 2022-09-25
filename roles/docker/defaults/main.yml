@@ -5,7 +5,6 @@ docker_required_packages:
   - yum-utils
   - device-mapper-persistent-data
   - lvm2
-#  - pygpme
 
 docker_pkg_repo: "https://download.docker.com/linux/fedora/docker-ce.repo"
 
