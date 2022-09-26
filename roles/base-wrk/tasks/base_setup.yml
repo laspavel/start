@@ -113,7 +113,7 @@
 - name: "Read passfile"
   shell: |
     cat /home/{{ wrk_username }}/.pass
-  when:  when: pass_res.stat.exists
+  when: pass_res.stat.exists
   register: file_content
 
 - name: "Save the passfile content to a variable"
