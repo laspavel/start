@@ -72,22 +72,24 @@
   become_user: "{{ wrk_username }}"
   ignore_errors: yes
 
-- name: Copy dconf gnome dump file
-  copy:
-    src: dump_gnome
-    dest: /tmp/dump_gnome
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
-    mode: 0644
-
 # Create dump: dconf dump / > dump_gnome
 
-- name: Restore gnome parameters
-  shell: "dconf load -f / < /tmp/dump_gnome"
+- name: Check dump_gnome_settings is exists
+  stat:
+    path: "/home/{{ wrk_username }}/dump_gnome_settings"
+  register: settings_res
+
+- name: Restore dash_to_panel parameters
+  shell: "dconf load -f / < /home/{{ wrk_username }}/dump_gnome_settings"
+  become: yes
+  become_user: "{{ wrk_username }}"
+  when: settings_res.stat.exists
+  args:
+    executable: /bin/bash
+
+- name: Restore dash_to_panel parameters
+  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < /tmp/dotfiles/src/dash_to_panel_settings"
   become: yes
   become_user: "{{ wrk_username }}"
   args:
     executable: /bin/bash
-
-
-  

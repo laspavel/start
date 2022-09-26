@@ -104,10 +104,49 @@
     dest: /tmp/dotfiles
     clone: yes
     update: yes
-  
+
+- name: Check passfile is exists
+  stat:
+    path: "/home/{{ wrk_username }}/.pass"
+  register: pass_res
+
+- name: "Read passfile"
+  shell: |
+    cat /home/{{ wrk_username }}/.pass
+  when:  when: pass_res.stat.exists
+  register: file_content
+
+- name: "Save the passfile content to a variable"
+  set_fact:
+    pass: "{{ file_content.stdout }}"
+
+
+- name: Unarchive a .ssh.zip
+  unarchive:
+    src: /tmp/dotfiles/src/.ssh.zip
+    dest: /tmp/dotfiles/src
+    extra_opts:
+    - "-P{{ pass }}"
+
+
+- name: Unarchive a .bash_history.zip
+  unarchive:
+    src: /tmp/dotfiles/src/.bash_history.zip
+    dest: /tmp/dotfiles/src
+    extra_opts:
+    - "-P{{ pass }}"
+
+
+- name: Unarchive a dump_gnome_settings.zip
+  unarchive:
+    src: /tmp/dotfiles/src/dump_gnome_settings.zip
+    dest: /tmp/dotfiles/src
+    extra_opts:
+    - "-P{{ pass }}"
+
 - name: Copy dotfiles to user home directory
   copy:
-    src: "/tmp/dotfiles/src"
+    src: "/tmp/dotfiles/src/"
     dest: "/home/{{ wrk_username }}"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
