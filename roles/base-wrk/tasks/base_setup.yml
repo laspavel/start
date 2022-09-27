@@ -119,7 +119,7 @@
 - name: "Save the passfile content to a variable"
   set_fact:
     passw: "{{ file_content.stdout }}"
-
+  when: pass_res.stat.exists
 
 - name: Unarchive a .ssh.zip
   unarchive:
@@ -127,7 +127,7 @@
     dest: /tmp/dotfiles/src
     extra_opts:
     - "-P{{ passw }}"
-
+  when: pass_res.stat.exists
 
 - name: Unarchive a .bash_history.zip
   unarchive:
@@ -135,7 +135,7 @@
     dest: /tmp/dotfiles/src
     extra_opts:
     - "-P{{ passw }}"
-
+  when: pass_res.stat.exists
 
 - name: Unarchive a dump_gnome_settings.zip
   unarchive:
@@ -143,13 +143,14 @@
     dest: /tmp/dotfiles/src
     extra_opts:
     - "-P{{ passw }}"
+  when: pass_res.stat.exists
 
 - name: Copy dotfiles to user home directory
   copy:
     src: "/tmp/dotfiles/src/"
     dest: "/home/{{ wrk_username }}"
-#    owner: "{{ wrk_username }}"
-#    group: "{{ wrk_username }}"
+    owner: "{{ wrk_username }}"
+    group: "{{ wrk_username }}"
 #    mode: "0664"
     force: yes
   ignore_errors: true

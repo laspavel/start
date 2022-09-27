@@ -79,7 +79,7 @@
     path: "/home/{{ wrk_username }}/dump_gnome_settings"
   register: settings_res
 
-- name: Restore dash_to_panel parameters
+- name: Restore gnome_settings
   shell: "dconf load -f / < /home/{{ wrk_username }}/dump_gnome_settings"
   become: yes
   become_user: "{{ wrk_username }}"
