@@ -151,7 +151,6 @@
     dest: "/home/{{ wrk_username }}"
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
-#    mode: "0664"
     force: yes
   ignore_errors: true
 
@@ -191,14 +190,8 @@
     state: directory
     owner: "{{ wrk_username }}"
     mode: "0700"
+    recurse: yes
     dest: "/home/{{ wrk_username }}/.ssh/"
-
-- name: mkdir SSH config.d directory
-  file:
-    state: directory
-    owner: "{{ wrk_username }}"
-    mode: "0700"
-    dest: /home/{{ wrk_username }}/.ssh/.config.d/
 
 - name: Configure Git Autocomplete
   get_url:
