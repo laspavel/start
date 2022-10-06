@@ -10,3 +10,13 @@
     name: net.ipv4.ip_forward
     value: '1'
     sysctl_set: yes
+
+- name: Updating journald
+  ini_file:
+    dest: "/etc/systemd/journald.conf"
+    section: Journal
+    option: SystemMaxUse
+    value: "128M"
+  
+- name: Run VacuumSize
+  command: journalctl --vacuum-size=128M

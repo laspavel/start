@@ -1,0 +1,21 @@
+---
+    - name: StartMyworkSystem
+      hosts: localhost
+      connection: local
+      become: true
+      remote_user: root
+      gather_facts: true
+      vars_files:
+        - ./vars/config-ol8.yml
+      roles:
+        - role: base-srv
+        - role: sysctl-srv
+        - role: rsagen-srv
+        - role: docker-srv
+        - role: tmux-srv
+        - role: userconf_srv
+        - role: k8s-tools_srv
+        - role: optimize-srv
+        - role: pib
+        - role: reboot
+

@@ -1,26 +1,19 @@
 ---
-- name: Upgrade system
-  yum:
-    name: '*'
-    state: latest
-    exclude: kernel*
+- name: hostname_setup
+  import_tasks: hostname_configure.yml
 
-- name: Install epel-release
-  yum:
-    name:
-        - epel-release
-    state: latest
+- name: selinux configure
+  import_tasks: selinux_configure.yml
 
-- name: Install minimal programs
-  yum:
-    name: "{{ base_required_packages }}"
-    state: present
+- name: base setup
+  import_tasks: base_setup_centos7.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 7)"
 
-- name: Set required timezone
-  timezone:
-    name: "{{ timezone }}"
+- name: base setup
+  import_tasks: base_setup_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
-- name: Set required Selinux status
-  selinux:
-    policy: targeted
-    state: "{{ selinux_status }}"
+
+
+
+

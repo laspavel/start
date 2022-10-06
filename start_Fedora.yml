@@ -6,13 +6,13 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config.yml
+        - ./vars/config_fedora.yml
       roles:
         - role: base-wrk
         - role: sysctl-wrk
         - role: rsagen-wrk
-        - role: docker
+        - role: docker-wrk
         - role: tmux-wrk
-        - role: gnome-restore
+        - role: gnome-restore-wrk
         - role: optimize-wrk
 

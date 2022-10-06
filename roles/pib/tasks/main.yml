@@ -1,0 +1,101 @@
+
+- name: Populate service facts
+  service_facts:
+
+- name: Ensure rsync not run as service
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^RSYNC_ENABLE='
+    line: 'RSYNC_ENABLE=false'
+
+- name: disable and stop rsyncd
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    enabled: no
+    name: rsyncd
+  when: "'rsyncd.service' in services"
+
+- name: enable and start crond
+  systemd:
+    state: started
+    daemon_reload: yes
+    enabled: yes
+    name: crond
+
+- name: enable and start firewalld
+  systemd:
+    state: started
+    daemon_reload: yes
+    enabled: yes
+    name: firewalld
+
+- name: config systemctl    
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_file: /etc/sysctl.d/pib.conf
+  with_dict: "{{ sysctl_settings }}"
+
+- name: disable and stop atd
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    enabled: no
+    name: atd
+  when: "'atd.service' in services"
+
+- name: create file, if not exist
+  shell: "touch {{ item }}"
+  args:
+    creates: "{{ item }}"
+  with_items: "{{ files }}"
+
+- name: Give permissions 0644 to files
+  file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ files_0644 }}"
+
+- name: Give permissions 0600 to files
+  file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0600'
+  with_items: "{{ files_0600 }}"
+
+- name: Give permissions 0000 to files
+  file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0000'
+  with_items: 
+    - /etc/shadow
+
+- name: Give 0751 permissions to dirs
+  file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0751'
+  with_items:
+     - /etc/cron.d
+
+- name: Ensure PermitUserEnvironment is no in sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: 'PermitUserEnvironment'
+    line: 'PermitUserEnvironment no'
+
+- name: check root id in /etc/passwd
+  shell: if grep "^root:x:0:0:root:" /etc/passwd >> /dev/null; then exit 0; else exit 1; fi
+  changed_when: no
+
+- name: check users with id 0 in /etc/passwd
+  shell: "if [[ `cat /etc/passwd | awk -F: '($3 == 0) { print $1 }'` == root ]]; then exit 0; else exit 1; fi"
+  changed_when: no
+

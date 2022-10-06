@@ -1,0 +1,46 @@
+git_email: laspavel@gmail.com
+git_name: laspavel
+timezone: Europe/Kiev
+server_username: laspavel
+server_git_email: laspavel@gmail.com
+hostname_: main-gg
+
+docker_users:
+  - "{{ server_username }}"
+
+base_required_packages:
+  - mc
+  - nano
+  - htop
+  - atop
+  - iotop
+  - net-tools
+  - vim
+  - vim-enhanced
+  - git
+  - tig
+  - curl
+  - wget
+  - jq
+  - sysstat
+  - bash-completion
+  - tar
+  - unzip
+  - ncdu
+  - bind-utils
+  - yum-utils
+  - mlocate
+  - firewalld
+  - python3
+  - python3-pip
+  - python3-devel
+  - sshfs
+  - whois
+  - traceroute
+  - cifs-utils
+  - certbot
+  - nginx
+  - cockpit
+
+timezone: Europe/Kiev
+ 

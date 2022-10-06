@@ -13,9 +13,9 @@
   file:
     state: directory
     mode: 0700
-    dest: /home/{{ wrk_username }}/.ssh/
+    dest: /home/{{ server_username }}/.ssh/
 
 - name: Generate RSA key for main user
-  command : "ssh-keygen -q -t rsa -b 4096 -f /home/{{ wrk_username }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  command : "ssh-keygen -q -t rsa -b 4096 -f /home/{{ server_username }}/.ssh/id_rsa -C \"{{ server_git_email }}\" -N \"\""
   args:
-    creates: /home/{{ wrk_username }}/.ssh/id_rsa
+    creates: /home/{{ server_username }}/.ssh/id_rsa

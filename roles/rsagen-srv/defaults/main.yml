@@ -1,0 +1,4 @@
+---
+server_username: user
+server_git_email: user@example.com
+git_email: user@example.com

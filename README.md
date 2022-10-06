@@ -9,5 +9,5 @@ Ansible roles for my start.
 
 **Usage (from root):**
 ```
-ansible-playbook start.yml --ask-pass
+ansible-playbook start_Fedora.yml
 ```

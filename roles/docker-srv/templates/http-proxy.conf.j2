@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+
+{% if proxy_env.http_proxy is defined or proxy_env.https_proxy is defined %}
+[Service]
+Environment={% if proxy_env.http_proxy is defined %}"HTTP_PROXY={{ proxy_env.http_proxy }}"{% endif %} {% if proxy_env.https_proxy is defined %}"HTTPS_PROXY={{ proxy_env.https_proxy }}"{% endif %} {% if proxy_env.no_proxy is defined %}"NO_PROXY={{ proxy_env.no_proxy }}"{% endif %}
+{% endif %}

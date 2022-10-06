@@ -1,0 +1,19 @@
+{
+{% if proxy_env.http_proxy is defined or proxy_env.https_proxy is defined %}
+ "proxies":
+ {
+   "default":
+   {
+   {% if proxy_env.http_proxy is defined %}
+     "httpProxy": "{{ proxy_env.http_proxy }}",
+   {% endif %}
+   {% if proxy_env.https_proxy is defined %}
+     "httpsProxy": "{{ proxy_env.https_proxy }}",
+   {% endif %}
+   {% if proxy_env.no_proxy is defined %}      
+     "noProxy": "{{ proxy_env.no_proxy }}"
+   {% endif %}
+   }
+ }
+{% endif %}
+}
