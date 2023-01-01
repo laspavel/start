@@ -20,6 +20,26 @@
     state: started
     enabled: yes
 
+- name: Install the make packages
+  yum:
+    name:
+      - cmake 
+      - gcc-c++
+      - make 
+      - python3-devel
+      - ncurses-devel
+    state: present
+
+- name: Clone vim repository
+  git:
+    repo: "https://github.com/vim/vim.git"
+    dest: /tmp/vim
+    clone: yes
+    update: yes
+
+- name: make vim 
+  shell: cd /tmp/vim && ./configure --enable-python3interp && make install
+
 - name: Clone dotfiles repository
   git:
     repo: "https://github.com/laspavel/dotfiles.git"
