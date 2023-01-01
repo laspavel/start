@@ -8,14 +8,17 @@
       vars_files:
         - ./vars/config-ol8.yml
       roles:
-        - role: base-srv
-        - role: sysctl-srv
-        - role: rsagen-srv
-        - role: docker-srv
-        - role: tmux-srv
-        - role: userconf_srv
-        - role: k8s-tools_srv
-        - role: optimize-srv
+        - role: base
+        - role: chrony
+        - role: sysctl
+        - role: gen_rsa_key
+#        - role: docker
+        - role: nginx
+        - role: certbot
+        - role: tmux
+        - role: profile_conf
+        - role: utils_and_tools
+        - role: optimize
         - role: pib
-        - role: reboot
+#        - role: reboot
 

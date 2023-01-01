@@ -1,5 +1,0 @@
----
-- name: Set required hostname
-  hostname:
-    name: "{{ hostname_ }}"
-  when: (hostname_ is defined)

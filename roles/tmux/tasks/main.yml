@@ -1,0 +1,24 @@
+---
+- name: Install tmux for user (Oracle Linux 8)
+  vars:
+     work_user: "{{ server_username }}"
+  import_tasks: tmux_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
+
+- name: Install tmux for root (Oracle Linux 8)
+  vars:
+     work_user: "root"
+  import_tasks: tmux_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
+
+- name: Install tmux for user (Fedora 37+)
+  vars:
+     work_user: "{{ server_username }}"
+  import_tasks: tmux_fedora.yml
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
+
+- name: Install tmux for root (Fedora 37+)
+  vars:
+     work_user: "root"
+  import_tasks: tmux_fedora.yml
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"

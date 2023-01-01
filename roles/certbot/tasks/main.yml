@@ -1,6 +1,6 @@
 ---
 - name: Install certbot program
-  yum:
+  package:
     name: 
       - certbot
     state: present
@@ -12,19 +12,19 @@
                 default_type "text/plain";
                 root /usr/share/nginx/html;
             }
-    dest: /etc/nginx/letsencrypt.conf
+    dest: /etc/nginx/certbot.conf
 
 #- name: Inserting a certbot line in default config
 #  lineinfile:
 #    path: /etc/nginx/nginx.conf
-#    line: include /etc/nginx/letsencrypt.conf;
+#    line: include /etc/nginx/certbot.conf;
 #    insertafter: root         /usr/share/nginx/html;
 
 - name: Install Lets'encrypt renew hook
   copy:
     content: |
             00 3 * * * root certbot renew --post-hook "systemctl reload nginx"
-    dest: /etc/cron.d/letsencrypt_renew
+    dest: /etc/cron.d/certbot_renew
     owner: root
     group: root
     mode: '644'

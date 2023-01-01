@@ -1,5 +1,0 @@
----
-- name: Set required Selinux status
-  selinux:
-    policy: targeted
-    state: "{{ selinux_status }}"

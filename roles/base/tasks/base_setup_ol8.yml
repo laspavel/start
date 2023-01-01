@@ -1,0 +1,54 @@
+---
+- name: Set required hostname
+  hostname:
+    name: "{{ hostname_ }}"
+  when: (hostname_ is defined)
+
+- name: Set required Selinux status
+  selinux:
+    policy: targeted
+    state: "{{ selinux_status }}"
+
+- name: YUM Clean ALL
+  command: yum clean all
+
+- name: YUM Make chache
+  command: yum makecache
+
+- name: Upgrade system
+  yum:
+    name: "*"
+    state: latest
+    exclude: kernel*
+
+- name: Install epel-release-el8
+  yum:
+    name:
+      - oracle-epel-release-el8
+    state: latest
+
+- name: Install minimal programs
+  yum:
+    name: "{{ base_required_packages }}"
+    state: present
+
+- name: Set required timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: start the sshd service and enable it
+  systemd:
+    name: sshd
+    state: started
+    enabled: yes
+
+- name: start the firewalld service and enable it
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Install git
+  yum:
+    name: git
+    state: present

@@ -1,0 +1,15 @@
+---
+- name: Base root setup (OL8)
+  vars:
+     work_dir: "/root/"
+     work_user: "root"
+  import_tasks: profile_conf_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
+
+- name: Base user setup (OL8)
+  vars:
+     work_dir: "/home/{{ server_username }}"
+     work_user: "{{ server_username }}"
+  import_tasks: profile_conf_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
+

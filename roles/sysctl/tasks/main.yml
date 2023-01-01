@@ -1,0 +1,13 @@
+---
+- name: sysctl setup (Oracle Linux 8)
+  import_tasks: sysctl_ol8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
+
+- name: sysctl setup (Fedora 37+)
+  import_tasks: sysctl_fedora.yml
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
+
+
+
+
+
