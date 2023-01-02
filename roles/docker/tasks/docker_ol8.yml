@@ -1,19 +1,38 @@
 ---
+- name: remove old docker-engine
+  yum: 
+    name:
+      - docker
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-engine
+    state: absent
 
-# Basic Setup for Docker Buildnodes (CentOS)
 - name: install required packages
   yum:
-    name: "{{ docker_required_packages }}"
+    name:
+      - git
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
     state: present
 
 - name: add docker repository
   get_url:
-    url: "{{ docker_pkg_repo }}"
+    url: "https://download.docker.com/linux/centos/docker-ce.repo"
     dest: /etc/yum.repos.d/docker-ce.repo
 
 - name: install docker
   yum:
-    name: "{{ docker_packages }}"
+    name:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io 
+      - docker-compose-plugin
     state: present
 
 - name: Enable IP Forwarding
@@ -52,8 +71,8 @@
 - name: setup a cronjob for docker cleanup
   cron:
     name: docker cleanup
-    minute: "00"
-    hour: "21"
+    minute: "0"
+    hour: "1"
     user: root
     job: 'docker system prune -f --filter "until=2h" -a >/dev/null 2>&1'
     cron_file: docker_cleanup
@@ -61,8 +80,8 @@
 - name: setup a cronjob for docker volumes cleanup
   cron:
     name: docker volumes cleanup
-    minute: "15"
-    hour: "21"
+    minute: "1"
+    hour: "1"
     user: root
     job: 'for vol in $(docker volume ls -q -f dangling=true); do docker volume rm $vol >/dev/null 2>&1; done'
     cron_file: docker_cleanup

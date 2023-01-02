@@ -12,7 +12,7 @@
         - role: chrony
         - role: sysctl
         - role: gen_rsa_key
-#        - role: docker
+        - role: docker
         - role: nginx
         - role: certbot
         - role: tmux

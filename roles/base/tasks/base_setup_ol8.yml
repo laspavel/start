@@ -11,9 +11,13 @@
 
 - name: YUM Clean ALL
   command: yum clean all
+  args:
+    warn: false
 
 - name: YUM Make chache
   command: yum makecache
+  args:
+    warn: false
 
 - name: Upgrade system
   yum:
