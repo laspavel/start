@@ -37,7 +37,7 @@
 
 - name: "Read passfile"
   shell: |
-    cat {{ work_user }}/.pass
+    cat {{ work_dir }}/.pass
   when: pass_res.stat.exists
   register: file_content
 
