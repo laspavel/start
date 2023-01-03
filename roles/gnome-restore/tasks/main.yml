@@ -36,11 +36,13 @@
 
 - name: Copy Background file
   copy:
-    src: background1.jpg
-    dest: /home/{{ wrk_username }}/.local/share/backgrounds/background1.jpg
+    src: "{{ item }}"
+    dest: /home/{{ wrk_username }}/.local/share/backgrounds/
     owner: "{{ wrk_username }}"
     group: "{{ wrk_username }}"
     mode: 0644
+    with_fileglob:
+    - background*.jpg
 
 - name: download sources
   get_url: 
