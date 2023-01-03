@@ -9,15 +9,11 @@
     policy: targeted
     state: "{{ selinux_status }}"
 
-- name: Delete default dnf.conf
-  file:
-    path: "/etc/dnf/dnf.conf"
-    state: absent
-
-- name: Add new config in dnf.conf
-  blockinfile:
-    path: "/etc/dnf/dnf.conf"
-    block: |
+- name: Update dnf.conf
+  copy:
+    force: true
+    dest: "/etc/dnf/dnf.conf"
+    content: |
         [main]
         gpgcheck=1
         installonly_limit=3

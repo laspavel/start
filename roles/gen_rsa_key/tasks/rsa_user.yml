@@ -2,7 +2,7 @@
 - name: Add new users
   user:
     name: "{{ server_username }}"
-    comment: User account
+    comment: "{{ server_username }}"
     shell: /bin/bash
     system: no
     createhome: yes

@@ -8,11 +8,17 @@
       vars_files:
         - ./vars/config_fedora.yml
       roles:
-        - role: base-wrk
-        - role: sysctl-wrk
-        - role: rsagen-wrk
-        - role: docker-wrk
-        - role: tmux-wrk
-        - role: gnome-restore-wrk
-        - role: optimize-wrk
+        - role: base
+        - role: chrony
+        - role: sysctl
+        - role: gen_rsa_key
+        - role: docker
+        - role: vscode
+        - role: nginx
+        - role: tmux
+        - role: profile_conf
+        - role: screenshot
+        - role: gnome-restore
+        - role: utils_and_tools
+        - role: optimize
 
