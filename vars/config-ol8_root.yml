@@ -1,12 +1,12 @@
 git_email: laspavel@gmail.com
 git_name: laspavel
-timezone: Europe/Kiev
-server_username: laspavel
-server_git_email: laspavel@gmail.com
 hostname_: main-gg
+timezone: Europe/Kiev
+work_dir: "/root"
+work_user: "root"
 
 docker_users:
-  - "{{ server_username }}"
+  - "{{ work_user }}"
 
 base_required_packages:
   - mc
@@ -40,6 +40,3 @@ base_required_packages:
   - certbot
   - nginx
   - cockpit
-
-timezone: Europe/Kiev
- 

@@ -1,19 +1,14 @@
 git_email: laspavel@gmail.com
 git_name: laspavel
-wrk_username: laspavel
-server_username: laspavel
 hostname_: homebook
-
-virtualbox_version: 6.1
-virtualbox_extension_version: 6.1.16
-virtualbox_extension_build: 140961
-virtualbox_rpm_repository: http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+timezone: Europe/Kiev
+work_dir: "/home/laspavel"
+work_user: "laspavel"
 
 docker_users:
-  - "{{ wrk_username }}"
+  - "{{ work_user }}"
 
 base_required_packages:
-#- asbru-cm
 - binutils 
 - cronie
 - gcc 
@@ -82,6 +77,3 @@ base_required_packages:
 - kubernetes-client
 - remmina
 - ecryptfs-utils
-
-timezone: Europe/Kiev
- 

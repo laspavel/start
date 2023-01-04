@@ -27,9 +27,9 @@
 # tasks file for gnome-restore
 - name: Create Background dir
   file: 
-    path: "/home/{{ wrk_username }}/.local/share/backgrounds"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    path: "{{ work_dir }}/.local/share/backgrounds"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
     mode: 0755
     recurse: yes
     state: directory
@@ -37,9 +37,9 @@
 - name: Copy Background file
   copy:
     src: "{{ item }}"
-    dest: "/home/{{ wrk_username }}/.local/share/backgrounds/"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    dest: "{{ work_dir }}/.local/share/backgrounds/"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
     mode: 0644
   with_fileglob:
     - "background*.jpg"
@@ -55,42 +55,42 @@
 - name: Dock-to-Panel install 
   command: gnome-shell-extension-installer 1160 --yes --restart-shell
   become: true
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
 
 - name: AutoHide Battery install
   command: gnome-shell-extension-installer 595 --yes --restart-shell
   become: true
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
 
 - name: Enable Gnome Extensions
   command: gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com', 'autohide-battery@sitnik.ru']"
   become: true
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
   ignore_errors: yes
 
 #- name: Dock-to-Panel enable 
 #  command: gnome-extensions enable dash-to-panel@jderose9.github.com
 #  become: true
-#  become_user: "{{ wrk_username }}"
+#  become_user: "{{ work_user }}"
 #  ignore_errors: yes
 
 #- name: AutoHide Battery enable
 #  command: gnome-extensions enable autohide-battery@sitnik.ru
 #  become: true
-#  become_user: "{{ wrk_username }}"
+#  become_user: "{{ work_user }}"
 #  ignore_errors: yes
 
 # Create dump: dconf dump / > dump_gnome
 
 - name: Check dump_gnome_settings is exists
   stat:
-    path: "/home/{{ wrk_username }}/dump_gnome_settings"
+    path: "{{ work_dir }}/dump_gnome_settings"
   register: settings_res
 
 - name: Restore gnome_settings
-  shell: "dconf load -f / < /home/{{ wrk_username }}/dump_gnome_settings"
+  shell: "dconf load -f / < {{ work_dir }}/dump_gnome_settings"
   become: yes
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
   when: settings_res.stat.exists
   args:
     executable: /bin/bash
@@ -98,6 +98,6 @@
 - name: Restore dash_to_panel parameters
   shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < /tmp/dotfiles/src/dash_to_panel_settings"
   become: yes
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

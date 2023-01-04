@@ -6,19 +6,19 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config-ol8.yml
+        - ./vars/config_fedora_user.yml
       roles:
         - role: base
         - role: chrony
         - role: sysctl
         - role: gen_rsa_key
         - role: docker
+        - role: vscode
         - role: nginx
-        - role: certbot
         - role: tmux
         - role: profile_conf
+        - role: screenshot
+        - role: gnome-restore
         - role: utils_and_tools
         - role: optimize
-        - role: pib
-#        - role: reboot
 

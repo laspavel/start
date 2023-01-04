@@ -1,0 +1,26 @@
+---
+- name: Add new users
+  user:
+    name: "{{ work_user }}"
+    comment: "{{ work_user }}"
+    shell: /bin/bash
+    createhome: yes
+    home: "{{ work_dir }}"
+    state: present
+
+- name: Creates destination directory
+  file:
+    state: directory
+    mode: 0700
+    dest: "{{ work_dir }}/.ssh/"
+
+- name: Generate RSA key for main user
+  command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  args:
+    creates: "{{ work_dir }}/.ssh/id_rsa"
+
+- name: Create local tmp folder
+  file:
+    src: "/dev/shm"
+    dest: "{{ work_dir }}/tmp"
+    state: link

@@ -1,2 +1,4 @@
 ---
-wrk_username: user
+work_dir: "/root"
+work_user: "root"
+

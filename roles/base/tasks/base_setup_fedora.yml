@@ -112,12 +112,12 @@
 
 - name: Check passfile is exists
   stat:
-    path: "/home/{{ wrk_username }}/.pass"
+    path: "{{ work_dir }}/.pass"
   register: pass_res
 
 - name: "Read passfile"
   shell: |
-    cat /home/{{ wrk_username }}/.pass
+    cat {{ work_dir }}/.pass
   when: pass_res.stat.exists
   register: file_content
 
@@ -153,50 +153,50 @@
 - name: Copy dotfiles to user home directory
   copy:
     src: "/tmp/dotfiles/src/"
-    dest: "/home/{{ wrk_username }}"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    dest: "{{ work_dir }}"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
     force: yes
   ignore_errors: true
 
 - name: Creates directory Vim-plug
   file:
-    path: "/home/{{ wrk_username }}/.vim/autoload/"
+    path: "{{ work_dir }}/.vim/autoload/"
     state: directory
     mode: "0775"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
 
 - name: Creates directory local bin
   file:
-    path: "/home/{{ wrk_username }}/.local/bin/"
+    path: "{{ work_dir }}/.local/bin/"
     state: directory
     mode: "0775"
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
 
 - name: Configure Vim-plug
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    dest: "/home/{{ wrk_username }}/.vim/autoload/plug.vim"
+    dest: "{{ work_dir }}/.vim/autoload/plug.vim"
     mode: '0775'
-    owner: "{{ wrk_username }}"
-    group: "{{ wrk_username }}"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
 
 - name: Install Plugin
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
   become: yes
-  become_user: "{{ wrk_username }}"
+  become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
 
 - name: mkdir SSH config directory
   file:
     state: directory
-    owner: "{{ wrk_username }}"
+    owner: "{{ work_user }}"
     mode: "0700"
     recurse: yes
-    dest: "/home/{{ wrk_username }}/.ssh/"
+    dest: "{{ work_dir }}/.ssh/"
 
 - name: Configure Git Autocomplete
   get_url:

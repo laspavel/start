@@ -2,7 +2,7 @@
 - name: Create local tmp folder
   file:
     src: "/dev/shm"
-    dest: "/home/{{ wrk_username }}/tmp"
+    dest: "{{ work_dir }}/tmp"
     state: link
 
 - name: Deploy screenshot script ssarea.sh

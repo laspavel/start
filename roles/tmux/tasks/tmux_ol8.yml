@@ -34,6 +34,6 @@
 - name: install tmux-config 
   shell: "/tmp/tmux-config/install.sh"
   become: yes
-  become_user: "{{ server_username }}"
+  become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

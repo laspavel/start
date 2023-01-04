@@ -1,3 +1,4 @@
 ---
-server_username: user
-server_git_email: user@example.com
+git_email: user@example.com
+work_dir: "/root"
+work_user: "root"
