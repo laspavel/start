@@ -10,17 +10,12 @@ Ansible roles for my start.
 **Usage Fedora (from root):**
 ```
 dnf install -y ansible git
-ansible-playbook start_Fedora.yml
-```
-
-**Usage CentOS7 (from root):**
-```
-yum install epel-release && yum install -y ansible git
-ansible-playbook start_CentOS7.yml
+ansible-playbook start_Fedora_user.yml
 ```
 
 **Usage Oracle Linux 8 (from root):**
 ```
 yum install oracle-epel-release-el8 && yum install -y ansible git
-ansible-playbook start_OL8.yml
+ansible-playbook start_OL8_root.yml
 ```
+
