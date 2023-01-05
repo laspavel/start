@@ -13,10 +13,15 @@
     state: directory
     mode: 0700
     dest: "{{ work_dir }}/.ssh/"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
 
 - name: Generate RSA key for main user
   command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  become: yes
+  become_user: "{{ work_user }}"
   args:
+    executable: /bin/bash
     creates: "{{ work_dir }}/.ssh/id_rsa"
 
 - name: Create local tmp folder
@@ -24,3 +29,5 @@
     src: "/dev/shm"
     dest: "{{ work_dir }}/tmp"
     state: link
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"

@@ -1,8 +1,8 @@
 ---
 - name: Base profile setup (OL8)
-  import_tasks: profile_conf_ol8.yml
+  include_tasks: profile_conf_ol8.yml
   when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
 - name: Base profile setup (Fedora 37+)
-  import_tasks: profile_conf_fedora.yml
+  include_tasks: profile_conf_fedora.yml
   when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
