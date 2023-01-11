@@ -6,7 +6,7 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config-debian_user.yml
+        - ./vars/config-srv_ol8_user.yml
       roles:
         - role: base
         - role: chrony
@@ -18,7 +18,7 @@
         - role: tmux
         - role: profile_conf
         - role: utils_and_tools
-#        - role: optimize
-#        - role: pib
+        - role: optimize
+        - role: pib
 #        - role: reboot
 

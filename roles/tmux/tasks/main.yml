@@ -5,7 +5,7 @@
 
 - name: Install tmux (Fedora 37+)
   include_tasks: tmux_fedora.yml
-  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
 
 - name: Install tmux (Debian 10+)
   include_tasks: tmux_debian.yml

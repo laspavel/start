@@ -5,7 +5,11 @@
 
 - name: sysctl setup (Fedora 37+)
   include_tasks: sysctl_fedora.yml
-  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
+
+- name: base setup (Debian 10+)
+  include_tasks: base_setup_debian.yml
+  when: "(ansible_distribution == 'Debian') and (ansible_distribution_major_version|int >= 10)"
 
 
 

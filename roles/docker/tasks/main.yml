@@ -5,7 +5,7 @@
 
 - name: docker setup (Fedora 37+)
   include_tasks: docker_fedora.yml
-  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 37)"
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
 
 - name: docker setup (Debian 10+)
   include_tasks: docker_debian.yml
