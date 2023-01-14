@@ -1,16 +1,7 @@
 ---
-- name: base setup (Alma Linux 8)
-  include_tasks: base_setup_alma8.yml
-  when: "(ansible_distribution == 'AlmaLinux') and (ansible_distribution_major_version|int == 8)"
-
-- name: base setup (Rocky Linux 8)
-  include_tasks: base_setup_rocky8.yml
-  when: "(ansible_distribution == 'Rocky') and (ansible_distribution_major_version|int == 8)"
-
-
-- name: base setup (Oracle Linux 8)
-  include_tasks: base_setup_ol8.yml
-  when: "(ansible_distribution == 'OracleLinux') and (ansible_distribution_major_version|int == 8)"
+- name: Base profile setup (OracleLinux 8; AlmaLinux 8; RockyLinux 8)
+  include_tasks: base_setup_rpm8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
 - name: base setup (Fedora 37+)
   include_tasks: base_setup_fedora.yml

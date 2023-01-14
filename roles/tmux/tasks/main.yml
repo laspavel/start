@@ -1,15 +1,7 @@
 ---
-- name: Install tmux (AlmaLinux 8)
-  include_tasks: tmux_alma8.yml
-  when: "(ansible_distribution == 'AlmaLinux') and (ansible_distribution_major_version|int == 8)"
-
-- name: Install tmux (RockyLinux 8)
-  include_tasks: tmux_rocky8.yml
-  when: "(ansible_distribution == 'Rocky') and (ansible_distribution_major_version|int == 8)"
-
-- name: Install tmux (Oracle Linux 8)
-  include_tasks: tmux_ol8.yml
-  when: "(ansible_distribution == 'OracleLinux') and (ansible_distribution_major_version|int == 8)"
+- name: Install TMUX (Oracle Linux 8; AlmaLinux 8; RockyLinux 8)
+  include_tasks: tmux_rpm8.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
 - name: Install tmux (Fedora 37+)
   include_tasks: tmux_fedora.yml
