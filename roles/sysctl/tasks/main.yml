@@ -1,6 +1,6 @@
 ---
-- name: sysctl setup (Oracle Linux 8)
-  include_tasks: sysctl_ol8.yml
+- name: sysctl setup (Oracle Linux 8; AlmaLinux 8; RockyLinux 8)
+  include_tasks: sysctl_rpm8.yml
   when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
 - name: sysctl setup (Fedora 37+)

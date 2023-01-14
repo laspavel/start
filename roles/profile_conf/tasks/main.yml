@@ -1,6 +1,6 @@
 ---
-- name: Base profile setup (OL8)
-  include_tasks: profile_conf_ol8.yml
+- name: Base profile setup (Oracle Linux 8; AlmaLinux 8; RockyLinux 8)
+  include_tasks: profile_conf_rpm8.yml
   when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
 - name: Base profile setup (Fedora 37+)
