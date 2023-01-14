@@ -25,10 +25,10 @@
     state: latest
     exclude: kernel*
 
-- name: Install epel-release-el8
+- name: Install epel-release
   yum:
     name:
-      - oracle-epel-release-el8
+      - epel-release
     state: latest
 
 - name: Install minimal programs
