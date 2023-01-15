@@ -1,4 +1,46 @@
 ---
-- name: RSA KeyGen
-  delegate_to: localhost
-  import_tasks: rsa_keygen.yml
+- name: Print a message
+  debug:
+     msg: 'Logging in as {{ work_user }} - {{ work_dir }} - {{ passwd_user }} '
+
+- name: Create user group
+  group:
+    name: "{{ work_user }}"
+    state: present
+
+- name: Add new users
+  user:
+    name: "{{ work_user }}"
+    comment: "{{ work_user }}"
+    groups: "{{ work_user }}"
+    password: "{{ passwd_user | string | password_hash('sha512') }}"
+    shell: /bin/bash
+    createhome: yes
+    home: "{{ work_dir }}"
+    append: yes
+    update_password: always
+    state: present
+
+- name: Creates destination directory
+  file:
+    state: directory
+    mode: 0700
+    dest: "{{ work_dir }}/.ssh/"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+
+- name: Generate RSA key for main user
+  command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  become: yes
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash
+    creates: "{{ work_dir }}/.ssh/id_rsa"
+
+- name: Create local tmp folder
+  file:
+    src: "/dev/shm"
+    dest: "{{ work_dir }}/tmp"
+    state: link
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
