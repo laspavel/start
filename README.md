@@ -3,19 +3,21 @@
 Ansible roles for my start.
 
 **Requirements:**
+* python3 python3-pip
 * Ansible
 * Git
 * if required restore all gnome configs add password to ~/.pass
 
 **Usage Fedora (from root):**
 ```
+dnf install python3 python3-pip
 dnf install -y ansible git
-ansible-playbook start_Fedora_user.yml
+ansible-playbook ws_fedora_user.yml
 ```
 
 **Usage Oracle Linux 8 (from root):**
 ```
-yum install oracle-epel-release-el8 && yum install -y ansible git
-ansible-playbook start_OL8_root.yml
+yum install -y epel-release && yum install -y python3 python3-pip && yum install -y ansible git
+ansible-playbook srv_rpm8_root.yml
 ```
 
