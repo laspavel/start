@@ -6,7 +6,7 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config-srv_ol8_root.yml
+        - ./vars/config-srv_rpm8_root.yml
       roles:
         - role: base
         - role: chrony
