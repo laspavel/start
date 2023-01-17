@@ -2,8 +2,6 @@ git_email: laspavel@gmail.com
 git_name: laspavel
 hostname_: main-gg
 timezone: Europe/Kiev
-#work_dir: "/root"
-#work_user: "root"
 
 docker_users:
   - "{{ work_user }}"

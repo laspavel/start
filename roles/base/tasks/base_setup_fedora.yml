@@ -74,6 +74,11 @@
     name: "{{ base_required_packages }}"
     state: present
 
+- name: Install plocate package
+  yum:
+    name: "plocate"
+    state: present
+
 - name: Upgrade firmware
   command: fwupdmgr get-devices -y && fwupdmgr refresh --force -y && fwupdmgr get-updates -y && fwupdmgr update --no-reboot-check -y
 

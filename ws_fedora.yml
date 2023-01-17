@@ -6,7 +6,20 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config_ws_fedora_root.yml
+        - ./vars/config_ws_fedora.yml
+      vars_prompt:
+        - name: work_user
+          prompt: What is target work user?
+          private: no
+          default: "laspavel"
+        - name: passwd_user
+          prompt: What is password work user?
+          private: yes
+          default: "P@ssroot"
+        - name: work_dir
+          prompt: What is target work user home directory ?
+          private: no
+          default: "/home/laspavel"
       roles:
         - role: base
         - role: chrony

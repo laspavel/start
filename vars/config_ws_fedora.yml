@@ -2,8 +2,6 @@ git_email: laspavel@gmail.com
 git_name: laspavel
 hostname_: homebook
 timezone: Europe/Kiev
-work_dir: "/home/laspavel"
-work_user: "laspavel"
 
 docker_users:
   - "{{ work_user }}"

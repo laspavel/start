@@ -36,6 +36,11 @@
     name: "{{ base_required_packages }}"
     state: present
 
+- name: Install mlocate package
+  yum:
+    name: "mlocate"
+    state: present
+
 - name: Set required timezone
   timezone:
     name: "{{ timezone }}"

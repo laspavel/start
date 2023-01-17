@@ -1,8 +1,4 @@
 ---
-- name: Print a message
-  debug:
-     msg: 'Logging in as {{ work_user }} - {{ work_dir }} - {{ passwd_user }} '
-
 - name: Create user group
   group:
     name: "{{ work_user }}"
