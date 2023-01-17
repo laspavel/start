@@ -17,14 +17,17 @@ ansible-playbook ws_fedora.yml
 
 **Usage on Server (OracleLinux 8; AlmaLinux 8; RockyLinux 8, Fedora Server 36-37):**
 ```
-yum install -y epel-release && yum install -y python3 python3-pip && yum install -y ansible
+yum install -y epel-release
+yum install -y python3 python3-pip
+yum install -y ansible
 ansible-playbook srv_rpm8.yml
 ```
 
 **Usage on Server (Debian 11):**
 
 ```
-apt install -y python3 python3-pip && apt install -y ansible
+apt install -y python3 python3-pip
+apt install -y ansible
 ansible-playbook srv_deb.yml
 ```
 
