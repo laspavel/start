@@ -1,0 +1,37 @@
+---
+    - name: StartMyworkSystem
+      hosts: localhost
+      connection: local
+      become: true
+      remote_user: root
+      gather_facts: true
+      vars_files:
+        - ./vars/config-srv_rpm9.yml
+      vars_prompt:
+        - name: work_user
+          prompt: What is target work user?
+          private: no
+          default: "root"
+        - name: passwd_user
+          prompt: What is password work user?
+          private: yes
+          default: "P@ssroot"
+        - name: work_dir
+          prompt: What is target work user home directory ?
+          private: no
+          default: "/root"
+      roles:
+        - role: base
+        - role: chrony
+        - role: sysctl
+        - role: gen_rsa_key
+        - role: docker
+        - role: nginx
+        - role: certbot
+        - role: tmux
+        - role: profile_conf
+        - role: utils_and_tools
+        - role: optimize
+        - role: pib
+#        - role: reboot
+

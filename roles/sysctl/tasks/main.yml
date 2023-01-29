@@ -3,6 +3,10 @@
   include_tasks: sysctl_rpm8.yml
   when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
+- name: Base profile setup (OracleLinux 9; AlmaLinux 9; RockyLinux 9)
+  include_tasks: base_setup_rpm9.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 9)"
+
 - name: sysctl setup (Fedora 37+)
   include_tasks: sysctl_fedora.yml
   when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"

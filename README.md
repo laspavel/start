@@ -10,25 +10,23 @@ Playbooks for prepare my workstation and Bastion (GoldenGate) servers.
 
 **Usage on Workstation (Fedora Workstation 36-37):**
 ```
-dnf install python3 python3-pip
-dnf install -y ansible
-ansible-playbook ws_fedora.yml
+bash ws_fedora.sh
 ```
 
 **Usage on Server (OracleLinux 8; AlmaLinux 8; RockyLinux 8, Fedora Server 36-37):**
 ```
-yum install -y epel-release
-yum install -y python3 python3-pip
-yum install -y ansible
-ansible-playbook srv_rpm8.yml
+bash srv_rpm8.sh
+```
+
+**Usage on Server (OracleLinux 9; AlmaLinux 9; RockyLinux 9,):**
+```
+bash srv_rpm8.sh
 ```
 
 **Usage on Server (Debian 11):**
 
 ```
-apt install -y python3 python3-pip
-apt install -y ansible
-ansible-playbook srv_deb.yml
+bash srv_deb.sh
 ```
 
 ## License ##
