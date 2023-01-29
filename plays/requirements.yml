@@ -1,4 +1,4 @@
 collections:
   - community.general
-  - timezone
+  - ansible.posix
   - community.crypto

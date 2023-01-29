@@ -6,7 +6,7 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ./vars/config-srv_rpm8.yml
+        - ../vars/config-srv_rpm8.yml
       vars_prompt:
         - name: work_user
           prompt: What is target work user?
