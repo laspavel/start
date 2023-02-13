@@ -75,3 +75,4 @@ base_required_packages:
 - kubernetes-client
 - remmina
 - ecryptfs-utils
+- lnav

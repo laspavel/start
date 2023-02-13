@@ -38,3 +38,4 @@ base_required_packages:
   - certbot
   - nginx
   - cockpit
+  - lnav
