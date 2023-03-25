@@ -24,7 +24,7 @@
         - role: base
         - role: chrony
         - role: sysctl
-        - role: gen_rsa_key
+        - role: add_user
         - role: docker
         - role: nginx
         - role: certbot

@@ -4,7 +4,7 @@
     name: "{{ work_user }}"
     state: present
 
-- name: Add new users
+- name: Add new user
   user:
     name: "{{ work_user }}"
     comment: "{{ work_user }}"
