@@ -11,6 +11,7 @@
       - gnome-shell-extension-apps-menu
       - gnome-shell-extension-window-list
       - gnome-shell-extension-common
+      - gnome-extensions-app
     state: present
 
 - name: disable auto maximize

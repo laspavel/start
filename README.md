@@ -8,12 +8,12 @@ Playbooks for prepare my workstation and Bastion (GoldenGate) servers.
 * root user on target PC
 * if required restore all personal configs add password to ~/.pass
 
-**Usage on Workstation (Fedora Workstation 36-37):**
+**Usage on Workstation (Fedora Workstation 38):**
 ```
 bash ws_fedora.sh
 ```
 
-**Usage on Server (OracleLinux 8; AlmaLinux 8; RockyLinux 8, Fedora Server 36-37):**
+**Usage on Server (OracleLinux 8; AlmaLinux 8; RockyLinux 8, Fedora Server 38):**
 ```
 bash srv_rpm8.sh
 ```

@@ -22,6 +22,7 @@
         max_parallel_downloads=10
         deltarpm=true
         best=False
+        max_parallel_downloads=10
         skip_if_unavailable=True
 
 - name: disable fedora-updates-modular.repo
@@ -209,3 +210,10 @@
     dest: "/etc/bash_completion.d/git-completion.bash"
     mode: "0664"
   changed_when: false
+
+- name: Enable Flatpack repo
+  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  become: yes
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash
