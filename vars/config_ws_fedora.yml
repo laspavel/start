@@ -50,7 +50,7 @@ base_required_packages:
 - langpacks-ru
 - pavucontrol
 - wget
-- ffmpeg
+#- ffmpeg
 - file-roller-nautilus
 - fuse-exfat
 - gvfs-fuse

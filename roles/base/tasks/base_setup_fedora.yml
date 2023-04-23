@@ -80,8 +80,8 @@
     name: "plocate"
     state: present
 
-- name: Upgrade firmware
-  command: fwupdmgr get-devices -y && fwupdmgr refresh --force -y && fwupdmgr get-updates -y && fwupdmgr update --no-reboot-check -y
+#- name: Upgrade firmware
+#  command: fwupdmgr get-devices -y && fwupdmgr refresh --force -y && fwupdmgr get-updates -y && fwupdmgr update --no-reboot-check -y
 
 - name: Install the 'Development tools' package group
   yum:
