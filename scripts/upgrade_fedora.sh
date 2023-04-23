@@ -3,7 +3,7 @@
 sudo dnf -y update
 sudo dnf -y upgrade --refresh
 sudo dnf -y install dnf-plugin-system-upgrade --best
-sudo dnf -y system-upgrade download --releasever=35
+sudo dnf -y system-upgrade download --releasever=38
 sudo dnf system-upgrade reboot
 
 ### After reboot ###

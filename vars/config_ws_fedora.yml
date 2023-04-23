@@ -76,3 +76,4 @@ base_required_packages:
 - remmina
 - ecryptfs-utils
 - lnav
+- dnf-automatic
