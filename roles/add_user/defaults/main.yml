@@ -1,5 +1,7 @@
 ---
-git_email: user@example.com
 work_dir: "/root"
 work_user: "root"
 passwd_user: "P@ssw0rdI@24"
+work_groups:
+  - "{{ work_user }}"
+# create_id_rsa: true

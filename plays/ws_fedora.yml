@@ -25,13 +25,13 @@
         - role: chrony
         - role: sysctl
         - role: add_user
-        - role: docker
+        - role: docker2
         - role: vscode
         - role: nginx
         - role: tmux
         - role: profile_conf
-        - role: screenshot
+#        - role: screenshot
         - role: gnome-restore
         - role: utils_and_tools
-        - role: optimize
+#        - role: optimize
 

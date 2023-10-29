@@ -1,8 +1,9 @@
 ---
-- name: Create user group
+- name: Create groups
   group:
-    name: "{{ work_user }}"
+    name: "{{ item }}"
     state: present
+  with_items: "{{ work_groups }}"
 
 - name: Add new user
   user:
@@ -11,6 +12,7 @@
     groups: "{{ work_user }}"
     password: "{{ passwd_user | string | password_hash('sha512') }}"
     shell: /bin/bash
+    system: no
     createhome: yes
     home: "{{ work_dir }}"
     append: yes
@@ -25,18 +27,16 @@
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
 
+- name: Get Hostname got ssh-keygen
+  ansible.builtin.gather_facts:
+  when: create_id_rsa is defined
+
 - name: Generate RSA key for main user
-  command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ git_email }}\" -N \"\""
+  command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ work_user }}@{{ ansible_hostname }}\" -N \"\""
   become: yes
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
     creates: "{{ work_dir }}/.ssh/id_rsa"
+  when: create_id_rsa is defined
 
-- name: Create local tmp folder
-  file:
-    src: "/dev/shm"
-    dest: "{{ work_dir }}/tmp"
-    state: link
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"

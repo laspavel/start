@@ -1,0 +1,12 @@
+---
+- name: DockerHostsPlaybook
+  hosts: docker_main
+  become: true
+  remote_user: root
+  gather_facts: true
+  vars_files:
+    - ./vars/main.yml
+  roles:
+    - role: add_user
+    - role: docker
+  environment: "{{ proxy_env }}"

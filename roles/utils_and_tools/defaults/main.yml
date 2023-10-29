@@ -2,52 +2,34 @@
 work_dir: "/root"
 work_user: "root"
 
-### Helm Settings
+### Helm ###
 helm_binary_version: v3.2.4
 helm_binary_download_url: "https://get.helm.sh/helm-{{ helm_binary_version }}-linux-amd64.tar.gz"
-helm_binary: "/usr/bin/helm"
-helm_home: ".helm"
-helm_rancher_repo: rancher-stable
-helm_rancher_repo_url: "https://releases.rancher.com/server-charts/stable"
-helm_rancher_version: v2.5.7
-# You only need to configure these "helm_certmanager_*" values if you enable
-# Let's Encrypt support in the "Rancher Cluster Settings" section!
-helm_certmanager_version: 0.16.0
-helm_certmanager_jetstack_repo: jetstack
-helm_certmanager_jetstack_repo_url: https://charts.jetstack.io
 
-### Kubectlx Settings
+### Kubectx ###
 kubectx_binary_version: 0.8.0
 kubectx_binary_download_url: "https://github.com/ahmetb/kubectx/archive/v{{ kubectx_binary_version }}.zip"
-kubectx_binary: "/usr/bin/kubectx"
 
-### K9S Settings
+### K9S ###
 k9s_binary_version: v0.19.1
 k9s_binary_download_url: "https://github.com/derailed/k9s/releases/download/{{ k9s_binary_version }}/k9s_Linux_x86_64.tar.gz"
-k9s_binary: "/usr/bin/k9s"
 
-### Helmfile Settings
+### Helmfile ###
 helmfile_binary_version: v0.130.1
 helmfile_binary_download_url: "https://github.com/roboll/helmfile/releases/download/{{ helmfile_binary_version }}/helmfile_linux_amd64"
-helmfile_binary: "/usr/bin/helmfile"
 
-### Stern Settings
+### Stern ###
 stern_binary_version: 1.11.0
 stern_binary_download_url: "https://github.com/wercker/stern/releases/download/{{ stern_binary_version }}/stern_linux_amd64"
-stern_binary: "/usr/bin/stern"
 
-### Terraform Settings
+### Terraform ###
 terraform_binary_version: 0.13.4 
 terraform_binary_download_url: "https://releases.hashicorp.com/terraform/{{ terraform_binary_version }}/terraform_{{ terraform_binary_version }}_linux_amd64.zip"
-terraform_binary: "/usr/bin/terraform"
 
-### Kubectl Settings
+### Kubectl ###
 kubectl_binary_version: v1.18.0
 kubectl_binary_download_url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_binary_version }}/bin/linux/amd64/kubectl"
-kubectl_binary: "/usr/bin/kubectl"
 
-### RKE Cluster Settings
+### RKE ###
 rke_binary_version: v1.2.8
 rke_binary_download_url: "https://github.com/rancher/rke/releases/download/{{ rke_binary_version }}/rke_linux-amd64"
-# rke_cluster_bin: "./rke-{{ rke_binary_version }}"
-rke_binary: "/usr/bin/rke"

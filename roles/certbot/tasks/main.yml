@@ -5,7 +5,7 @@
       - certbot
     state: present
 
-- name: Create Lets'encrypt config
+- name: Create certbot config
   copy:
     content: |
             location ^~ /.well-known/acme-challenge/ {
@@ -20,7 +20,7 @@
 #    line: include /etc/nginx/certbot.conf;
 #    insertafter: root         /usr/share/nginx/html;
 
-- name: Install Lets'encrypt renew hook
+- name: Install certbot renew hook
   copy:
     content: |
             00 3 * * * root certbot renew --post-hook "systemctl reload nginx"

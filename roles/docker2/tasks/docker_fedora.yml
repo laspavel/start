@@ -1,6 +1,6 @@
 ---
 - name: remove old docker-engine
-  yum: 
+  package: 
     name:
       - docker
       - docker-client
@@ -9,25 +9,28 @@
       - docker-latest
       - docker-latest-logrotate
       - docker-logrotate
+      - docker-selinux
+      - docker-engine-selinux
       - docker-engine
     state: absent
 
 - name: install required packages
-  yum:
+  package:
     name:
       - git
       - yum-utils
       - device-mapper-persistent-data
       - lvm2
+      - dnf-plugins-core
     state: present
 
 - name: add docker repository
   get_url:
-    url: "https://download.docker.com/linux/centos/docker-ce.repo"
+    url: "https://download.docker.com/linux/fedora/docker-ce.repo"
     dest: /etc/yum.repos.d/docker-ce.repo
 
 - name: install docker
-  yum:
+  package:
     name:
       - docker-ce 
       - docker-ce-cli 
@@ -94,7 +97,50 @@
 
 - name: Ensure docker users are added to the docker group.
   user:
-    name: "{{ item }}"
+    name: "{{ work_user }}"
     groups: docker
     append: true
-  with_items: "{{ docker_users }}"
+
+- name: Make sure that docker.service.d directory exists
+  file:
+    path: '/etc/systemd/system/docker.service.d'
+    state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+  when: (ansible_service_mgr == 'systemd' and (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined))
+
+- name: Make sure that docker client dir exists
+  file:
+    path: '{{ work_dir }}/.docker'
+    owner: '{{ work_user }}'
+    group: '{{ work_user }}'
+    state: 'directory'
+    mode: '0755'
+  
+- name: Add Docker client proxy
+  template:
+    src: 'config.json.j2'
+    dest: '{{ work_dir }}/.docker/config.json'
+    owner: '{{ work_user }}'
+    group: '{{ work_user }}'
+    mode: '0644'
+  register: docker__register_systemd_proxy_client_present
+  when: (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined)
+  
+- name: Add Docker proxy
+  template:
+    src: 'http-proxy.conf.j2'
+    dest: '/etc/systemd/system/docker.service.d/http-proxy.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  register: docker__register_systemd_proxy_present
+  when: (ansible_service_mgr == 'systemd' and (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined))
+
+- name: Restart docker
+  service: 
+    name: docker 
+    state: restarted
+    daemon_reload: yes
+

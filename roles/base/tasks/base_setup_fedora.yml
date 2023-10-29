@@ -212,8 +212,4 @@
   changed_when: false
 
 - name: Enable Flatpack repo
-  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  become: yes
-  become_user: "{{ work_user }}"
-  args:
-    executable: /bin/bash
+  command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

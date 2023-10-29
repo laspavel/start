@@ -5,11 +5,8 @@
       - dconf-editor
       - gnome-tweaks
       - gnome-shell-extension-dash-to-dock
-      - gnome-shell-extension-topicons-plus
-      - gnome-shell-extension-user-theme 
       - gnome-tweak-tool
       - gnome-shell-extension-apps-menu
-      - gnome-shell-extension-window-list
       - gnome-shell-extension-common
       - gnome-extensions-app
     state: present
@@ -45,41 +42,11 @@
   with_fileglob:
     - "background*.jpg"
 
-- name: download sources
-  get_url: 
-    url: "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
-    dest: "/usr/bin/gnome-shell-extension-installer"
-    owner: root
-    group: root
-    mode: 0775
-
-- name: Dock-to-Panel install 
-  command: gnome-shell-extension-installer 1160 --yes --restart-shell
-  become: true
-  become_user: "{{ work_user }}"
-
-- name: AutoHide Battery install
-  command: gnome-shell-extension-installer 595 --yes --restart-shell
-  become: true
-  become_user: "{{ work_user }}"
-
 - name: Enable Gnome Extensions
-  command: gsettings set org.gnome.shell enabled-extensions "['background-logo@fedorahosted.org', 'TopIcons@phocean.net', 'dash-to-panel@jderose9.github.com', 'autohide-battery@sitnik.ru']"
+  command: gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
   become: true
   become_user: "{{ work_user }}"
   ignore_errors: yes
-
-#- name: Dock-to-Panel enable 
-#  command: gnome-extensions enable dash-to-panel@jderose9.github.com
-#  become: true
-#  become_user: "{{ work_user }}"
-#  ignore_errors: yes
-
-#- name: AutoHide Battery enable
-#  command: gnome-extensions enable autohide-battery@sitnik.ru
-#  become: true
-#  become_user: "{{ work_user }}"
-#  ignore_errors: yes
 
 # Create dump: dconf dump / > dump_gnome
 

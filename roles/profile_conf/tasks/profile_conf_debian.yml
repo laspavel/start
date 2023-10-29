@@ -36,30 +36,6 @@
     clone: yes
     update: yes
 
-- name: Check passfile is exists
-  stat:
-    path: "{{ work_dir }}/.pass"
-  register: pass_res
-
-- name: "Read passfile"
-  shell: |
-    cat {{ work_dir }}/.pass
-  when: pass_res.stat.exists
-  register: file_content
-
-- name: "Save the passfile content to a variable"
-  set_fact:
-    passw: "{{ file_content.stdout }}"
-  when: pass_res.stat.exists
-
-- name: Unarchive a .ssh.zip
-  unarchive:
-    src: /tmp/dotfiles/src/.ssh.zip
-    dest: /tmp/dotfiles/src
-    extra_opts:
-      - "-P{{ passw }}"
-  when: pass_res.stat.exists
-
 - name: Copy dotfiles to user home directory
   copy:
     src: "/tmp/dotfiles/src/"
