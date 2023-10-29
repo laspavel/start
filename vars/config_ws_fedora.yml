@@ -3,6 +3,9 @@ git_name: laspavel
 hostname_: homebook
 timezone: Europe/Kiev
 
+create_id_rsa: true
+create_tmp_folder_in_home: true
+
 docker_users:
   - "{{ work_user }}"
 
