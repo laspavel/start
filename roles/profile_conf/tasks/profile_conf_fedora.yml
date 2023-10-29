@@ -79,7 +79,8 @@
 - name: mkdir SSH config directory
   file:
     state: directory
-    owner: "root"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
     mode: "0700"
     recurse: yes
     dest: "{{ work_dir }}/.ssh/"
