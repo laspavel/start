@@ -82,7 +82,6 @@
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
     mode: "0700"
-    recurse: yes
     dest: "{{ work_dir }}/.ssh/"
 
 - name: Configure Git Autocomplete
