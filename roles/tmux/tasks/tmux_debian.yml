@@ -15,6 +15,7 @@
     dest: /tmp/tmux-config
     clone: yes
     update: yes
+    depth: 1
 
 - name: install tmux-config 
   shell: "/tmp/tmux-config/install.sh"

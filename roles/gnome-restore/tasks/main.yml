@@ -4,7 +4,7 @@
     name: 
       - dconf-editor
       - gnome-tweaks
-      - gnome-shell-extension-dash-to-dock
+      - gnome-shell-extension-dash-to-panel
       - gnome-tweak-tool
       - gnome-shell-extension-apps-menu
       - gnome-shell-extension-common

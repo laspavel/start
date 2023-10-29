@@ -35,6 +35,7 @@
     dest: /tmp/dotfiles
     clone: yes
     update: yes
+    depth: 1
 
 - name: Copy dotfiles to user home directory
   copy:
