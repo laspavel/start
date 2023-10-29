@@ -115,6 +115,7 @@
     dest: /tmp/dotfiles
     clone: yes
     update: yes
+    depth: 1
 
 - name: Check passfile is exists
   stat:
