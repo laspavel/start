@@ -1,26 +1,15 @@
 ---
-- name: Install the 'Development tools' package group
-  yum:
-    name: "@Development tools"
-    state: present
-
-- name: start the sshd service and enable it
-  systemd:
-    name: sshd
-    state: started
-    enabled: yes
-
-- name: start the firewalld service and enable it
-  systemd:
-    name: firewalld
-    state: started
-    enabled: yes
-
-- name: Install the make packages
+- name: Install VIM
   yum:
     name:
       - vim
       - vim-enhanced
+    state: present
+
+- name: Install GIT 
+  yum:
+    name:
+      - git
     state: present
 
 - name: Clone dotfiles repository

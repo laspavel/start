@@ -1,32 +1,13 @@
 ---
-- name: Install the 'Development tools' package group
-  package:
-    name: 
-      - build-essential
-      - autoconf
-      - automake 
-      - gdb 
-      - libffi-dev 
-      - zlib1g-dev
-      - libssl-dev
-    state: present
-
-- name: start the sshd service and enable it
-  systemd:
-    name: sshd
-    state: started
-    enabled: yes
-
-- name: start the firewalld service and enable it
-  systemd:
-    name: firewalld
-    state: started
-    enabled: yes
-
-- name: Install VIM packages
+- name: Install VIM
   package:
     name:
       - vim
+    state: present
+
+- name: Install GIT
+  package:
+    name: git
     state: present
 
 - name: Clone dotfiles repository
@@ -86,16 +67,9 @@
   file:
     state: directory
     owner: "{{ work_user }}"
+    group: "{{ work_user }}"
     mode: "0700"
-    recurse: yes
     dest: "{{ work_dir }}/.ssh/"
-
-- name: Configure Git Autocomplete
-  get_url:
-    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-    dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: "0664"
-  changed_when: false
 
 - name: Creates directory local bin
   file:

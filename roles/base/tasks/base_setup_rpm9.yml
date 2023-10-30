@@ -36,6 +36,11 @@
     name: "{{ base_required_packages }}"
     state: present
 
+- name: Install the 'Development tools' package group
+  yum:
+    name: "@Development tools"
+    state: present
+
 - name: Install mlocate package
   yum:
     name: "mlocate"
@@ -57,10 +62,24 @@
     state: started
     enabled: yes
 
+- name: Open port for SSH
+  firewalld:
+    service: ssh
+    permanent: yes
+    state: enabled
+    immediate: yes
+
 - name: Install git
   yum:
     name: git
     state: present
+
+- name: Configure Git Autocomplete
+  get_url:
+    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+    dest: "/etc/bash_completion.d/git-completion.bash"
+    mode: "0664"
+  changed_when: false
 
 - name: Install console langpack
   yum:

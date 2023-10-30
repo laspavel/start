@@ -75,6 +75,11 @@
     name: "{{ base_required_packages }}"
     state: present
 
+- name: Install the 'Development tools' package group
+  yum:
+    name: "@Development tools"
+    state: present
+
 - name: Install plocate package
   yum:
     name: "plocate"
@@ -82,11 +87,6 @@
 
 #- name: Upgrade firmware
 #  command: fwupdmgr get-devices -y && fwupdmgr refresh --force -y && fwupdmgr get-updates -y && fwupdmgr update --no-reboot-check -y
-
-- name: Install the 'Development tools' package group
-  yum:
-    name: "@Development tools"
-    state: present
 
 - name: Set required timezone
   timezone:
@@ -104,107 +104,18 @@
     state: started
     enabled: yes
 
+- name: Open port for SSH
+  firewalld:
+    service: ssh
+    permanent: yes
+    state: enabled
+    immediate: yes
+
 - name: Install git
   yum:
     name: git
     state: present
   
-- name: Clone dotfiles repository
-  git:
-    repo: 'https://github.com/laspavel/dotfiles.git'
-    dest: /tmp/dotfiles
-    clone: yes
-    update: yes
-    depth: 1
-
-- name: Check passfile is exists
-  stat:
-    path: "{{ work_dir }}/.pass"
-  register: pass_res
-
-- name: "Read passfile"
-  shell: |
-    cat {{ work_dir }}/.pass
-  when: pass_res.stat.exists
-  register: file_content
-
-- name: "Save the passfile content to a variable"
-  set_fact:
-    passw: "{{ file_content.stdout }}"
-  when: pass_res.stat.exists
-
-- name: Unarchive a .ssh.zip
-  unarchive:
-    src: /tmp/dotfiles/src/.ssh.zip
-    dest: /tmp/dotfiles/src
-    extra_opts:
-    - "-P{{ passw }}"
-  when: pass_res.stat.exists
-
-- name: Unarchive a .bash_history.zip
-  unarchive:
-    src: /tmp/dotfiles/src/.bash_history.zip
-    dest: /tmp/dotfiles/src
-    extra_opts:
-    - "-P{{ passw }}"
-  when: pass_res.stat.exists
-
-- name: Unarchive a dump_gnome_settings.zip
-  unarchive:
-    src: /tmp/dotfiles/src/dump_gnome_settings.zip
-    dest: /tmp/dotfiles/src
-    extra_opts:
-    - "-P{{ passw }}"
-  when: pass_res.stat.exists
-
-- name: Copy dotfiles to user home directory
-  copy:
-    src: "/tmp/dotfiles/src/"
-    dest: "{{ work_dir }}"
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-    force: yes
-  ignore_errors: true
-
-- name: Creates directory Vim-plug
-  file:
-    path: "{{ work_dir }}/.vim/autoload/"
-    state: directory
-    mode: "0775"
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Creates directory local bin
-  file:
-    path: "{{ work_dir }}/.local/bin/"
-    state: directory
-    mode: "0775"
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Configure Vim-plug
-  get_url:
-    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    dest: "{{ work_dir }}/.vim/autoload/plug.vim"
-    mode: '0775'
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Install Plugin
-  shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
-  become: yes
-  become_user: "{{ work_user }}"
-  args:
-    executable: /bin/bash
-
-- name: mkdir SSH config directory
-  file:
-    state: directory
-    owner: "{{ work_user }}"
-    mode: "0700"
-    recurse: yes
-    dest: "{{ work_dir }}/.ssh/"
-
 - name: Configure Git Autocomplete
   get_url:
     url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"

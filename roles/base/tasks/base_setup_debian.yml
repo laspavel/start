@@ -5,7 +5,7 @@
   when: (hostname_ is defined)
 
 - name: apt update
-  become: "True"
+  become: true
   apt:
     upgrade: yes
     update_cache: yes
@@ -14,6 +14,18 @@
 - name: Install minimal programs
   package:
     name: "{{ base_required_packages }}"
+    state: present
+
+- name: Install the 'Development tools' package group
+  package:
+    name: 
+      - build-essential
+      - autoconf
+      - automake 
+      - gdb 
+      - libffi-dev 
+      - zlib1g-dev
+      - libssl-dev
     state: present
 
 - name: Set required timezone
@@ -32,7 +44,21 @@
     state: started
     enabled: yes
 
+- name: Open port for SSH
+  firewalld:
+    service: ssh
+    permanent: yes
+    state: enabled
+    immediate: yes
+
 - name: Install git
   package:
     name: git
     state: present
+
+- name: Configure Git Autocomplete
+  get_url:
+    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+    dest: "/etc/bash_completion.d/git-completion.bash"
+    mode: "0664"
+  changed_when: false
