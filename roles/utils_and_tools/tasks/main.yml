@@ -126,10 +126,11 @@
 
 - name: Deploy additional scripts
   copy:
-    src: "scripts/*"
+    src: "scripts/{{ item }}"
     dest: "{{ work_dir }}/.local/scripts"
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
     mode: 0644
-
+  with_fileglob:
+    - "*.*"
 
