@@ -134,3 +134,10 @@
   with_fileglob:
     - "scripts/*.*"
 
+- name: Create local tmp folder
+  file:
+    src: "{{ work_dir }}/.local/scripts"
+    dest: "{{ work_dir }}/scripts"
+    state: link
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
