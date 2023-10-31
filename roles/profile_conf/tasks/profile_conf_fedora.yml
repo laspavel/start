@@ -60,7 +60,7 @@
 
 - name: Install Plugin
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null"
-  become: yes
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

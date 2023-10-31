@@ -45,20 +45,20 @@
   command: gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
   become: true
   become_user: "{{ work_user }}"
-  ignore_errors: yes
+  ignore_errors: true
 
 # Create dump: dconf dump / > dump_gnome
 
 - name: Restore gnome-terminal parameters
   shell: "dconf load -f /org/gnome/terminal/ < /tmp/dotfiles/src/gnome_terminal_settings"
-  become: yes
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
 
 - name: Restore dash_to_panel parameters
   shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < /tmp/dotfiles/src/dash_to_panel_settings"
-  become: yes
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

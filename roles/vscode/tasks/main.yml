@@ -1,6 +1,6 @@
 ---
 - name: install dependencies (dnf)
-  become: yes
+  become: true
   dnf:
     name:
       - libdrm
@@ -10,7 +10,7 @@
     state: present
 
 - name: install VS Code repo (dnf)
-  become: yes
+  become: true
   yum_repository:
     name: code
     description: Visual Studio Code repo
@@ -20,7 +20,7 @@
     gpgcheck: yes
 
 - name: install VS Code (dnf)
-  become: yes
+  become: true
   dnf:
     name: "code"
     state: present
