@@ -22,7 +22,6 @@
 - name: GSettings 13
   command : "sync"
 
-# tasks file for gnome-restore
 - name: Create Background dir
   file: 
     path: "{{ work_dir }}/.local/share/backgrounds"

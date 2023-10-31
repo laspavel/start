@@ -116,7 +116,7 @@
     - ./LICENSE
     - ./README.md
 
-- name: Create additional scripts
+- name: Create additional scripts directory
   file:
     path: "{{ work_dir }}/.local/scripts"
     owner: "{{ work_user }}"
@@ -134,7 +134,7 @@
   with_fileglob:
     - "scripts/*.*"
 
-- name: Create local tmp folder
+- name: Create symlink to additional folder
   file:
     src: "{{ work_dir }}/.local/scripts"
     dest: "{{ work_dir }}/scripts"
