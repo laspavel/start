@@ -30,7 +30,6 @@
         - role: nginx
         - role: tmux
         - role: profile_conf
-#        - role: screenshot
         - role: gnome-restore
         - role: utils_and_tools
 #        - role: optimize

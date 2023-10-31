@@ -115,3 +115,21 @@
     - ./linux-amd64
     - ./LICENSE
     - ./README.md
+
+- name: Create additional scripts
+  file:
+    path: "{{ work_dir }}/.local/scripts"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    state: "directory"
+    mode: "0755"
+
+- name: Deploy additional scripts
+  copy:
+    src: "scripts/*"
+    dest: "{{ work_dir }}/.local/scripts"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0644
+
+
