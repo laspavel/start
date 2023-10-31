@@ -50,16 +50,10 @@
 
 # Create dump: dconf dump / > dump_gnome
 
-- name: Check dump_gnome_settings is exists
-  stat:
-    path: "{{ work_dir }}/dump_gnome_settings"
-  register: settings_res
-
-- name: Restore gnome_settings
-  shell: "dconf load -f / < {{ work_dir }}/dump_gnome_settings"
+- name: Restore gnome-terminal parameters
+  shell: "dconf load -f /org/gnome/terminal/ < /tmp/dotfiles/src/gnome_terminal_settings"
   become: yes
   become_user: "{{ work_user }}"
-  when: settings_res.stat.exists
   args:
     executable: /bin/bash
 
