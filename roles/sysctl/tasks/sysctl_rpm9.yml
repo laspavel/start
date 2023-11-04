@@ -1,20 +1,22 @@
 ---
-- name: Copy my sysctl configuration
-  copy:
-    src: "50.sysctl_{{ sysctl_typecfg }}.conf"
-    dest: "/etc/sysctl.d"
-    owner: "root"
-    group: "root"
-    mode: '0644'
-    force: yes
-  notify:
-    - Reload sysctl configuration
+#- name: Copy my sysctl configuration
+#  copy:
+#    src: "50.sysctl_{{ sysctl_typecfg }}.conf"
+#    dest: "/etc/sysctl.d"
+#    owner: "root"
+#    group: "root"
+#    mode: '0644'
+#    force: yes
+#  notify:
+#    - Reload sysctl configuration
   
-#- name: vm.swappiness = 60  => sysctl.conf
-#  sysctl:
-#    name: vm.swappiness
-#    value: '60'
-#    sysctl_set: yes
+- name: Setup my sysctl configuration
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"    
+    sysctl_file: "/etc/sysctl.d/50.my.conf"
+    sysctl_set: yes
+  loop: "{{ lookup('ansible.builtin.ini', file='50.sysctl_{{ sysctl_typecfg }}.conf')}}"
 
 - name: Updating journald
   ini_file:

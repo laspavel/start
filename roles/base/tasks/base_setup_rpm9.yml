@@ -11,13 +11,9 @@
 
 - name: YUM Clean ALL
   command: yum clean all
-  args:
-    warn: false
 
 - name: YUM Make chache
   command: yum makecache
-  args:
-    warn: false
 
 - name: Upgrade system
   yum:
@@ -88,8 +84,6 @@
 
 - name: set-locale
   command: localectl set-locale LANG=ru_RU.utf8
-  args:
-    warn: false
 
 - name: Set vconsole font
   lineinfile:
