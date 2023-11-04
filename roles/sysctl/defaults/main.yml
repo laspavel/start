@@ -1,2 +1,5 @@
 ---
 sysctl_typecfg: standart
+sysctl_configurations:
+  kernel.panic: 10
+
