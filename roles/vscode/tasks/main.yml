@@ -1,26 +1,17 @@
 ---
-- name: install dependencies (dnf)
-  become: true
-  dnf:
-    name:
-      - libdrm
-      - libX11-xcb
-      - mesa-libgbm
-      - which
-    state: present
+- name: Install VSCode (Oracle Linux 8; AlmaLinux 8; RockyLinux 8)
+  include_tasks: vscode_rpm.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 8)"
 
-- name: install VS Code repo (dnf)
-  become: true
-  yum_repository:
-    name: code
-    description: Visual Studio Code repo
-    file: vscode
-    baseurl: 'https://packages.microsoft.com//yumrepos/vscode'
-    gpgkey: 'https://packages.microsoft.com//keys/microsoft.asc'
-    gpgcheck: yes
+- name: Install VSCode (OracleLinux 9; AlmaLinux 9; RockyLinux 9)
+  include_tasks: vscode_rpm.yml
+  when: "(ansible_os_family == 'RedHat') and (ansible_distribution_major_version|int == 9)"
 
-- name: install VS Code (dnf)
-  become: true
-  dnf:
-    name: "code"
-    state: present
+- name: Install VSCode (Fedora 37+)
+  include_tasks: vscode_rpm.yml
+  when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
+
+- name: Install VSCode (Debian 10+)
+  include_tasks: vscode_deb.yml
+  when: "((ansible_distribution == 'Debian') and (ansible_distribution_major_version|int >= 10)) or ((ansible_distribution == 'Ubuntu') and (ansible_distribution_major_version|int >= 22))"
+#  when: "(ansible_distribution == 'Debian') and (ansible_distribution_major_version|int >= 10)"

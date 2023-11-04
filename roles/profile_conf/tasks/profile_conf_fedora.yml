@@ -1,5 +1,5 @@
 ---
-- name: Install VIM 
+- name: Install VIM
   yum:
     name:
       - vim
@@ -8,8 +8,7 @@
 
 - name: Install GIT 
   yum:
-    name:
-      - git
+    name: git
     state: present
 
 - name: Clone dotfiles repository

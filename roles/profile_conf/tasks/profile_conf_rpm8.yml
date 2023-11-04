@@ -6,10 +6,9 @@
       - vim-enhanced
     state: present
 
-- name: Install GIT 
+- name: Install GIT
   yum:
-    name:
-      - git
+    name: git
     state: present
 
 - name: Clone dotfiles repository
