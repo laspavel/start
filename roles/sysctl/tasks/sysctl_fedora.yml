@@ -1,35 +1,14 @@
 ---
-- name: Updating vm.swapiness
+- name: Copy my sysctl configuration
   copy:
-    dest: "/etc/sysctl.d/95-swapiness-sysctl.conf"
-    content: "vm.swappiness=1"
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Updating vm.vfs_cache_pressure
-  copy:
-    dest: "/etc/sysctl.d/96-vfs-sysctl.conf"
-    content: "vm.vfs_cache_pressure=1000"
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Updating vm.dirty_background_ratio
-  copy:
-    dest: "/etc/sysctl.d/97-dirty-backgr-sysctl.conf"
-    content: "vm.dirty_background_ratio = 10"
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Updating vm.dirty_ratio
-  copy:
-    dest: "/etc/sysctl.d/98-dirty-ratio-sysctl.conf"
-    content: "vm.dirty_ratio = 10"
-    owner: root
-    group: root
-    mode: 0644
+    src: "50.sysctl_{{ sysctl_typecfg }}.cfg"
+    dest: "/etc/sysctl.d"
+    owner: "root"
+    group: "root"
+    mode: '0644'
+    force: yes
+  notify:
+    - Reload sysctl configuration
 
 - name: Updating journald
   ini_file:

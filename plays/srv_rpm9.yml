@@ -25,13 +25,13 @@
         - role: chrony
         - role: sysctl
         - role: add_user
-        - role: docker2
+#        - role: docker2
         - role: nginx
         - role: certbot
         - role: tmux
         - role: profile_conf
         - role: utils_and_tools
-        - role: optimize
+#        - role: optimize
         - role: pib
 #        - role: reboot
 

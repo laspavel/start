@@ -1,0 +1,38 @@
+---
+- name: install dependencies
+  become: true
+  package:
+    name:
+      - wget
+      - gpg
+      - apt-transport-https
+    state: present
+
+- name: Create APT keyrings dir
+  become: true
+  file:
+    path: '/etc/apt/keyrings'
+    state: directory
+    mode: '0755'
+
+- name: Install key (apt)
+  become: true
+  apt_key:
+    url: 'https://packages.microsoft.com/keys/microsoft.asc'
+    keyring: '/etc/apt/keyrings/packages.microsoft.gpg'
+    state: present
+
+
+- name: Install VS Code repo (apt)
+  become: true
+  apt_repository:
+    repo: >-
+      deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main
+    filename: vscode.list
+    state: present
+  
+- name: Install VS Code (apt)
+  become: true
+  apt:
+    name: "code"
+    state: present
