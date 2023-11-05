@@ -1,18 +1,29 @@
 ---
 - name: Copy my sysctl configuration
   copy:
-    src: "50.sysctl_{{ sysctl_typecfg }}.cfg"
-    dest: "/etc/sysctl.d"
-    owner: "root"
-    group: "root"
-    mode: '0644'
+    src: "50.sysctl_{{ sysctl_typecfg }}.conf"
+    dest: /etc/sysctl.d/50.my.conf
+    owner: root
+    group: root
+    mode: 0644
     force: yes
+  failed_when: false
   notify:
     - Reload sysctl configuration
+  
+- name: Setup my sysctl configuration
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_file: /etc/sysctl.d/50.my.conf
+    sysctl_set: yes
+    state: present
+    reload: yes
+  with_dict: "{{ sysctl_configurations }}"
 
 - name: Updating journald
   ini_file:
-    dest: "/etc/systemd/journald.conf"
+    dest: /etc/systemd/journald.conf
     section: Journal
     option: SystemMaxUse
     value: "128M"
@@ -22,6 +33,6 @@
 
 - name: Create symbolic 11-lcdfilter-default.conf
   file:
-    src: "/usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf"
-    dest: "/etc/fonts/conf.d/11-lcdfilter-default.conf"
+    src: /usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf
+    dest: /etc/fonts/conf.d/11-lcdfilter-default.conf
     state: link

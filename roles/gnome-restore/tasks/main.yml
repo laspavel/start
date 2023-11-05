@@ -1,6 +1,6 @@
 ---
 - name: Install programs for Gnome
-  yum:
+  package:
     name: 
       - dconf-editor
       - gnome-tweaks
@@ -20,7 +20,7 @@
   shell: dconf update
 
 - name: GSettings 13
-  command : "sync"
+  command: sync
 
 - name: Create Background dir
   file: 

@@ -2,10 +2,10 @@
 - name: Copy my sysctl configuration
   copy:
     src: "50.sysctl_{{ sysctl_typecfg }}.conf"
-    dest: "/etc/sysctl.d/50.my.conf"
-    owner: "root"
-    group: "root"
-    mode: '0644'
+    dest: /etc/sysctl.d/50.my.conf
+    owner: root
+    group: root
+    mode: 0644
     force: yes
   failed_when: false
   notify:
@@ -15,13 +15,15 @@
   sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
-    sysctl_file: "/etc/sysctl.d/50.my.conf"
+    sysctl_file: /etc/sysctl.d/50.my.conf
     sysctl_set: yes
+    state: present
+    reload: yes
   with_dict: "{{ sysctl_configurations }}"
 
 - name: Updating journald
   ini_file:
-    dest: "/etc/systemd/journald.conf"
+    dest: /etc/systemd/journald.conf
     section: Journal
     option: SystemMaxUse
     value: "128M"

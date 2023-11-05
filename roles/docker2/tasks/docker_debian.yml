@@ -21,7 +21,7 @@
 
 - name: Add Docker GPG apt Key
   apt_key:
-    url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     state: present
 
 - name: Add Docker Repository
@@ -30,7 +30,7 @@
     state: present
 
 - name: apt update
-  become: "True"
+  become: true
   apt:
     upgrade: yes
     update_cache: yes
@@ -49,7 +49,7 @@
 - name: Enable IP Forwarding
   sysctl:
     name: net.ipv4.ip_forward
-    value: '1'
+    value: "1"
     sysctl_set: yes
     state: present
     reload: yes
@@ -64,11 +64,11 @@
 
 - name: Add daemon.json
   template:
-    src: 'daemon.json.j2'
-    dest: '/etc/docker/daemon.json'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
   register: docker__daemon_json_present
   ignore_errors: true
  
@@ -94,7 +94,7 @@
     minute: "1"
     hour: "1"
     user: root
-    job: 'for vol in $(docker volume ls -q -f dangling=true); do docker volume rm $vol >/dev/null 2>&1; done'
+    job: "for vol in $(docker volume ls -q -f dangling=true); do docker volume rm $vol >/dev/null 2>&1; done"
     cron_file: docker_cleanup
 
 - name: Restart docker
@@ -111,38 +111,38 @@
     
 - name: Make sure that docker.service.d directory exists
   file:
-    path: '/etc/systemd/system/docker.service.d'
-    state: 'directory'
-    owner: 'root'
-    group: 'root'
-    mode: '0755'
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
   when: (ansible_service_mgr == 'systemd' and (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined))
 
 - name: Make sure that docker client dir exists
   file:
-    path: '{{ work_dir }}/.docker'
-    owner: '{{ work_user }}'
-    group: '{{ work_user }}'
-    state: 'directory'
-    mode: '0755'
+    path: "{{ work_dir }}/.docker"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    state: directory
+    mode: 0755
   
 - name: Add Docker client proxy
   template:
-    src: 'config.json.j2'
-    dest: '{{ work_dir }}/.docker/config.json'
-    owner: '{{ work_user }}'
-    group: '{{ work_user }}'
-    mode: '0644'
+    src: config.json.j2
+    dest: "{{ work_dir }}/.docker/config.json"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0644
   register: docker__register_systemd_proxy_client_present
   when: (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined)
   
 - name: Add Docker proxy
   template:
-    src: 'http-proxy.conf.j2'
-    dest: '/etc/systemd/system/docker.service.d/http-proxy.conf'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
+    src: http-proxy.conf.j2
+    dest: /etc/systemd/system/docker.service.d/http-proxy.conf
+    owner: root
+    group: root
+    mode: 0644
   register: docker__register_systemd_proxy_present
   when: (ansible_service_mgr == 'systemd' and (proxy_env.http_proxy is defined or proxy_env.https_proxy is defined))
 

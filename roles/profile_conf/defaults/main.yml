@@ -2,4 +2,4 @@
 git_email: user@example.com
 work_dir: "/root"
 work_user: "root"
-# create_tmp_folder_in_home: true
+

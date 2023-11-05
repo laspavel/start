@@ -11,13 +11,9 @@
 
 - name: YUM Clean ALL
   command: yum clean all
-  args:
-    warn: false
 
-- name: YUM Make chache
+- name: YUM Make cache
   command: yum makecache
-  args:
-    warn: false
 
 - name: Upgrade system
   yum:
@@ -27,8 +23,7 @@
 
 - name: Install epel-release
   yum:
-    name:
-      - epel-release
+    name: epel-release
     state: latest
 
 - name: Install minimal programs
@@ -43,12 +38,13 @@
 
 - name: Install mlocate package
   yum:
-    name: "mlocate"
+    name: mlocate
     state: present
 
 - name: Set required timezone
   timezone:
     name: "{{ timezone }}"
+  when: (timezone is defined)
 
 - name: start the sshd service and enable it
   systemd:
@@ -76,9 +72,9 @@
 
 - name: Configure Git Autocomplete
   get_url:
-    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-    dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: "0664"
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: /etc/bash_completion.d/git-completion.bash
+    mode: 0664
   changed_when: false
 
 - name: Install console langpack
@@ -88,13 +84,11 @@
 
 - name: set-locale
   command: localectl set-locale LANG=ru_RU.utf8
-  args:
-    warn: false
 
 - name: Set vconsole font
   lineinfile:
     regexp: '^[ #]*FONT='
     line: 'FONT="UniCyr_8x16"'
-    dest: '/etc/vconsole.conf'
+    dest: /etc/vconsole.conf
     create: true
-    mode: '644'
+    mode: 0644

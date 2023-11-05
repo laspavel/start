@@ -1,13 +1,12 @@
 ---
 - name: Install epel-release
   yum:
-    name:
-        - epel-release
+    name: epel-release
     state: latest
 
 - name: Install GIT
   yum:
-    name: "git"
+    name: git
     state: present
 
 - name: Copy tmux package (Oracle Linux 8)
@@ -20,21 +19,21 @@
 
 - name: Install tmux packages (Oracle Linux 8)
   yum:
-    name: "/tmp/tmux-3.2-1.el8.x86_64.rpm"
+    name: /tmp/tmux-3.2-1.el8.x86_64.rpm
     state: present
     disable_gpg_check: yes
 
 - name: Clone tmux-config repository
   git:
-    repo: 'https://github.com/laspavel/tmux-config.git'
+    repo: https://github.com/laspavel/tmux-config.git
     dest: /tmp/tmux-config
     clone: yes
     update: yes
     depth: 1
 
 - name: install tmux-config 
-  shell: "/tmp/tmux-config/install.sh"
-  become: yes
+  shell: /tmp/tmux-config/install.sh
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

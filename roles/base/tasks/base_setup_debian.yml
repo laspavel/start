@@ -31,6 +31,7 @@
 - name: Set required timezone
   timezone:
     name: "{{ timezone }}"
+  when: (timezone is defined)
 
 - name: start the sshd service and enable it
   systemd:
@@ -58,7 +59,7 @@
 
 - name: Configure Git Autocomplete
   get_url:
-    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-    dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: "0664"
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: /etc/bash_completion.d/git-completion.bash
+    mode: 0664
   changed_when: false

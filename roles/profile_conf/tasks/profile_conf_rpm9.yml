@@ -8,14 +8,12 @@
 
 - name: Install GIT
   yum:
-    name:
-      - vim
-      - vim-enhanced
+    name: git
     state: present
 
 - name: Clone dotfiles repository
   git:
-    repo: "https://github.com/laspavel/dotfiles.git"
+    repo: https://github.com/laspavel/dotfiles.git
     dest: /tmp/dotfiles
     clone: yes
     update: yes
@@ -23,7 +21,7 @@
 
 - name: Copy dotfiles to user home directory
   copy:
-    src: "/tmp/dotfiles/src/"
+    src: /tmp/dotfiles/src/
     dest: "{{ work_dir }}"
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
@@ -34,7 +32,7 @@
   file:
     path: "{{ work_dir }}/.vim/autoload/"
     state: directory
-    mode: "0775"
+    mode: 0775
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
 
@@ -42,15 +40,15 @@
   file:
     path: "{{ work_dir }}/.local/bin/"
     state: directory
-    mode: "0775"
+    mode: 0775
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
 
 - name: Configure Vim-plug
   get_url:
-    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ work_dir }}/.vim/autoload/plug.vim"
-    mode: "0775"
+    mode: 0775
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
 
@@ -69,22 +67,15 @@
 - name: mkdir SSH config directory
   file:
     state: directory
-    owner: "root"
-    mode: "0700"
-    recurse: yes
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0700
     dest: "{{ work_dir }}/.ssh/"
-
-- name: Configure Git Autocomplete
-  get_url:
-    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-    dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: "0664"
-  changed_when: false
 
 - name: Creates directory local bin
   file:
     path: "{{ work_dir }}/.local/bin/"
     state: directory
-    mode: "0775"
+    mode: 0775
     owner: "{{ work_user }}"
     group: "{{ work_user }}"

@@ -18,9 +18,9 @@
 
 - name: Create local tmp folder
   file:
-    src: "/dev/shm"
+    src: /dev/shm
     dest: "{{ work_dir }}/tmp"
     state: link
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
-  when: create_tmp_folder_in_home is defined
+  

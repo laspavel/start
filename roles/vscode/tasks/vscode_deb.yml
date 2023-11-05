@@ -11,17 +11,16 @@
 - name: Create APT keyrings dir
   become: true
   file:
-    path: '/etc/apt/keyrings'
+    path: /etc/apt/keyrings
     state: directory
-    mode: '0755'
+    mode: 0755
 
 - name: Install key (apt)
   become: true
   apt_key:
-    url: 'https://packages.microsoft.com/keys/microsoft.asc'
-    keyring: '/etc/apt/keyrings/packages.microsoft.gpg'
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/keyrings/packages.microsoft.gpg
     state: present
-
 
 - name: Install VS Code repo (apt)
   become: true
@@ -34,5 +33,5 @@
 - name: Install VS Code (apt)
   become: true
   apt:
-    name: "code"
+    name: code
     state: present

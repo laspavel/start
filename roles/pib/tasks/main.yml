@@ -83,7 +83,7 @@
     group: root
     mode: '0751'
   with_items:
-     - /etc/cron.d
+    - /etc/cron.d
 
 - name: Ensure PermitUserEnvironment is no in sshd_config
   lineinfile:

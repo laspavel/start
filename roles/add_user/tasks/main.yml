@@ -33,7 +33,7 @@
 
 - name: Generate RSA key for main user
   command : "ssh-keygen -q -t rsa -b 4096 -f {{ work_dir }}/.ssh/id_rsa -C \"{{ work_user }}@{{ ansible_hostname }}\" -N \"\""
-  become: yes
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

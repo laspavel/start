@@ -1,31 +1,30 @@
 ---
 - name: Install epel-release
   yum:
-    name:
-        - epel-release
+    name: epel-release
     state: latest
 
 - name: Install GIT
   yum:
-    name: "git"
+    name: git
     state: present
 
 - name: install tmux packages
   yum:
-    name: "tmux"
+    name: tmux
     state: present
 
 - name: Clone tmux-config repository
   git:
-    repo: 'https://github.com/laspavel/tmux-config.git'
+    repo: https://github.com/laspavel/tmux-config.git
     dest: /tmp/tmux-config
     clone: yes
     update: yes
     depth: 1
 
 - name: install tmux-config 
-  shell: "/tmp/tmux-config/install.sh"
-  become: yes
+  shell: /tmp/tmux-config/install.sh
+  become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash

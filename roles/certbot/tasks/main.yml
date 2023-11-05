@@ -1,8 +1,7 @@
 ---
 - name: Install certbot program
   package:
-    name: 
-      - certbot
+    name: certbot
     state: present
 
 - name: Create certbot config
@@ -27,4 +26,4 @@
     dest: /etc/cron.d/certbot_renew
     owner: root
     group: root
-    mode: '644'
+    mode: 0644

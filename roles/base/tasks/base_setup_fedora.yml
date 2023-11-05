@@ -12,7 +12,7 @@
 - name: Update dnf.conf
   copy:
     force: true
-    dest: "/etc/dnf/dnf.conf"
+    dest: /etc/dnf/dnf.conf
     content: |
         [main]
         gpgcheck=1
@@ -41,7 +41,7 @@
 
 - name: Upgrade system
   dnf:
-    name: '*'
+    name: "*"
     state: latest
     exclude: kernel*
 
@@ -82,7 +82,7 @@
 
 - name: Install plocate package
   yum:
-    name: "plocate"
+    name: plocate
     state: present
 
 #- name: Upgrade firmware
@@ -91,6 +91,7 @@
 - name: Set required timezone
   timezone:
     name: "{{ timezone }}"
+  when: (timezone is defined)
 
 - name: start the sshd service and enable it
   systemd:
@@ -118,9 +119,9 @@
   
 - name: Configure Git Autocomplete
   get_url:
-    url: "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-    dest: "/etc/bash_completion.d/git-completion.bash"
-    mode: "0664"
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: /etc/bash_completion.d/git-completion.bash
+    mode: 0664
   changed_when: false
 
 - name: Enable Flatpack repo
