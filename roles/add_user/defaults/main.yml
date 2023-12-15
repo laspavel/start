@@ -5,3 +5,4 @@ passwd_user: "P@ssw0rdI@24"
 work_groups:
   - "{{ work_user }}"
 # create_id_rsa: true
+# id_rsa_file: "~/.ssh/id_rsa.pub"

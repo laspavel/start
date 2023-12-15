@@ -50,14 +50,14 @@
 # Create dump: dconf dump / > dump_gnome
 
 - name: Restore gnome-terminal parameters
-  shell: "dconf load -f /org/gnome/terminal/ < /tmp/dotfiles/src/gnome_terminal_settings"
+  shell: "dconf load -f /org/gnome/terminal/ < /tmp/dotfiles/src/DOD1/gnome_terminal_settings"
   become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
 
 - name: Restore dash_to_panel parameters
-  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < /tmp/dotfiles/src/dash_to_panel_settings"
+  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < /tmp/dotfiles/src/DOD1/dash_to_panel_settings"
   become: true
   become_user: "{{ work_user }}"
   args:

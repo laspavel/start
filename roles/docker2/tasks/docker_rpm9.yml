@@ -92,6 +92,14 @@
     state: restarted
     daemon_reload: yes
 
+- name: Change permission /var/run/docker.sock
+  file:
+    path: /var/run/docker.sock
+    state: file
+    owner: root
+    group: docker
+    mode: 0660
+
 - name: Ensure docker users are added to the docker group.
   user:
     name: "{{ work_user }}"

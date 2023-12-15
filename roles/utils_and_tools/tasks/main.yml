@@ -7,6 +7,14 @@
     state: directory
     mode: 0755
 
+- name: Create local bash_completion.d directory
+  file:
+    path: "{{ work_dir }}/.local/.bash_completion.d"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    state: directory
+    mode: 0755
+
 - name: Download KUBECTX Utils from Github
   unarchive:
     src: "{{ kubectx_binary_download_url }}"
@@ -25,8 +33,8 @@
 - name: Setup KUBECTX autocompletion
   copy:
     src: "{{ work_dir }}/kubectx-{{ kubectx_binary_version }}/completion/kubectx.bash"
-    dest: "/etc/bash_completion.d/kubectx.bash"
-    mode: 0755
+    dest: "{{ work_dir }}/.local/.bash_completion.d/kubectx.bash"
+    mode: 0664
   changed_when: false
 
 - name: Copy KUBENS file to local bin folder
@@ -39,8 +47,8 @@
 - name: Setup KUBENS autocompletion
   copy:
     src: "{{ work_dir }}/kubectx-{{ kubectx_binary_version }}/completion/kubens.bash"
-    dest: "/etc/bash_completion.d/kubens.bash"
-    mode: 0755
+    dest: "{{ work_dir }}/.local/.bash_completion.d/kubectx.bash"
+    mode: 0664
   changed_when: false
 
 - name: Remove old CUBECTX download files

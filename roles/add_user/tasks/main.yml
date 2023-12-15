@@ -40,3 +40,11 @@
     creates: "{{ work_dir }}/.ssh/id_rsa"
   when: create_id_rsa is defined
 
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: "{{ work_user }}"
+    state: present
+    key: "{{ lookup('file', id_rsa_file) }}"
+  when: id_rsa_file is defined
+  ignore_errors: true
+
