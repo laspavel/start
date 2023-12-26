@@ -6,7 +6,6 @@ Playbooks for prepare my workstation and Bastion (GoldenGate) servers.
 * python3 and python3-pip
 * Ansible
 * root user on target PC
-* if required restore all personal configs add password to ~/.pass
 
 **Usage on Workstation (Fedora Workstation 38):**
 ```

@@ -32,6 +32,16 @@
     immediate: yes
     state: disabled
 
+- name: Copy default nginx config
+  copy:
+    src: nginx/
+    dest: /etc/nginx/
+
+- name: Copy default ssl cert
+  copy:
+    src: ssl/
+    dest: /etc/ssl/
+
 - name: Start Nginx service
   service:
     name: nginx
