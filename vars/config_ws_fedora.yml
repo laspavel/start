@@ -39,8 +39,8 @@ base_required_packages:
 - tig
 - vim-enhanced
 - curl
-- tlp
-- tlp-rdw
+#- tlp
+#- tlp-rdw
 - arj
 - cabextract
 - p7zip
@@ -50,24 +50,24 @@ base_required_packages:
 - langpacks-ru
 - wget
 - file-roller-nautilus
-- fuse-exfat
+# - fuse-exfat
 - gvfs-fuse
 - gvfs-mtp
 - gvfs-nfs
 - gvfs-smb
 - ansible
-- lpf-mscore-fonts
+# - lpf-mscore-fonts
 - qbittorrent
 - gnome-calendar
 - uget
 - evince-djvu
 - unar
 - redshift
-- freetype-freeworld
+# - freetype-freeworld
 - firewalld
 - dnf-plugins-core
 - python3-devel
-- VirtualBox
+# - VirtualBox
 - kubernetes-client
 - remmina
 - ecryptfs-utils

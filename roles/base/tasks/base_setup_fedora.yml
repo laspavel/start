@@ -25,39 +25,25 @@
         max_parallel_downloads=10
         skip_if_unavailable=True
 
-- name: disable fedora-updates-modular.repo
-  yum_repository:
-    name: fedora-updates-modular
-    description: fedora-updates-modular
-    metalink: https://mirrors.fedoraproject.org/metalink?repo=updates-released-modular-source-f$releasever&arch=$basearch
-    enabled: no
-
-- name: disable fedora-modular.repo
-  yum_repository:
-    name: fedora-modular
-    description: fedora-modular
-    metalink: https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-source-$releasever&arch=$basearch
-    enabled: no
-
 - name: Upgrade system
   dnf:
     name: "*"
     state: latest
     exclude: kernel*
 
-- name: Enable the RPM Fusion repository
-  dnf:
-    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
-    disable_gpg_check: yes
-    state: present
-  when: ansible_distribution == 'Fedora' 
+#- name: Enable the RPM Fusion repository
+#  dnf:
+#    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+#    disable_gpg_check: yes
+#    state: present
+#  when: ansible_distribution == 'Fedora' 
 
-- name: Enable the RPM Fusion repository
-  dnf:
-    name: "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
-    disable_gpg_check: yes
-    state: present
-  when: ansible_distribution == 'Fedora'
+#- name: Enable the RPM Fusion repository
+#  dnf:
+#    name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+#    disable_gpg_check: yes
+#    state: present
+#  when: ansible_distribution == 'Fedora'
 
 - name: get google chrome repo
   dnf:

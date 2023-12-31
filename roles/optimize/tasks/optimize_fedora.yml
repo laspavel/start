@@ -1,17 +1,3 @@
 ---
-- name: enable fedora-updates-modular.repo
-  yum_repository:
-    name: fedora-updates-modular
-    description: fedora-updates-modular
-    metalink: https://mirrors.fedoraproject.org/metalink?repo=updates-released-modular-source-f$releasever&arch=$basearch
-    enabled: yes
-
-- name: enable fedora-modular.repo
-  yum_repository:
-    name: fedora-modular
-    description: fedora-modular
-    metalink: https://mirrors.fedoraproject.org/metalink?repo=fedora-modular-source-$releasever&arch=$basearch
-    enabled: yes
-
 - name: DNF Clean ALL
   command: dnf clean all
