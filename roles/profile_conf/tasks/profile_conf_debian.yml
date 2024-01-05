@@ -19,7 +19,7 @@
     depth: 1
 
 - name: Deploy dotfiles to user home directory
-  shell: "bootstrap.sh"
+  shell: "bash bootstrap.sh"
   become: true
   become_user: "{{ work_user }}"
   args:
@@ -78,3 +78,8 @@
     mode: 0775
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
+
+- name: Clean /tmp
+  file:
+    path: "/tmp/dotfiles"
+    state: absent

@@ -11,6 +11,12 @@
   include_tasks: optimize_fedora.yml
   when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
 
+- name: Clean /tmp/dotfiles
+  file:
+    path: "/tmp/dotfiles"
+    state: absent
+
+
 
 
 

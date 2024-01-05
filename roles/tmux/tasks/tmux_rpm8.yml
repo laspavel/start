@@ -37,3 +37,13 @@
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
+
+- name: Clean /tmp
+  file:
+    path: "/tmp/tmux-config"
+    state: absent
+
+- name: Clean /tmp
+  file:
+    path: "/tmp/tmux-3.2-1.el8.x86_64.rpm"
+    state: absent
