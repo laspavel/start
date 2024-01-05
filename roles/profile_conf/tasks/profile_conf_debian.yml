@@ -18,13 +18,13 @@
     update: yes
     depth: 1
 
-- name: Copy dotfiles to user home directory
-  copy:
-    src: /tmp/dotfiles/src/
-    dest: "{{ work_dir }}"
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-    force: yes
+- name: Deploy dotfiles to user home directory
+  shell: "bootstrap.sh"
+  become: true
+  become_user: "{{ work_user }}"
+  args:
+    chdir: /tmp/dotfiles
+    executable: /bin/bash
   ignore_errors: true
 
 - name: Creates directory Vim-plug
