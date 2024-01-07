@@ -11,3 +11,6 @@ swapon --show
 # If required add line in /etc/fstab:
 # /swapfile swap swap defaults 0 0
 
+# info:
+# swapon --show
+
