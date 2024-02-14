@@ -22,6 +22,53 @@
 - name: GSettings 13
   command: sync
 
+# - name: Install packege for Gnome configure
+#   package:
+#     name: 
+#       - python3-psutil
+
+# - name: Disable GNOME notifications (banners)
+#   community.general.dconf:
+#     key: "/org/gnome/desktop/notifications/show-banners"
+#     value: "false"
+#     state: present
+
+# - name: Disable GNOME notifications (lock-screen)
+#   community.general.dconf:
+#     key: "/org/gnome/desktop/notifications/show-in-lock-screen"
+#     value: "false"
+#     state: present
+
+# - name: Disable report technical problems
+#   community.general.dconf:
+#     key: "/org/gnome/desktop/privacy/report-technical-problems"
+#     value: "false"
+#     state: present
+
+# - name: Update GNOME window preferences
+#   community.general.dconf:
+#     key: "/org/gnome/desktop/wm/preferences/button-layout"
+#     value: "appmenu:minimize,maximize,close"
+#     state: present
+
+# - name: Disable software autoupdate  (allow-updates)
+#   community.general.dconf:
+#     key: "/org/gnome/software/allow-updates"
+#     value: "false"
+#     state: present
+
+# - name: Disable software autoupdate (download-updates)
+#   community.general.dconf:
+#     key: "/org/gnome/software/download-updates"
+#     value: "false"
+#     state: present
+
+# - name: Disable software autoupdate (download-updates-notify)
+#   community.general.dconf:
+#     key: "/org/gnome/software/download-updates-notify"
+#     value: "false"
+#     state: present
+
 - name: Create Background dir
   file: 
     path: "{{ work_dir }}/.local/share/backgrounds"
