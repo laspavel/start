@@ -1,0 +1,122 @@
+---
+- name: Install programs for Gnome
+  package:
+    name: 
+      - dconf-editor
+      - gnome-tweaks
+      - dbus-x11
+      - gnome-shell-extension-manager
+    state: present
+
+- name: get Dash to Panel Extensions
+  get_url:
+    url:   https://extensions.gnome.org/api/v1/extensions/dash-to-panel@jderose9.github.com/versions/56/?format=zip
+    dest: "/tmp/dash-to-panel.zip"
+    mode: 0775
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+
+- name: Enable Gnome Extensions
+  command:  gnome-extensions install --force /tmp/dash-to-panel.zip
+  become: true
+  become_user: "{{ work_user }}"
+  ignore_errors: true
+
+- name: disable auto maximize
+  template: 
+    src: dconf-settings.j2
+    dest: /etc/dconf
+
+- name: update dconf
+  shell: dconf update
+
+- name: GSettings 13
+  command: sync
+
+- name: Install packege for Gnome configure
+  package:
+    name: 
+      - python3-psutil
+
+- name: Disable GNOME notifications (banners)
+  community.general.dconf:
+    key: "/org/gnome/desktop/notifications/show-banners"
+    value: "false"
+    state: present
+
+- name: Disable GNOME notifications (lock-screen)
+  community.general.dconf:
+    key: "/org/gnome/desktop/notifications/show-in-lock-screen"
+    value: "false"
+    state: present
+
+- name: Disable report technical problems
+  community.general.dconf:
+    key: "/org/gnome/desktop/privacy/report-technical-problems"
+    value: "false"
+    state: present
+
+- name: Update GNOME window preferences
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/preferences/button-layout"
+    value: "'appmenu:minimize,maximize,close'"
+    state: present
+
+- name: Disable software autoupdate  (allow-updates)
+  community.general.dconf:
+    key: "/org/gnome/software/allow-updates"
+    value: "false"
+    state: present
+
+- name: Disable software autoupdate (download-updates)
+  community.general.dconf:
+    key: "/org/gnome/software/download-updates"
+    value: "false"
+    state: present
+
+- name: Disable software autoupdate (download-updates-notify)
+  community.general.dconf:
+    key: "/org/gnome/software/download-updates-notify"
+    value: "false"
+    state: present
+
+- name: Create Background dir
+  file: 
+    path: "{{ work_dir }}/.local/share/backgrounds"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0755
+    recurse: yes
+    state: directory
+
+- name: Copy Background file
+  copy:
+    src: "{{ item }}"
+    dest: "{{ work_dir }}/.local/share/backgrounds/"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0644
+  with_fileglob:
+    - "background*.jpg"
+
+- name: Enable Gnome Extensions
+  command: gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
+  become: true
+  become_user: "{{ work_user }}"
+  ignore_errors: true
+
+# Create dump: dconf dump / > dump_gnome
+
+- name: Restore gnome-terminal parameters
+  shell: "dconf load -f /org/gnome/terminal/ < {{ work_dir }}/DOD1/gnome_terminal_settings"
+  become: true
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash
+
+- name: Restore dash_to_panel parameters
+  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < {{ work_dir }}/DOD1/dash_to_panel_settings"
+  become: true
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash

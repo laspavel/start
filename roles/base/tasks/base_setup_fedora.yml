@@ -45,13 +45,10 @@
     state: present
   when: ansible_distribution == 'Fedora'
 
-- name: get google chrome repo
+- name: enable fedora workstations repo 
   dnf:
     name: fedora-workstation-repositories
     state: latest
-
-- name: enable google chrome repo
-  command: dnf config-manager --set-enabled google-chrome
 
 - name: Enable DoubleCmd repo
   command: dnf copr enable -y vondruch/doublecmd

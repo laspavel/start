@@ -27,7 +27,6 @@ base_required_packages:
   - firewalld
   - python3
   - python3-pip
-  - calc
 
 selinux_status: disabled   # disabled or permissive
 timezone: Europe/Kiev

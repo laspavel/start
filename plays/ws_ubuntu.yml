@@ -6,7 +6,7 @@
       remote_user: root
       gather_facts: true
       vars_files:
-        - ../vars/config_ws_fedora.yml
+        - ../vars/config_ws_ubuntu.yml
       vars_prompt:
         - name: work_user
           prompt: What is target work user?
