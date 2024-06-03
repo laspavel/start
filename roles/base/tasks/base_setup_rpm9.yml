@@ -4,6 +4,22 @@
     name: "{{ hostname_ }}"
   when: (hostname_ is defined)
 
+- name: Add hostname to /etc/hosts (127.0.0.1)
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '127.0.0.1.*{{ hostname_ }}$'
+    line: '127.0.0.1 {{ hostname_ }}'
+    state: present
+  when: (hostname_ is defined)
+
+- name: Add hostname to /etc/hosts (127.0.0.2)
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '127.0.0.2.*{{ hostname_ }}$'
+    line: '127.0.0.2 {{ hostname_ }}'
+    state: present
+  when: (hostname_ is defined)
+
 - name: Set required Selinux status
   selinux:
     policy: targeted

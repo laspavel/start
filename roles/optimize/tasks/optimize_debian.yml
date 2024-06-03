@@ -1,7 +1,4 @@
 ---
-- name: DNF Clean ALL
-  command: dnf clean all
-  
 - name: Install tlp
   package:
     name:

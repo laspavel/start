@@ -11,6 +11,10 @@
   include_tasks: optimize_fedora.yml
   when: "(ansible_distribution == 'Fedora') and (ansible_distribution_major_version|int >= 36)"
 
+- name: docker setup (Debian 10+)
+  include_tasks: optimize_debian.yml
+  when: "((ansible_distribution == 'Debian') and (ansible_distribution_major_version|int >= 10)) or ((ansible_distribution == 'Ubuntu') and (ansible_distribution_major_version|int >= 22))"
+
 - name: Clean /tmp/dotfiles
   file:
     path: "/tmp/dotfiles"
