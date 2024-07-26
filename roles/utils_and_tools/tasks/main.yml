@@ -7,9 +7,9 @@
     state: directory
     mode: 0755
 
-- name: Create local bash_completion.d directory
+- name: Create local bash.autocomplete.d directory
   file:
-    path: "{{ work_dir }}/.local/.bash_completion.d"
+    path: "{{ work_dir }}/.local/.bash.autocomplete.d"
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
     state: directory
@@ -30,13 +30,6 @@
     mode: 0755
   changed_when: false
 
-- name: Setup KUBECTX autocompletion
-  copy:
-    src: "{{ work_dir }}/kubectx-{{ kubectx_binary_version }}/completion/kubectx.bash"
-    dest: "{{ work_dir }}/.local/.bash_completion.d/kubectx.bash"
-    mode: 0664
-  changed_when: false
-
 - name: Copy KUBENS file to local bin folder
   copy:
     src: "{{ work_dir }}/kubectx-{{ kubectx_binary_version }}/kubens"
@@ -44,12 +37,15 @@
     mode: 0755
   changed_when: false
 
-- name: Setup KUBENS autocompletion
+- name: Deploy autocompletion
   copy:
-    src: "{{ work_dir }}/kubectx-{{ kubectx_binary_version }}/completion/kubens.bash"
-    dest: "{{ work_dir }}/.local/.bash_completion.d/kubectx.bash"
-    mode: 0664
-  changed_when: false
+    src: "{{ item }}"
+    dest: "{{ work_dir }}/.local/.bash.autocomplete.d"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0644
+  with_fileglob:
+    - ".bash.autocomplete.d/*.*"
 
 - name: Remove old CUBECTX download files
   file:
