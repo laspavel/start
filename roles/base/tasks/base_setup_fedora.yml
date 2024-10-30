@@ -50,9 +50,6 @@
     name: fedora-workstation-repositories
     state: latest
 
-- name: Enable DoubleCmd repo
-  command: dnf copr enable -y vondruch/doublecmd
-
 - name: Install programs
   yum:
     name: "{{ base_required_packages }}"

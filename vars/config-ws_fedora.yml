@@ -72,7 +72,6 @@ base_required_packages:
   - ansible
   - qbittorrent
   - gnome-calendar
-  - uget
   - evince-djvu
   - unar
   - redshift
