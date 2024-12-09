@@ -1,6 +1,6 @@
 ---
 - name: remove old docker-engine
-  package: 
+  yum: 
     name:
       - docker
       - docker-client
@@ -15,7 +15,7 @@
     state: absent
 
 - name: install required packages
-  package:
+  yum:
     name:
       - git
       - yum-utils
@@ -30,7 +30,7 @@
     dest: /etc/yum.repos.d/docker-ce.repo
 
 - name: install docker
-  package:
+  yum:
     name:
       - docker-ce 
       - docker-ce-cli 
