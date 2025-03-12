@@ -134,15 +134,7 @@
     dest: "{{ work_dir }}/.local/scripts"
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
-    mode: 0644
+    mode: 0755
   with_fileglob:
     - "scripts/*.*"
 
-- name: Create symlink to additional folder
-  file:
-    src: "{{ work_dir }}/.local/scripts"
-    dest: "{{ work_dir }}/scripts"
-    state: link
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-    
