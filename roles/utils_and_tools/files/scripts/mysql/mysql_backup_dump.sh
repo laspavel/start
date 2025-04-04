@@ -1,45 +1,65 @@
 #!/bin/bash
 
-# Резервное копирование баз данных mysql с удалением старых копий.
+# Резервное копирование БД Mysql с удалением старых копий
 
-TARGETDIR=/mnt/BACKUP/
-DAYD=3
+# MySQL Backup Script
+set -euo pipefail
 
-DATADIR=$TARGETDIR/`date +%Y-%m-%d`/DB
+# --- Config ---
+TARGETDIR=$1
+RETENTION_DAYS=$2
+
+DATESTAMP=$(date +%Y-%m-%d)
+TIMESTAMP=$(date +%F--%H-%M)
+DATADIR="$TARGETDIR/$DATESTAMP/DB"
 STATUS='/tmp/mysqlbackup_last_status'
+LOGFILE="/var/log/mysql_backup.log"
+LOCKFILE="/tmp/mysql_backup.lock"
 
 EXCLUDED_DB=(
- information_schema
- performance_schema
+information_schema
+performance_schema
 )
 
-let ResultCode=0
+# --- Init ---
+exec >> "$LOGFILE" 2>&1
+exec 200>"$LOCKFILE"
+flock -n 200 || { echo "[ERROR] Backup already running"; exit 1; }
 
-if [ ! -d "$DATADIR" ]; then
-    mkdir -p $DATADIR
-	let ResultCode=ResultCode+$?
-fi
+mkdir -p "$DATADIR"
 
-dblist=`mysql -e "show databases" | sed -n '2,$ p'`
+# --- Helper ---
+is_excluded() {
+  for dbex in "${EXCLUDED_DB[@]}"; do
+    [[ "$1" == "$dbex" ]] && return 0
+  done
+  return 1
+}
+
+# --- Backup ---
+echo "[$(date)] Starting backup..."
+ResultCode=0
+
+dblist=$(mysql -e "show databases" | tail -n +2)
 for db in $dblist; do
-	if [[ ! " ${EXCLUDED_DB[@]} " =~ " ${db} " ]]; then
-	    mysqldump --routines --compact --no-create-db -v $db | gzip --best > $DATADIR/$db-`date +%F--%H-%M`.sql.gz
-		let ResultCode=ResultCode+$?
- 	fi
+  if ! is_excluded "$db"; then
+    echo "[$(date)] Backing up $db..."
+    if ! mysqldump --routines --compact --no-create-db "$db" | gzip --best > "$DATADIR/${db}--$TIMESTAMP.sql.gz"; then
+      echo "[ERROR] Failed to backup $db"
+      ResultCode=1
+    fi
+  fi
 done
 
-if [ "$ResultCode" -ne "0" ]; then
-  echo "1" > $STATUS
-  exit 1
+# --- Cleanup ---
+if [ "$ResultCode" -eq 0 ]; then
+  echo "0" > "$STATUS"
+  find "$TARGETDIR" -name '*.gz' -type f -mtime +"$RETENTION_DAYS" -delete
+  find "$TARGETDIR" -type d -empty -exec rmdir {} \;
+  echo "[$(date)] Backup complete."
+  exit 0
 else
-  echo "0" > $STATUS
-  find $TARGETDIR -name '*.gz' -type f -atime +$DAYD -delete
-  find $TARGETDIR -type d -empty -exec rmdir {} \;
-  exit 0;
-fi;
-
-
-
-
-
-
+  echo "1" > "$STATUS"
+  echo "[$(date)] Backup failed."
+  exit 1
+fi
