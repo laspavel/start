@@ -1,42 +1,77 @@
-# Start #
+# Start – Automated Workstation & Server Initialization
 
-Playbooks for prepare my workstation and Bastion (GoldenGate) servers.
+Start is a collection of Ansible-based shell wrappers designed to quickly configure Fedora/Ubuntu workstations and Bastion (GoldenGate) servers running Debian, Oracle Linux, AlmaLinux, Rocky Linux, or Fedora Server.
 
-**Requirements:**
-* python3 and python3-pip
-* Ansible
-* root user on target PC
+## 📌 Features
 
-**Usage on Workstation (Fedora Workstation 39):**
-```
+* Unified setup for workstations and servers using Ansible roles
+* OS-aware scripts for different Linux distributions
+* Custom roles for security hardening, package installation, and more
+* Fast and repeatable provisioning for personal and enterprise systems
+
+## ⚙️ Requirements
+
+* Python 3 and python3-pip
+* Ansible installed on the control node
+* Root access to the target machine
+
+## 🚀 Quick Start
+
+### 🖥️ For Workstations
+
+* Fedora Workstation 41
+```bash
 bash w1.ws_fedora.sh
 ```
 
-**Usage on Workstation (Ubuntu 22.04 LTS):**
-```
+* Ubuntu 22.04 LTS
+```bash
 bash w2.ws_ubuntu.sh
 ```
 
-**Usage on Server (Debian 11):**
+### 🖥️ For Servers
 
-```
+* Debian 11
+
+```bash
 bash s1.srv_deb.sh
 ```
 
-**Usage on Server (OracleLinux 8; AlmaLinux 8; RockyLinux 8, Fedora Server 38):**
-```
+* Oracle Linux 8 / AlmaLinux 8 / Rocky Linux 8 / Fedora Server 38
+```bash
 bash s2.srv_rpm8.sh
 ```
 
-**Usage on Server (OracleLinux 9; AlmaLinux 9; RockyLinux 9,):**
+* Oracle Linux 9 / AlmaLinux 9 / Rocky Linux 9
+
+```bash
+bash s3.srv_rpm9.sh
 ```
-bash s3.srv_rpm8.sh
+
+## 📁 Repository Structure
+```plaintext
+start/
+├── plays/               # Ansible playbooks
+├── roles/               # Custom roles
+├── vars/                # Group and host variable definitions
+├── scripts/             # Auxiliary scripts
+├── *.sh                 # Launcher scripts per OS
+├── ansible.cfg          # Configuration file for Ansible
+└── README.md            # Project documentation
 ```
 
-## License ##
+## 🛡️ License
 
-MIT / BSD
+MIT License.
 
-## Author Information ##
+## 🤝 Contributions
 
-This playbook was created in 2021-2024 by [Pavel Lashkevych](https://laspavel.top/).
+Suggestions and improvements are welcome! Feel free to open an issue or submit a pull request.
+
+## 📬 Contact
+
+Author: [laspavel](https://github.com/laspavel)
+
+Feel free to reach out with questions or ideas.
+
+---
