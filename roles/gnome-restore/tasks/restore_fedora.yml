@@ -99,7 +99,7 @@
     group: "{{ work_user }}"
     mode: 0644
   with_fileglob:
-    - "background*.jpg"
+    - "backgrounds/*.jpg"
 
 - name: Enable Gnome Extensions
   command: gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
