@@ -108,47 +108,16 @@
   ignore_errors: true
 
 # Create dump: dconf dump / > dump_gnome
+- name: Restore gnome-terminal parameters
+  shell: "dconf load -f /org/gnome/terminal/ < {{ work_dir }}/DOD1/gnome_terminal_settings"
+  become: true
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash
 
-- name: Ensure ~/.local/bin/ exists
-  file:
-    path: "/home/{{ work_user }}/.local/bin"
-    state: directory
-    mode: '0755'
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Copy restore_gnome.sh script
-  copy:
-    dest: "/home/{{ work_user }}/.local/bin/restore_gnome.sh"
-    content: |
-      #!/bin/bash
-      dconf load -f /org/gnome/terminal/ < {{ work_dir }}/DOD1/gnome_terminal_settings
-      dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < {{ work_dir }}/DOD1/dash_to_panel_settings
-      rm -f /home/{{ work_user }}/.config/autostart/restore-gnome-terminal.desktop
-    mode: '0755'
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Ensure ~/.config/autostart/ exists
-  file:
-    path: "/home/{{ work_user }}/.config/autostart"
-    state: directory
-    mode: '0755'
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
-- name: Install one-time GNOME Terminal restore desktop entry
-  copy:
-    dest: "/home/{{ work_user }}/.config/autostart/restore-gnome-terminal.desktop"
-    content: |
-      [Desktop Entry]
-      Type=Application
-      Exec=/home/{{ work_user }}/.local/bin/restore_gnome.sh
-      Hidden=false
-      NoDisplay=false
-      X-GNOME-Autostart-enabled=true
-      Name=Restore GNOME Terminal One-Time
-    mode: '0644'
-    owner: "{{ work_user }}"
-    group: "{{ work_user }}"
-
+- name: Restore dash_to_panel parameters
+  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < {{ work_dir }}/DOD1/dash_to_panel_settings"
+  become: true
+  become_user: "{{ work_user }}"
+  args:
+    executable: /bin/bash
