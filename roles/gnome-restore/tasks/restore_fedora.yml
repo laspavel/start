@@ -24,63 +24,10 @@
   become_user: "{{ work_user }}"
   ignore_errors: true
 
-- name: disable auto maximize
-  template: 
-    src: dconf-settings.j2
-    dest: /etc/dconf
-
-- name: update dconf
-  shell: dconf update
-
-- name: GSettings 13
-  command: sync
-
 - name: Install packege for Gnome configure
   package:
     name: 
       - python3-psutil
-
-- name: Disable GNOME notifications (banners)
-  community.general.dconf:
-    key: "/org/gnome/desktop/notifications/show-banners"
-    value: "false"
-    state: present
-
-- name: Disable GNOME notifications (lock-screen)
-  community.general.dconf:
-    key: "/org/gnome/desktop/notifications/show-in-lock-screen"
-    value: "false"
-    state: present
-
-- name: Disable report technical problems
-  community.general.dconf:
-    key: "/org/gnome/desktop/privacy/report-technical-problems"
-    value: "false"
-    state: present
-
-- name: Update GNOME window preferences
-  community.general.dconf:
-    key: "/org/gnome/desktop/wm/preferences/button-layout"
-    value: "'appmenu:minimize,maximize,close'"
-    state: present
-
-- name: Disable software autoupdate  (allow-updates)
-  community.general.dconf:
-    key: "/org/gnome/software/allow-updates"
-    value: "false"
-    state: present
-
-- name: Disable software autoupdate (download-updates)
-  community.general.dconf:
-    key: "/org/gnome/software/download-updates"
-    value: "false"
-    state: present
-
-- name: Disable software autoupdate (download-updates-notify)
-  community.general.dconf:
-    key: "/org/gnome/software/download-updates-notify"
-    value: "false"
-    state: present
 
 - name: Create Background dir
   file: 
@@ -101,23 +48,23 @@
   with_fileglob:
     - "backgrounds/*.jpg"
 
-- name: Enable Gnome Extensions
-  command: gsettings set org.gnome.shell enabled-extensions "['dash-to-panel@jderose9.github.com']"
-  become: true
-  become_user: "{{ work_user }}"
-  ignore_errors: true
+- name: Get UID of user {{ work_user }}
+  ansible.builtin.command: "id -u {{ work_user }}"
+  register: user_id_result
+  changed_when: false
+  failed_when: user_id_result.rc != 0
 
-# Create dump: dconf dump / > dump_gnome
-- name: Restore gnome-terminal parameters
-  shell: "dconf load -f /org/gnome/terminal/ < {{ work_dir }}/DOD1/gnome_terminal_settings"
+- name: Set fact work_userid
+  ansible.builtin.set_fact:
+    work_userid: "{{ user_id_result.stdout | int }}"
+
+- name: Restore GNOME settings
+  shell: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh"
   become: true
   become_user: "{{ work_user }}"
   args:
     executable: /bin/bash
+  environment:
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/{{ work_userid }}/bus"
 
-- name: Restore dash_to_panel parameters
-  shell: "dconf load -f /org/gnome/shell/extensions/dash-to-panel/ < {{ work_dir }}/DOD1/dash_to_panel_settings"
-  become: true
-  become_user: "{{ work_user }}"
-  args:
-    executable: /bin/bash
+
