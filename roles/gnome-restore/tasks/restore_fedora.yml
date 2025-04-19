@@ -48,6 +48,16 @@
   with_fileglob:
     - "backgrounds/*.jpg"
 
+- name: Get UID of user {{ work_user }}
+  ansible.builtin.command: "id -u {{ work_user }}"
+  register: user_id_result
+  changed_when: false
+  failed_when: user_id_result.rc != 0
+
+- name: Set fact work_userid
+  ansible.builtin.set_fact:
+    work_userid: "{{ user_id_result.stdout | int }}"
+
 - name: Ensure GNOME restore script is executable
   ansible.builtin.file:
     path: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh"
@@ -70,7 +80,7 @@
       [Desktop Entry]
       Type=Application
       Name=Restore GNOME Profile
-      Exec=bash -c '{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh && rm -f {{ work_dir }}/.config/autostart/gnome-restore-profile.desktop'
+      Exec=bash -c 'cd {{ work_dir }}/DOD1 && ./r1.restore_gnome_profile_min.sh && rm -f {{ work_dir }}/.config/autostart/gnome-restore-profile.desktop'
       X-GNOME-Autostart-enabled=true
       NoDisplay=false
     mode: '0644'
