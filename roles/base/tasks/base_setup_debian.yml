@@ -35,7 +35,7 @@
 
 - name: start the sshd service and enable it
   systemd:
-    name: sshd
+    name: ssh
     state: started
     enabled: yes
 

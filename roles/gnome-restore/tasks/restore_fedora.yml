@@ -80,7 +80,7 @@
       [Desktop Entry]
       Type=Application
       Name=Restore GNOME Profile
-      Exec=bash -c 'cd {{ work_dir }}/DOD1 && ./r1.restore_gnome_profile_min.sh && rm -f {{ work_dir }}/.config/autostart/gnome-restore-profile.desktop'
+      Exec=bash -c 'cd {{ work_dir }}/DOD1; ./r1.restore_gnome_profile_min.sh; rm -f {{ work_dir }}/.config/autostart/gnome-restore-profile.desktop'
       X-GNOME-Autostart-enabled=true
       NoDisplay=false
     mode: '0644'
