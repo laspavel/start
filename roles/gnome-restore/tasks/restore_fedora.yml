@@ -58,6 +58,13 @@
   ansible.builtin.set_fact:
     work_userid: "{{ user_id_result.stdout | int }}"
 
+- name: Ensure GNOME restore script is executable
+  ansible.builtin.file:
+    path: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: '0755'
+
 - name: Restore GNOME settings
   shell: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh"
   become: true
