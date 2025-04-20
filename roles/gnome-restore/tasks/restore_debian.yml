@@ -58,7 +58,7 @@
 
 - name: Ensure GNOME restore script is executable
   ansible.builtin.file:
-    path: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_min.sh"
+    path: "{{ work_dir }}/DOD1/r1.restore_gnome_profile_ubuntu.sh"
     owner: "{{ work_user }}"
     group: "{{ work_user }}"
     mode: '0755'
