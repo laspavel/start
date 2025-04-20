@@ -24,6 +24,7 @@ base_required_packages:
   - jq
   - ssh
   - yq
+  - grc
   - sysstat
   - procps
   - bash-completion

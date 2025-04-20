@@ -23,7 +23,9 @@ base_required_packages:
   - curl
   - wget
   - jq
+  - ssh
   - yq
+  - grc
   - sysstat
   - procps
   - bash-completion
