@@ -120,6 +120,14 @@
     - ./LICENSE
     - ./README.md
 
+- name: Create additional kube directory
+  file:
+    path: "{{ work_dir }}/.kube"
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    state: directory
+    mode: 0755
+
 #- name: Create additional scripts directory
 #  file:
 #    path: "{{ work_dir }}/.local/scripts"
