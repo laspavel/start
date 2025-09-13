@@ -11,7 +11,7 @@
 
 - name: Clone tmux-config repository
   git:
-    repo: https://github.com/laspavel/tmux-config.git
+    repo: https://github.com/gpakosz/.tmux.git
     dest: /tmp/tmux-config
     clone: yes
     update: yes
