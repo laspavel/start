@@ -222,6 +222,10 @@ defaults write com.apple.finder ShowPathbar -bool true
 #defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 #defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
+# Don't create .DS_Store on Network and USB Devices
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
 # Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
