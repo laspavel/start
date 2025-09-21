@@ -153,14 +153,14 @@ if command -v sntp &>/dev/null; then
 fi
 
 # =====================
-# Install Tmux config with plugins
+# Restore dotfiles from repo
 # =====================
-rm -rf "/tmp/tmux-config" || true
-git clone --depth=1 "https://github.com/laspavel/tmux-config.git" "/tmp/tmux-config"
-sudo chown -R "$WORK_USER":"$WORK_USER" "/tmp/tmux-config"
-chmod +x "/tmp/tmux-config/install.sh"
-sudo -u "$WORK_USER" bash -lc "cd '/tmp/tmux-config' && ./install.sh"
-rm -rf "/tmp/tmux-config" || true
+TMP_DOTFILES="$(mktemp -d /tmp/dotfiles.XXXXXX)" || exit 1
+git clone --depth=1 "https://github.com/laspavel/dotfiles.git" "$TMP_DOTFILES"
+sudo chown -R "$WORK_USER":"$WORK_USER" "$TMP_DOTFILES" || true
+chmod +x "$TMP_DOTFILES/bootstrap.sh"
+sudo -u "$WORK_USER" env HOME="$WORK_DIR" bash -lc "cd '$TMP_DOTFILES' && ./bootstrap.sh --restore"
+rm -rf "$TMP_DOTFILES" || true
 
 # =====================
 # K8S
