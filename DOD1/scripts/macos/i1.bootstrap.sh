@@ -127,7 +127,7 @@ dscacheutil -flushcache
 # =====================
 if [[ ! -d "$WORK_DIR/.local/.bash.autocomplete.d" ]]; then
   mkdir -p "$WORK_DIR/.local/.bash.autocomplete.d"
-  sudo chown -R "$WORK_USER":"$WORK_USER" "$WORK_DIR/.local/.bash.autocomplete.d" || true
+  sudo chown -R "$WORK_USER":"$(id -gn "$WORK_USER")" "$WORK_DIR/.local/.bash.autocomplete.d" || true
   chmod 0755 "$WORK_DIR/.local/.bash.autocomplete.d"
 fi
 
@@ -135,7 +135,7 @@ curl -fsSL -z "$WORK_DIR/.local/.bash.autocomplete.d/git-completion.bash" -o "$W
   curl -fsSL -o "$WORK_DIR/.local/.bash.autocomplete.d/git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
 }
 chmod 0664 "$WORK_DIR/.local/.bash.autocomplete.d/git-completion.bash"
-sudo chown "$WORK_USER":"$WORK_USER" "$WORK_DIR/.local/.bash.autocomplete.d/git-completion.bash" || true
+sudo chown "$WORK_USER":"$(id -gn "$WORK_USER")" "$WORK_DIR/.local/.bash.autocomplete.d/git-completion.bash" || true
 
 # =====================
 # SSH On
@@ -157,7 +157,7 @@ fi
 # =====================
 TMP_DOTFILES="$(mktemp -d /tmp/dotfiles.XXXXXX)" || exit 1
 git clone --depth=1 "https://github.com/laspavel/dotfiles.git" "$TMP_DOTFILES"
-sudo chown -R "$WORK_USER":"$WORK_USER" "$TMP_DOTFILES" || true
+sudo chown -R "$WORK_USER":"$(id -gn "$WORK_USER")" "$TMP_DOTFILES" || true
 chmod +x "$TMP_DOTFILES/bootstrap.sh"
 sudo -u "$WORK_USER" env HOME="$WORK_DIR" bash -lc "cd '$TMP_DOTFILES' && ./bootstrap.sh --restore"
 rm -rf "$TMP_DOTFILES" || true
