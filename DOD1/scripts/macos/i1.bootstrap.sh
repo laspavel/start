@@ -102,8 +102,26 @@ if brew list docker-compose &>/dev/null; then
     brew uninstall docker-compose
 fi
 brew install docker docker-compose colima docker-buildx
-colima start || true
+colima stop || true
+colima delete -f || true
+colima start --vm-type=vz --vz-rosetta --cpu 4 --memory 6 --disk 60 || true
 
+mkdir -p "$HOME/.docker"
+if [[ -f "$HOME/.docker/config.json" ]]; then
+  # аккуратно добавим ключ, если его нет
+  if ! grep -q '"cliPluginsExtraDirs"' "$HOME/.docker/config.json"; then
+    /usr/bin/plutil -replace cliPluginsExtraDirs -json '["/opt/homebrew/lib/docker/cli-plugins"]' "$HOME/.docker/config.json" 2>/dev/null \
+      || jq '. + {cliPluginsExtraDirs: ["/opt/homebrew/lib/docker/cli-plugins"]}' "$HOME/.docker/config.json" > "$HOME/.docker/config.json.tmp" && mv "$HOME/.docker/config.json.tmp" "$HOME/.docker/config.json"
+  fi
+else
+  cat > "$HOME/.docker/config.json" <<'JSON'
+{
+  "cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"]
+}
+JSON
+fi
+
+ls -l /opt/homebrew/lib/docker/cli-plugins/ || true
 docker --version || true
 docker compose version || true
 docker buildx version || true
