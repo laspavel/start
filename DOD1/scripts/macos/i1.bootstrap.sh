@@ -269,6 +269,12 @@ defaults write -g NSToolbarTitleViewRolloverDelay -float 0
 # Terminal UTF-8
 defaults write com.apple.terminal StringEncodings -array 4
 
+# Отключить стандартное сочетание для Spotlight
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{enabled = 0; }"
+
+# Установить переключение раскладки на Cmd+Space
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 "{enabled = 1; value = {parameters = (32, 49, 1048576); type = standard; }; }"
+
 # Safari privacy toggles (могут игнорироваться в новых версиях)
 defaults write com.apple.Safari UniversalSearchEnabled    -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
